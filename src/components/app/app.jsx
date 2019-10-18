@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import MovieCard from "../movie-card/movie-card.jsx";
 import PageContent from "../page-content/page-content.jsx";
+import movieTitles from "../../mocks/movie-titles.js";
 
 const App = () => {
-  return <React.Fragment>
+  return <Fragment>
     <MovieCard />
-    <PageContent />
-  </React.Fragment>;
+    <PageContent movieTitles={movieTitles}/>
+  </Fragment>;
 };
 
 export default App;
