@@ -44,7 +44,7 @@ const PageContent = (props) => {
       </ul>
 
       <div className="catalog__movies-list">
-        {movieTitles.map((movieTitle, i) => <SmallMovieCard key={movieTitle + i} movieTitle={movieTitle} />)}
+        {movieTitles.map((movieTitle, i) => <SmallMovieCard key={movieTitle + i} movieTitle={movieTitle} onClickTitleHandler={() => {}}/>)}
       </div>
 
       <div className="catalog__more">
