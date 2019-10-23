@@ -1,10 +1,10 @@
 import React from 'react';
-import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 import PropTypes from 'prop-types';
+import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 
 
 const PageContent = (props) => {
-  const {movieTitles} = props;
+  const {films} = props;
 
   return <div className="page-content">
     <section className="catalog">
@@ -43,9 +43,7 @@ const PageContent = (props) => {
         </li>
       </ul>
 
-      <div className="catalog__movies-list">
-        {movieTitles.map((movieTitle, i) => <SmallMovieCard key={movieTitle + i} movieTitle={movieTitle} onClickTitleHandler={() => {}}/>)}
-      </div>
+      <MovieCardsList films={films}/>
 
       <div className="catalog__more">
         <button className="catalog__button" type="button">Show more</button>
@@ -69,7 +67,7 @@ const PageContent = (props) => {
 };
 
 PageContent.propTypes = {
-  movieTitles: PropTypes.arrayOf(PropTypes.string)
+  films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default PageContent;
