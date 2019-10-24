@@ -5,14 +5,31 @@ import PropTypes from 'prop-types';
 class MovieCardsList extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeSmallMovieCard: null
+    };
   }
 
   render() {
     const {films} = this.props;
 
     return <div className="catalog__movies-list">
-      {films.map((film) => <SmallMovieCard key={film.id} film={film} onClickTitleHandler={() => {}} onMouseOverCard={() => {}}/>)}
+      {films.map((film) => {
+        return <SmallMovieCard
+          key={film.id}
+          film={film}
+          onClickTitleHandler={() => {}}
+          onMouseOverCard={this._hundlerMouseOverCard.bind(this)}
+        />;
+      })}
     </div>;
+  }
+
+  _hundlerMouseOverCard(film) {
+    this.setState({
+      activeSmallMovieCard: film.id
+    });
   }
 }
 
