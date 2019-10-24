@@ -5,16 +5,31 @@ import SmallMovieCard from "./small-movie-card.jsx";
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`SmallMovieCard click on start title is correct`, () => {
+describe(`MovieCard group`, () => {
   const clickHandler = jest.fn();
+  const mouseOverHendler = jest.fn();
 
-  const welcomeScreen = shallow(<SmallMovieCard
+  const smallMovieCard = shallow(<SmallMovieCard
     film={{}}
     onClickTitleHandler={clickHandler}
+    onMouseOverCard={clickHandler}
   />);
 
-  const clickTitle = welcomeScreen.find(`.small-movie-card__link`);
-  clickTitle.simulate(`click`);
+  it(`SmallMovieCard click on start title is correct`, () => {
 
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+    const clickTitle = smallMovieCard.find(`.small-movie-card__link`);
+    clickTitle.simulate(`click`);
+
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+  });
+
+  it(`SmallMovieCard hover is correct`, () => {
+
+    const hoverCard = smallMovieCard.find(`.small-movie-card`);
+    hoverCard.simulate(`mouseOver`);
+
+    expect(mouseOverHendler).toHaveBeenCalledTimes(1);
+  });
 });
+
+

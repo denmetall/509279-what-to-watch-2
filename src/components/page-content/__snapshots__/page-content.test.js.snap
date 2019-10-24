@@ -121,6 +121,7 @@ exports[`Components PageContent renders correctly 1`] = `
     >
       <article
         className="small-movie-card catalog__movies-card"
+        onMouseOver={[Function]}
       >
         <div
           className="small-movie-card__image"
@@ -143,6 +144,7 @@ exports[`Components PageContent renders correctly 1`] = `
       </article>
       <article
         className="small-movie-card catalog__movies-card"
+        onMouseOver={[Function]}
       >
         <div
           className="small-movie-card__image"
@@ -165,6 +167,7 @@ exports[`Components PageContent renders correctly 1`] = `
       </article>
       <article
         className="small-movie-card catalog__movies-card"
+        onMouseOver={[Function]}
       >
         <div
           className="small-movie-card__image"

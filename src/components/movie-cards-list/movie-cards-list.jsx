@@ -6,7 +6,7 @@ const MovieCardsList = (props) => {
   const {films} = props;
 
   return <div className="catalog__movies-list">
-    {films.map((film) => <SmallMovieCard key={film.id} film={film} onClickTitleHandler={() => {}}/>)}
+    {films.map((film) => <SmallMovieCard key={film.id} film={film} onClickTitleHandler={() => {}} onMouseOverCard={() => {}}/>)}
   </div>;
 };
 
