@@ -4,7 +4,7 @@ import PageContent from "./page-content.jsx";
 
 it(`Components PageContent renders correctly`, () => {
   const tree = renderer
-    .create(<PageContent movieTitles="some title"/>)
+    .create(<PageContent films={[{}, {}, {}]}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

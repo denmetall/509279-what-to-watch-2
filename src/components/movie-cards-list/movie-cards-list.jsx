@@ -10,7 +10,7 @@ const MovieCardsList = (props) => {
   </div>;
 };
 
-MovieCardsList.propType = {
+MovieCardsList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 

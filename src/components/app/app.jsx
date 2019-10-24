@@ -18,7 +18,7 @@ class App extends Component {
   }
 }
 
-App.propType = {
+App.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 

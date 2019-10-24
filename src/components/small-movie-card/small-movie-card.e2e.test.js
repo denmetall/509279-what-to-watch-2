@@ -9,7 +9,7 @@ it(`SmallMovieCard click on start title is correct`, () => {
   const clickHandler = jest.fn();
 
   const welcomeScreen = shallow(<SmallMovieCard
-    movieTitle="some title"
+    film={{}}
     onClickTitleHandler={clickHandler}
   />);
 

@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 it(`Components App renders correctly`, () => {
   const tree = renderer
-    .create(<App />)
+    .create(<App films={[{}, {}, {}]}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
