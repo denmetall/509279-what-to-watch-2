@@ -5,7 +5,7 @@ const SmallMovieCard = (props) => {
   const {film, onClickTitleHandler, onMouseOverCard} = props;
   const {name, posterImage} = film;
 
-  return <article className="small-movie-card catalog__movies-card" onMouseOver={onMouseOverCard}>
+  return <article className="small-movie-card catalog__movies-card" onMouseOver={onMouseOverCard(film)}>
     <div className="small-movie-card__image">
       <img src={posterImage} alt="Bohemian Rhapsody" width="280" height="175"/>
     </div>

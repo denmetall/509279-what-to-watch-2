@@ -12,7 +12,7 @@ describe(`MovieCard group`, () => {
   const smallMovieCard = shallow(<SmallMovieCard
     film={{}}
     onClickTitleHandler={clickHandler}
-    onMouseOverCard={clickHandler}
+    onMouseOverCard={mouseOverHendler}
   />);
 
   it(`SmallMovieCard click on start title is correct`, () => {
