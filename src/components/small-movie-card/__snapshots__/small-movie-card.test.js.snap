@@ -3,6 +3,7 @@
 exports[`Components SmallMovieCard renders correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
@@ -10,7 +11,7 @@ exports[`Components SmallMovieCard renders correctly 1`] = `
     <img
       alt="Bohemian Rhapsody"
       height="175"
-      src="img/bohemian-rhapsody.jpg"
+      src="img/mocks-img/drive.jpg"
       width="280"
     />
   </div>
@@ -22,7 +23,7 @@ exports[`Components SmallMovieCard renders correctly 1`] = `
       href="movie-page.html"
       onClick={[MockFunction]}
     >
-      some title
+      Drive
     </a>
   </h3>
 </article>

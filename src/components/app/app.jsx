@@ -1,13 +1,25 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, Component} from 'react';
 import MovieCard from "../movie-card/movie-card.jsx";
 import PageContent from "../page-content/page-content.jsx";
-import movieTitles from "../../mocks/movie-titles.js";
+import PropTypes from 'prop-types';
 
-const App = () => {
-  return <Fragment>
-    <MovieCard />
-    <PageContent movieTitles={movieTitles}/>
-  </Fragment>;
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const {films} = this.props;
+
+    return <Fragment>
+      <MovieCard />
+      <PageContent films={films}/>
+    </Fragment>;
+  }
+}
+
+App.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default App;

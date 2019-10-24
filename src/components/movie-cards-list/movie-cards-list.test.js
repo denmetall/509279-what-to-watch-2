@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PageContent from "./page-content.jsx";
+import MovieCardsList from "./movie-cards-list.jsx";
 import filmsMock from '../../mocks/films';
 
-it(`Components PageContent renders correctly`, () => {
+it(`Components MovieCardsList renders correctly`, () => {
   const tree = renderer
-    .create(<PageContent films={filmsMock}/>)
+    .create(<MovieCardsList films={filmsMock}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

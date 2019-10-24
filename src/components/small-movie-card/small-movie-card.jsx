@@ -2,20 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SmallMovieCard = (props) => {
-  const {movieTitle, onClickTitleHandler} = props;
-  return <article className="small-movie-card catalog__movies-card">
+  const {film, onClickTitleHandler, onMouseOverCard} = props;
+  const {name, posterImage} = film;
+
+  return <article className="small-movie-card catalog__movies-card" onMouseOver={() => onMouseOverCard(film)}>
     <div className="small-movie-card__image">
-      <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175"/>
+      <img src={posterImage} alt="Bohemian Rhapsody" width="280" height="175"/>
     </div>
     <h3 className="small-movie-card__title">
-      <a className="small-movie-card__link" onClick={onClickTitleHandler} href="movie-page.html">{movieTitle}</a>
+      <a className="small-movie-card__link" onClick={onClickTitleHandler} href="movie-page.html">{name}</a>
     </h3>
   </article>;
 };
 
 SmallMovieCard.propTypes = {
-  movieTitle: PropTypes.string.isRequired,
-  onClickTitleHandler: PropTypes.func.isRequired
+  film: PropTypes.object.isRequired,
+  onClickTitleHandler: PropTypes.func.isRequired,
+  onMouseOverCard: PropTypes.func.isRequired
 };
 
 export default SmallMovieCard;
