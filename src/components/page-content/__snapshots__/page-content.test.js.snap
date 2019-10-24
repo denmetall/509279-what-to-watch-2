@@ -129,6 +129,7 @@ exports[`Components PageContent renders correctly 1`] = `
           <img
             alt="Bohemian Rhapsody"
             height="175"
+            src="img/mocks-img/drive.jpg"
             width="280"
           />
         </div>
@@ -139,7 +140,9 @@ exports[`Components PageContent renders correctly 1`] = `
             className="small-movie-card__link"
             href="movie-page.html"
             onClick={[Function]}
-          />
+          >
+            Drive
+          </a>
         </h3>
       </article>
       <article
@@ -152,6 +155,7 @@ exports[`Components PageContent renders correctly 1`] = `
           <img
             alt="Bohemian Rhapsody"
             height="175"
+            src="img/mocks-img/astral.jpg"
             width="280"
           />
         </div>
@@ -162,7 +166,9 @@ exports[`Components PageContent renders correctly 1`] = `
             className="small-movie-card__link"
             href="movie-page.html"
             onClick={[Function]}
-          />
+          >
+            Astral
+          </a>
         </h3>
       </article>
       <article
@@ -175,6 +181,7 @@ exports[`Components PageContent renders correctly 1`] = `
           <img
             alt="Bohemian Rhapsody"
             height="175"
+            src="img/mocks-img/taxi.jpg"
             width="280"
           />
         </div>
@@ -185,7 +192,61 @@ exports[`Components PageContent renders correctly 1`] = `
             className="small-movie-card__link"
             href="movie-page.html"
             onClick={[Function]}
+          >
+            Taxi
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <img
+            alt="Bohemian Rhapsody"
+            height="175"
+            src="img/mocks-img/evil.jpg"
+            width="280"
           />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="movie-page.html"
+            onClick={[Function]}
+          >
+            Resident evil
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <img
+            alt="Bohemian Rhapsody"
+            height="175"
+            src="img/mocks-img/brother.jpg"
+            width="280"
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="movie-page.html"
+            onClick={[Function]}
+          >
+            Brother
+          </a>
         </h3>
       </article>
     </div>

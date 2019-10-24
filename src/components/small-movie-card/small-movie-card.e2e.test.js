@@ -2,17 +2,18 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import SmallMovieCard from "./small-movie-card.jsx";
+import filmsMock from '../../mocks/films';
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`MovieCard group`, () => {
   const clickHandler = jest.fn();
-  const mouseOverHendler = jest.fn();
+  const mouseOverHandler = jest.fn();
 
   const smallMovieCard = shallow(<SmallMovieCard
-    film={{}}
+    film={filmsMock[0]}
     onClickTitleHandler={clickHandler}
-    onMouseOverCard={mouseOverHendler}
+    onMouseOverCard={mouseOverHandler}
   />);
 
   it(`SmallMovieCard click on start title is correct`, () => {
@@ -28,7 +29,7 @@ describe(`MovieCard group`, () => {
     const hoverCard = smallMovieCard.find(`.small-movie-card`);
     hoverCard.simulate(`mouseOver`);
 
-    expect(mouseOverHendler).toHaveBeenCalledTimes(1);
+    expect(mouseOverHandler).toHaveBeenCalledTimes(1);
   });
 });
 

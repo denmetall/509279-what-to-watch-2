@@ -11,6 +11,7 @@ exports[`Components SmallMovieCard renders correctly 1`] = `
     <img
       alt="Bohemian Rhapsody"
       height="175"
+      src="img/mocks-img/drive.jpg"
       width="280"
     />
   </div>
@@ -21,7 +22,9 @@ exports[`Components SmallMovieCard renders correctly 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
       onClick={[MockFunction]}
-    />
+    >
+      Drive
+    </a>
   </h3>
 </article>
 `;
