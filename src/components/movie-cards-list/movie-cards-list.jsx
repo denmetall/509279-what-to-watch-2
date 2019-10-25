@@ -12,14 +12,14 @@ class MovieCardsList extends Component {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, onClickTitleHandler} = this.props;
 
     return <div className="catalog__movies-list">
       {films.map((film) => {
         return <SmallMovieCard
           key={film.id}
           film={film}
-          onClickTitleHandler={() => {}}
+          onClickTitleHandler={onClickTitleHandler}
           onMouseOverCard={this._hundlerMouseOverCard.bind(this)}
         />;
       })}

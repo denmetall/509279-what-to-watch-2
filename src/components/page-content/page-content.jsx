@@ -4,7 +4,7 @@ import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 
 
 const PageContent = (props) => {
-  const {films} = props;
+  const {films, onClickTitleHandler} = props;
 
   return <div className="page-content">
     <section className="catalog">
@@ -43,7 +43,7 @@ const PageContent = (props) => {
         </li>
       </ul>
 
-      <MovieCardsList films={films}/>
+      <MovieCardsList films={films} onClickTitleHandler={onClickTitleHandler}/>
 
       <div className="catalog__more">
         <button className="catalog__button" type="button">Show more</button>
