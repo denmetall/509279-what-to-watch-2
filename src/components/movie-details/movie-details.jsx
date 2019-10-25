@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 const MovieDetails = (props) => {
   const {film} = props;
@@ -180,6 +181,10 @@ const MovieDetails = (props) => {
       </footer>
     </div>
   </Fragment>;
+};
+
+MovieDetails.propTypes = {
+  film: PropTypes.object
 };
 
 export default MovieDetails;

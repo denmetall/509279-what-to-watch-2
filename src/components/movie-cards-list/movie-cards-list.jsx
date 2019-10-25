@@ -34,7 +34,8 @@ class MovieCardsList extends Component {
 }
 
 MovieCardsList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onClickTitleHandler: PropTypes.func.isRequired
 };
 
 export default MovieCardsList;

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 
-
 const PageContent = (props) => {
   const {films, onClickTitleHandler} = props;
 
@@ -67,7 +66,8 @@ const PageContent = (props) => {
 };
 
 PageContent.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onClickTitleHandler: PropTypes.func.isRequired
 };
 
 export default PageContent;

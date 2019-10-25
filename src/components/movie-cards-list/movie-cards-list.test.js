@@ -5,7 +5,7 @@ import filmsMock from '../../mocks/films';
 
 it(`Components MovieCardsList renders correctly`, () => {
   const tree = renderer
-    .create(<MovieCardsList films={filmsMock}/>)
+    .create(<MovieCardsList films={filmsMock} onClickTitleHandler={jest.fn()}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

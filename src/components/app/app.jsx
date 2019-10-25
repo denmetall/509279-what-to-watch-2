@@ -2,7 +2,7 @@ import React, {Fragment, Component} from 'react';
 import MovieCard from "../movie-card/movie-card.jsx";
 import PageContent from "../page-content/page-content.jsx";
 import PropTypes from 'prop-types';
-import {Switch, Route, useParams} from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 import MovieDetails from "../movie-details/movie-details.jsx";
 
 class App extends Component {
