@@ -1,5 +1,4 @@
 import React, {Fragment, Component} from 'react';
-import MovieCard from "../movie-card/movie-card.jsx";
 import PageContent from "../page-content/page-content.jsx";
 import PropTypes from 'prop-types';
 import {Switch, Route} from "react-router-dom";
@@ -20,7 +19,6 @@ class App extends Component {
     return <Switch>
       <Route path="/" exact>
         <Fragment>
-          <MovieCard />
           <PageContent films={films} onClickTitleHandler={this._onClickTitleHandler.bind(this)}/>
         </Fragment>;
       </Route>

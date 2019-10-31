@@ -23,7 +23,7 @@ exports[`Components MovieCardsList renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/film/1"
         onClick={[Function]}
       >
         Drive
@@ -49,7 +49,7 @@ exports[`Components MovieCardsList renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/film/2"
         onClick={[Function]}
       >
         Astral
@@ -75,7 +75,7 @@ exports[`Components MovieCardsList renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/film/3"
         onClick={[Function]}
       >
         Taxi
@@ -101,7 +101,7 @@ exports[`Components MovieCardsList renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/film/4"
         onClick={[Function]}
       >
         Resident evil
@@ -127,7 +127,7 @@ exports[`Components MovieCardsList renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/film/5"
         onClick={[Function]}
       >
         Brother
