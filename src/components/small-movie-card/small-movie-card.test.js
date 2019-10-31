@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import SmallMovieCard from "./small-movie-card.jsx";
 import filmsMock from '../../mocks/films';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {HashRouter as Router} from 'react-router-dom';
 
 it(`Components SmallMovieCard renders correctly`, () => {
   const tree = renderer

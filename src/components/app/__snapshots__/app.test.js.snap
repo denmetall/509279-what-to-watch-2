@@ -139,7 +139,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/film/1"
+              href="#/film/1"
               onClick={[Function]}
             >
               Drive
@@ -165,7 +165,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/film/2"
+              href="#/film/2"
               onClick={[Function]}
             >
               Astral
@@ -191,7 +191,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/film/3"
+              href="#/film/3"
               onClick={[Function]}
             >
               Taxi
@@ -217,7 +217,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/film/4"
+              href="#/film/4"
               onClick={[Function]}
             >
               Resident evil
@@ -243,7 +243,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/film/5"
+              href="#/film/5"
               onClick={[Function]}
             >
               Brother

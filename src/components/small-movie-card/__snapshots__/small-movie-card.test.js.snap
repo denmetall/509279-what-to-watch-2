@@ -20,7 +20,7 @@ exports[`Components SmallMovieCard renders correctly 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="/film/1"
+      href="#/film/1"
       onClick={[Function]}
     >
       Drive
