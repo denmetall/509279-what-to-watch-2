@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 const SmallMovieCard = (props) => {
   const {film, onClickTitleHandler, onMouseOverCard} = props;
-  const {name, posterImage} = film;
+  const {id, name, previewImage} = film;
 
   return <article className="small-movie-card catalog__movies-card" onMouseOver={() => onMouseOverCard(film)}>
     <div className="small-movie-card__image">
-      <img src={posterImage} alt="Bohemian Rhapsody" width="280" height="175"/>
+      <img src={previewImage} alt="Bohemian Rhapsody" width="280" height="175"/>
     </div>
     <h3 className="small-movie-card__title">
-      <a className="small-movie-card__link" onClick={onClickTitleHandler} href="movie-page.html">{name}</a>
+      <Link to={`/film/${id}`} className="small-movie-card__link" onClick={() => onClickTitleHandler(film)}>{name}</Link>
     </h3>
   </article>;
 };
