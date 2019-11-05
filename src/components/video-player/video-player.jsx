@@ -14,13 +14,15 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
+    const {poster, src} = this.props;
     return <video
       muted
       width="280"
       height="175"
+      poster={poster}
       ref={this._videoRef}
     >
-      <source ref={this._sourceRef}/>
+      <source src={src} ref={this._sourceRef}/>
     </video>;
   }
 
