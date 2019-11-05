@@ -9,11 +9,14 @@ Enzyme.configure({adapter: new Adapter()});
 describe(`MovieCard group`, () => {
   const clickHandler = jest.fn();
   const mouseOverHandler = jest.fn();
+  const mouseLeaveHandler = jest.fn();
 
   const smallMovieCard = shallow(<SmallMovieCard
     film={filmsMock[0]}
     onClickTitleHandler={clickHandler}
     onMouseOverCard={mouseOverHandler}
+    onMouseOutCard={mouseLeaveHandler}
+    isPlaying={false}
   />);
 
   it(`SmallMovieCard click on start title is correct`, () => {
@@ -28,6 +31,14 @@ describe(`MovieCard group`, () => {
 
     const hoverCard = smallMovieCard.find(`.small-movie-card`);
     hoverCard.simulate(`mouseOver`);
+
+    expect(mouseOverHandler).toHaveBeenCalledTimes(1);
+  });
+
+  it(`SmallMovieCard leave mouse is correct`, () => {
+
+    const hoverCard = smallMovieCard.find(`.small-movie-card`);
+    hoverCard.simulate(`mouseOut`);
 
     expect(mouseOverHandler).toHaveBeenCalledTimes(1);
   });

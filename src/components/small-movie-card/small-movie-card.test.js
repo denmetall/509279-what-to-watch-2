@@ -7,7 +7,13 @@ import {HashRouter as Router} from 'react-router-dom';
 it(`Components SmallMovieCard renders correctly`, () => {
   const tree = renderer
     .create(<Router>
-      <SmallMovieCard film={filmsMock[0]} onClickTitleHandler={jest.fn()} onMouseOverCard={jest.fn()}/>
+      <SmallMovieCard
+        film={filmsMock[0]}
+        onClickTitleHandler={jest.fn()}
+        onMouseOverCard={jest.fn()}
+        onMouseOutCard={jest.fn()}
+        isPlaying={false}
+      />
     </Router>)
     .toJSON();
   expect(tree).toMatchSnapshot();

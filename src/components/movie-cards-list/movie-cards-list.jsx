@@ -7,8 +7,12 @@ class MovieCardsList extends Component {
     super(props);
 
     this.state = {
-      activeSmallMovieCard: null
+      activeMovieId: null,
+      isPlaying: false
     };
+
+    this._handlerMouseOverCard = this._handlerMouseOverCard.bind(this);
+    this._handlerMouseOutCard = this._handlerMouseOutCard.bind(this);
   }
 
   render() {
@@ -20,15 +24,25 @@ class MovieCardsList extends Component {
           key={film.id}
           film={film}
           onClickTitleHandler={onClickTitleHandler}
-          onMouseOverCard={this._hundlerMouseOverCard.bind(this)}
+          onMouseOverCard={this._handlerMouseOverCard}
+          onMouseOutCard={this._handlerMouseOutCard}
+          isPlaying={film.id === this.state.activeMovieId && this.state.isPlaying}
         />;
       })}
     </div>;
   }
 
-  _hundlerMouseOverCard(film) {
+  _handlerMouseOverCard(film) {
     this.setState({
-      activeSmallMovieCard: film.id
+      activeMovieId: film.id,
+      isPlaying: true
+    });
+  }
+
+  _handlerMouseOutCard() {
+    this.setState({
+      activeMovieId: null,
+      isPlaying: false
     });
   }
 }
