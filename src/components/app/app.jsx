@@ -29,6 +29,8 @@ class App extends Component {
         const indexArrayForCurrentFilm = films.findIndex((film) => film.id === filmId);
         return <MovieDetails
           film={films[indexArrayForCurrentFilm]}
+          films={films}
+          onClickTitleHandler={this._onClickTitleHandler.bind(this)}
         />;
       }}
       />
