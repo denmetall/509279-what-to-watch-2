@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import VideoPlayer from "../video-player/video-player.jsx";
 
 const SmallMovieCard = (props) => {
-  const {film, onClickTitleHandler, onMouseOverCard} = props;
-  const {id, name, previewImage} = film;
+  const {film, onClickTitleHandler, onMouseOverCard, onMouseOutCard, isPlaying} = props;
+  const {id, name, previewImage, previewVideoLink} = film;
 
-  return <article className="small-movie-card catalog__movies-card" onMouseOver={() => onMouseOverCard(film)}>
+  return <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOver={() => onMouseOverCard(film)}
+    onMouseOut={() => onMouseOutCard()}
+  >
     <div className="small-movie-card__image">
-      <img src={previewImage} alt="Bohemian Rhapsody" width="280" height="175"/>
+      <VideoPlayer
+        poster={previewImage}
+        src={previewVideoLink}
+        isPlaying={isPlaying}
+      />
     </div>
     <h3 className="small-movie-card__title">
       <Link to={`/film/${id}`} className="small-movie-card__link" onClick={() => onClickTitleHandler(film)}>{name}</Link>
@@ -19,7 +28,9 @@ const SmallMovieCard = (props) => {
 SmallMovieCard.propTypes = {
   film: PropTypes.object.isRequired,
   onClickTitleHandler: PropTypes.func.isRequired,
-  onMouseOverCard: PropTypes.func.isRequired
+  onMouseOverCard: PropTypes.func.isRequired,
+  onMouseOutCard: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired
 };
 
 export default SmallMovieCard;
