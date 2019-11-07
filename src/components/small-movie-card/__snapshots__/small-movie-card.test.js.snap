@@ -3,17 +3,22 @@
 exports[`Components SmallMovieCard renders correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="Bohemian Rhapsody"
+    <video
       height="175"
-      src="img/mocks-img/drive.jpg"
+      muted={true}
+      poster="img/johnny-english.jpg"
       width="280"
-    />
+    >
+      <source
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      />
+    </video>
   </div>
   <h3
     className="small-movie-card__title"
