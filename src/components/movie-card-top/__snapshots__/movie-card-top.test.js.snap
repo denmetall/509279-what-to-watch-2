@@ -67,7 +67,7 @@ exports[`Components MovieCardTop renders correctly 1`] = `
         <div
           className="movie-rating__score"
         >
-          8,9
+          8.9
         </div>
         <p
           className="movie-rating__meta"
@@ -80,7 +80,8 @@ exports[`Components MovieCardTop renders correctly 1`] = `
           <span
             className="movie-rating__count"
           >
-            240 ratings
+            240
+             ratings
           </span>
         </p>
       </div>
@@ -97,7 +98,8 @@ exports[`Components MovieCardTop renders correctly 1`] = `
           className="movie-card__director"
         >
           <strong>
-            Director: Wes Andreson
+            Director: 
+            Wes Andreson sdfgsdf
           </strong>
         </p>
         <p

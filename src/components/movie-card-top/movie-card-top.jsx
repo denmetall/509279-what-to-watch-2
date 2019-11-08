@@ -34,9 +34,9 @@ class MovieCardTop extends Component {
           {(() => {
             switch (activeTab) {
               case Tabs.OVERVIEW:
-                return <MovieCardOverview/>;
+                return <MovieCardOverview film={film}/>;
               case Tabs.DETAILS:
-                return <MovieCardDetails/>;
+                return <MovieCardDetails film={film}/>;
               case Tabs.REVIEWS:
                 return <MovieCardReviews/>;
               default:

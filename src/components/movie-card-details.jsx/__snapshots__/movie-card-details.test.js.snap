@@ -18,7 +18,7 @@ exports[`Components MovieCardDetails renders correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        Wes Andreson
+        Wes Andreson sdfgsdf
       </span>
     </p>
     <p
@@ -72,7 +72,7 @@ exports[`Components MovieCardDetails renders correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        1h 39m
+        100
       </span>
     </p>
     <p
@@ -86,7 +86,7 @@ exports[`Components MovieCardDetails renders correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        Comedy
+        Triller
       </span>
     </p>
     <p
@@ -100,7 +100,7 @@ exports[`Components MovieCardDetails renders correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        2014
+        2011
       </span>
     </p>
   </div>

@@ -8,7 +8,7 @@ Array [
     <div
       className="movie-rating__score"
     >
-      8,9
+      8.9
     </div>
     <p
       className="movie-rating__meta"
@@ -21,7 +21,8 @@ Array [
       <span
         className="movie-rating__count"
       >
-        240 ratings
+        240
+         ratings
       </span>
     </p>
   </div>,
@@ -38,7 +39,8 @@ Array [
       className="movie-card__director"
     >
       <strong>
-        Director: Wes Andreson
+        Director: 
+        Wes Andreson sdfgsdf
       </strong>
     </p>
     <p
