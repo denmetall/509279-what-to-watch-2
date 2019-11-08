@@ -25,7 +25,8 @@ Array [
         className="logo"
       >
         <a
-          className="logo__link"
+          className="logo__link undefined"
+          href="main.html"
         >
           <span
             className="logo__letter logo__letter--1"
@@ -81,7 +82,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Drive
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +90,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              Triller
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2011
             </span>
           </p>
           <div
@@ -134,6 +135,12 @@ Array [
                 My list
               </span>
             </button>
+            <a
+              className="btn movie-card__button"
+              href="add-review.html"
+            >
+              Add review
+            </a>
           </div>
         </div>
       </div>
@@ -432,6 +439,7 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="main.html"
         >
           <span
             className="logo__letter logo__letter--1"

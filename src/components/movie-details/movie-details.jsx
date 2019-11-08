@@ -21,7 +21,9 @@ const MovieDetails = (props) => {
 };
 
 MovieDetails.propTypes = {
-  film: PropTypes.object
+  film: PropTypes.object,
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onClickTitleHandler: PropTypes.func.isRequired
 };
 
 export default MovieDetails;

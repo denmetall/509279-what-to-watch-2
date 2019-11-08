@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 const Logo = (props) => {
   const {light} = props;
@@ -10,6 +11,10 @@ const Logo = (props) => {
       <span className="logo__letter logo__letter--3">W</span>
     </a>
   </div>;
+};
+
+Logo.propTypes = {
+  light: PropTypes.bool
 };
 
 export default Logo;

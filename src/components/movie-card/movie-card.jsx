@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "../header/header.jsx";
 import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import MovieCardDesc from "../movie-card-desc/movie-card-desc.jsx";
+import PropTypes from "prop-types";
 
 const MovieCard = (props) => {
   const {film} = props;
@@ -23,6 +24,10 @@ const MovieCard = (props) => {
       </div>
     </div>
   </section>;
+};
+
+MovieCard.propTypes = {
+  film: PropTypes.object
 };
 
 export default MovieCard;

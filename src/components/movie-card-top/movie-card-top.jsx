@@ -3,6 +3,7 @@ import MovieNav from "../movie-nav/movie-nav.jsx";
 import MovieCardDetails from "../movie-card-details.jsx/movie-card-details.jsx";
 import MovieCardOverview from "../movie-card-overview/movie-card-overview.jsx";
 import MovieCardReviews from "../movie-card-reviews/movie-card-reviews.jsx";
+import PropTypes from "prop-types";
 
 const MovieCardTop = (props) => {
   const {film} = props;
@@ -23,6 +24,10 @@ const MovieCardTop = (props) => {
       </div>
     </div>
   </div>;
+};
+
+MovieCardTop.propTypes = {
+  film: PropTypes.object.isRequired
 };
 
 export default MovieCardTop;

@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieCardButtons from "../movie-card-buttons/movie-card-buttons.jsx";
+import PropTypes from "prop-types";
 
 const MovieCardDesc = (props) => {
   const {film} = props;
@@ -14,6 +15,10 @@ const MovieCardDesc = (props) => {
 
     <MovieCardButtons movieCardFool={true}/>
   </div>;
+};
+
+MovieCardDesc.propTypes = {
+  film: PropTypes.object
 };
 
 export default MovieCardDesc;
