@@ -50,9 +50,9 @@ class MovieCardTop extends Component {
   }
 
   _handleChangeTab(tab) {
-    this.setState = {
+    this.setState({
       activeTab: tab
-    };
+    });
   }
 }
 

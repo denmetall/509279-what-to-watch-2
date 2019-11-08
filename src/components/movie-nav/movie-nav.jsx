@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Tabs} from "../../utils";
-import MovieNavItem from "../movie-nav-item/movie-nav-item.jsx";
 
 const MovieNav = (props) => {
   const {activeTab, onChangeTab} = props;
@@ -12,7 +11,10 @@ const MovieNav = (props) => {
         return <li
           key={key}
           className={`movie-nav__item ${activeTab === title ? `movie-nav__item--active` : ``}`}
-          onClick={() => onChangeTab(title)}
+          onClick={(evt) => {
+            evt.preventDefault();
+            onChangeTab(title);
+          }}
         >
           <a href="#" className="movie-nav__link">{title}</a>
         </li>;
