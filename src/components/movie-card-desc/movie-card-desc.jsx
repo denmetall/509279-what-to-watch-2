@@ -2,7 +2,8 @@ import React from 'react';
 import MovieCardButtons from "../movie-card-buttons/movie-card-buttons.jsx";
 
 const MovieCardDesc = (props) => {
-  const {name = `The Grand Budapest Hotel`, genre = `Drama`, released = 2014} = props;
+  const {film} = props;
+  const {name = `The Grand Budapest Hotel`, genre = `Drama`, released = 2014} = film;
 
   return <div className="movie-card__desc">
     <h2 className="movie-card__title">{name}</h2>

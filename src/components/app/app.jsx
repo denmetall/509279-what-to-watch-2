@@ -20,7 +20,7 @@ class App extends Component {
     return <Switch>
       <Route path="/" exact>
         <Fragment>
-          <MovieCard />
+          <MovieCard film={films[0]}/>
           <PageContent films={films} onClickTitleHandler={this._onClickTitleHandler.bind(this)}/>
         </Fragment>;
       </Route>

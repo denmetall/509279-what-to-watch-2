@@ -6,15 +6,9 @@ import CatalogLikeThis from "../catalog-like-this/catalog-like-this.jsx";
 
 const MovieDetails = (props) => {
   const {film, films, onClickTitleHandler} = props;
-  const {name, genre, released, posterImage} = film;
 
   return <Fragment>
-    <MovieCardFull
-      name={name}
-      genre={genre}
-      released={released}
-      posterImage={posterImage}
-    />
+    <MovieCardFull film={film}/>
 
     <div className="page-content">
       <CatalogLikeThis

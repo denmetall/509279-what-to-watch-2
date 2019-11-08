@@ -5,7 +5,8 @@ import MovieCardOverview from "../movie-card-overview/movie-card-overview.jsx";
 import MovieCardReviews from "../movie-card-reviews/movie-card-reviews.jsx";
 
 const MovieCardTop = (props) => {
-  const {posterImage} = props;
+  const {film} = props;
+  const {posterImage} = film;
 
   return <div className="movie-card__wrap movie-card__translate-top">
     <div className="movie-card__info">
