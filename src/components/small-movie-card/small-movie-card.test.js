@@ -3,8 +3,10 @@ import renderer from 'react-test-renderer';
 import SmallMovieCard from "./small-movie-card.jsx";
 import filmsMock from '../../mocks/films';
 import {HashRouter as Router} from 'react-router-dom';
+import createNodeMock from '../../mocks/create-node-mock';
 
 it(`Components SmallMovieCard renders correctly`, () => {
+  const options = {createNodeMock};
   const tree = renderer
     .create(<Router>
       <SmallMovieCard
@@ -14,7 +16,7 @@ it(`Components SmallMovieCard renders correctly`, () => {
         onMouseOutCard={jest.fn()}
         isPlaying={false}
       />
-    </Router>)
+    </Router>, options)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

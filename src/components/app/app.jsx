@@ -20,7 +20,7 @@ class App extends Component {
     return <Switch>
       <Route path="/" exact>
         <Fragment>
-          <MovieCard />
+          <MovieCard film={films[0]}/>
           <PageContent films={films} onClickTitleHandler={this._onClickTitleHandler.bind(this)}/>
         </Fragment>;
       </Route>
@@ -29,6 +29,8 @@ class App extends Component {
         const indexArrayForCurrentFilm = films.findIndex((film) => film.id === filmId);
         return <MovieDetails
           film={films[indexArrayForCurrentFilm]}
+          films={films}
+          onClickTitleHandler={this._onClickTitleHandler.bind(this)}
         />;
       }}
       />

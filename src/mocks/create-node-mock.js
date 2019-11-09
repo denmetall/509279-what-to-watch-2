@@ -1,20 +1,17 @@
-import React from "react";
-
 const createNodeMock = (element) => {
-  if (element === `video`) {
-    return <video
-      muted
-      width="280"
-      height="175"
-      poster=""
-    />;
+  if (element.type === `video`) {
+    return {
+      poster: `some`
+    };
   }
 
-  if (element === `source`) {
-    return <source src=""/>;
+  if (element.type === `source`) {
+    return {
+      src: `some.mp4`
+    };
   }
 
   return null;
 };
 
-export default createNodeMock();
+export default createNodeMock;

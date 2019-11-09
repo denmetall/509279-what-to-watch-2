@@ -3,12 +3,14 @@ import App from './app.jsx';
 import renderer from 'react-test-renderer';
 import filmsMock from '../../mocks/films';
 import {HashRouter as Router} from 'react-router-dom';
+import createNodeMock from '../../mocks/create-node-mock';
 
 it(`Components App renders correctly`, () => {
+  const options = {createNodeMock};
   const tree = renderer
     .create(<Router>
       <App films={filmsMock}/>
-    </Router>)
+    </Router>, options)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
