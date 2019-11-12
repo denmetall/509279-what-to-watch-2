@@ -8,16 +8,16 @@ import filmsListMock from './mocks/films';
 import {reducer} from './reducer';
 import {HashRouter as Router} from 'react-router-dom';
 
-const init = () => {
+const init = (films) => {
   const store = createStore(reducer);
 
   ReactDOM.render(<Provider store={store}>
     <Router>
-      <App films={filmsListMock}/>
+      <App films={films}/>
     </Router>
   </Provider>,
   document.querySelector(`#root`)
   );
 };
 
-init();
+init(filmsListMock);
