@@ -1,6 +1,8 @@
+import filmsMock from './mocks/films';
+
 const initialState = {
   genre: `All genres`,
-  movies: []
+  movies: filmsMock
 };
 
 const ActionType = {

@@ -1,4 +1,5 @@
 import React, {Fragment, Component} from 'react';
+import {connect} from 'react-redux';
 import PageContent from "../page-content/page-content.jsx";
 import PropTypes from 'prop-types';
 import MovieCard from "../movie-card/movie-card.jsx";
@@ -44,8 +45,16 @@ class App extends Component {
   }
 }
 
+App.defaultProps = {
+  films: []
+};
+
 App.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {films: state.films};
+};
+
+export default connect(mapStateToProps)(App);
