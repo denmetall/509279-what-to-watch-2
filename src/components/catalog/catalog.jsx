@@ -4,24 +4,19 @@ import GenresList from "../genres-list/genres-list.jsx";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
-import {DEFAULT_FILTER} from "../../utils";
 
 class Catalog extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeFilter: DEFAULT_FILTER
-    };
   }
 
   render() {
-    const {films} = this.props;
+    const {films, genre} = this.props;
 
     return <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <GenresList films={films} activeFilter={this.state.activeFilter}/>
+      <GenresList films={films} activeFilter={genre}/>
 
       <MovieCardsList films={films}/>
 
@@ -33,15 +28,20 @@ class Catalog extends PureComponent {
 }
 
 Catalog.defaultProps = {
-  films: []
+  films: [],
+  genre: ``
 };
 
 Catalog.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genre: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => {
-  return {films: state.films};
+  return {
+    films: state.films,
+    genre: state.genre
+  };
 };
 
 export default connect(mapStateToProps)(Catalog);
