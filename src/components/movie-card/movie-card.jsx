@@ -1,11 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Header from "../header/header.jsx";
 import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import MovieCardDesc from "../movie-card-desc/movie-card-desc.jsx";
 import PropTypes from "prop-types";
 
 const MovieCard = (props) => {
-  const {film} = props;
+  const {promoFilm} = props;
 
   return <section className="movie-card">
     <MovieCardBg/>
@@ -20,14 +21,18 @@ const MovieCard = (props) => {
           <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327"/>
         </div>
 
-        <MovieCardDesc film={film}/>
+        <MovieCardDesc film={promoFilm}/>
       </div>
     </div>
   </section>;
 };
 
-MovieCard.propTypes = {
-  film: PropTypes.object
+const mapStateToProps = (state) => {
+  return {promoFilm: state.promoFilm};
 };
 
-export default MovieCard;
+MovieCard.propTypes = {
+  promoFilm: PropTypes.object
+};
+
+export default connect(mapStateToProps)(MovieCard);

@@ -3,7 +3,7 @@ import filmsMock from './mocks/films';
 const initialState = {
   genre: `All genres`,
   films: filmsMock,
-  sortingFilms: filmsMock
+  promoFilm: filmsMock[0]
 };
 
 const ActionType = {

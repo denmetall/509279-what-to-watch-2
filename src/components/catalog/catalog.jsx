@@ -27,6 +27,10 @@ class Catalog extends PureComponent {
   }
 }
 
+Catalog.defaultProps = {
+  films: []
+};
+
 Catalog.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
