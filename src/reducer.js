@@ -1,7 +1,8 @@
 import filmsMock from './mocks/films';
+import {DEFAULT_FILTER} from "./utils";
 
 const initialState = {
-  genre: `All genres`,
+  genre: DEFAULT_FILTER,
   films: filmsMock,
   promoFilm: filmsMock[0]
 };

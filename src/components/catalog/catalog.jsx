@@ -4,10 +4,15 @@ import GenresList from "../genres-list/genres-list.jsx";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
+import {DEFAULT_FILTER} from "../../utils";
 
 class Catalog extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeFilter: DEFAULT_FILTER
+    };
   }
 
   render() {
@@ -16,7 +21,7 @@ class Catalog extends PureComponent {
     return <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <GenresList/>
+      <GenresList films={films} activeFilter={this.state.activeFilter}/>
 
       <MovieCardsList films={films}/>
 
