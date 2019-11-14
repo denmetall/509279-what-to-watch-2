@@ -9,7 +9,7 @@ it(`Components BtnPlay renders correctly`, () => {
   const options = {createNodeMock};
   const tree = renderer
     .create(<Router>
-      <Catalog films={filmsMock} onClickTitleHandler={jest.fn()}/>
+      <Catalog films={filmsMock}/>
     </Router>, options)
     .toJSON();
   expect(tree).toMatchSnapshot();

@@ -9,7 +9,7 @@ it(`Components CatalogLikeThis renders correctly`, () => {
   const options = {createNodeMock};
   const tree = renderer
     .create(<Router>
-      <CatalogLikeThis films={filmsMock} onClickTitleHandler={jest.fn()}/>
+      <CatalogLikeThis films={filmsMock}/>
     </Router>, options)
     .toJSON();
   expect(tree).toMatchSnapshot();

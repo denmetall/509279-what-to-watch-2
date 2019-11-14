@@ -5,7 +5,7 @@ import Footer from "../footer/footer.jsx";
 import CatalogLikeThis from "../catalog-like-this/catalog-like-this.jsx";
 
 const MovieDetails = (props) => {
-  const {film, films, onClickTitleHandler} = props;
+  const {film, films} = props;
 
   return <Fragment>
     <MovieCardFull film={film}/>
@@ -13,7 +13,6 @@ const MovieDetails = (props) => {
     <div className="page-content">
       <CatalogLikeThis
         films={films}
-        onClickTitleHandler={onClickTitleHandler}
       />
       <Footer/>
     </div>
@@ -22,8 +21,7 @@ const MovieDetails = (props) => {
 
 MovieDetails.propTypes = {
   film: PropTypes.object,
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClickTitleHandler: PropTypes.func.isRequired
+  films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default MovieDetails;

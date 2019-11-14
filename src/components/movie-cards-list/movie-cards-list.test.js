@@ -10,7 +10,7 @@ it(`Components MovieCardsList renders correctly`, () => {
 
   const tree = renderer
     .create(<Router>
-      <MovieCardsList films={filmsMock} onClickTitleHandler={jest.fn()}/>
+      <MovieCardsList films={filmsMock}/>
     </Router>, options)
     .toJSON();
   expect(tree).toMatchSnapshot();

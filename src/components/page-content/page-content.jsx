@@ -4,20 +4,18 @@ import Footer from "../footer/footer.jsx";
 import Catalog from "../catalog/catalog.jsx";
 
 const PageContent = (props) => {
-  const {films, onClickTitleHandler} = props;
+  const {films} = props;
 
   return <div className="page-content">
     <Catalog
       films={films}
-      onClickTitleHandler={onClickTitleHandler}
     />
     <Footer/>
   </div>;
 };
 
 PageContent.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClickTitleHandler: PropTypes.func.isRequired
+  films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default PageContent;

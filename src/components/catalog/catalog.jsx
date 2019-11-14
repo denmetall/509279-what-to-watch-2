@@ -1,28 +1,38 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
 import GenresList from "../genres-list/genres-list.jsx";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
 
-const Catalog = (props) => {
-  const {films, onClickTitleHandler} = props;
+class Catalog extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return <section className="catalog">
-    <h2 className="catalog__title visually-hidden">Catalog</h2>
+  render() {
+    const {films} = this.props;
 
-    <GenresList/>
+    return <section className="catalog">
+      <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-    <MovieCardsList films={films} onClickTitleHandler={onClickTitleHandler}/>
+      <GenresList/>
 
-    <div className="catalog__more">
-      <ShowMore/>
-    </div>
-  </section>;
-};
+      <MovieCardsList films={films}/>
+
+      <div className="catalog__more">
+        <ShowMore/>
+      </div>
+    </section>;
+  }
+}
 
 Catalog.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClickTitleHandler: PropTypes.func.isRequired
+  films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default Catalog;
+const mapStateToProps = (state) => {
+  return {films: state.films};
+};
+
+export default connect(mapStateToProps)(Catalog);

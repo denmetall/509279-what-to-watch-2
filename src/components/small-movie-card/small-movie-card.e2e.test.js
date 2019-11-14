@@ -13,7 +13,6 @@ describe(`MovieCard group`, () => {
 
   const smallMovieCard = shallow(<SmallMovieCard
     film={filmsMock[0]}
-    onClickTitleHandler={clickHandler}
     onMouseOverCard={mouseOverHandler}
     onMouseOutCard={mouseLeaveHandler}
     isPlaying={false}

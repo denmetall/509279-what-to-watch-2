@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import VideoPlayer from "../video-player/video-player.jsx";
 
 const SmallMovieCard = (props) => {
-  const {film, onClickTitleHandler, onMouseOverCard, onMouseOutCard, isPlaying} = props;
+  const {film, onMouseOverCard, onMouseOutCard, isPlaying} = props;
   const {id, name, previewImage, previewVideoLink} = film;
 
   return <article
@@ -20,14 +20,13 @@ const SmallMovieCard = (props) => {
       />
     </div>
     <h3 className="small-movie-card__title">
-      <Link to={`/film/${id}`} className="small-movie-card__link" onClick={() => onClickTitleHandler(film)}>{name}</Link>
+      <Link to={`/film/${id}`} className="small-movie-card__link">{name}</Link>
     </h3>
   </article>;
 };
 
 SmallMovieCard.propTypes = {
   film: PropTypes.object.isRequired,
-  onClickTitleHandler: PropTypes.func.isRequired,
   onMouseOverCard: PropTypes.func.isRequired,
   onMouseOutCard: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired
