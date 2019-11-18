@@ -4,6 +4,7 @@ import GenresList from "../genres-list/genres-list.jsx";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
+import {ActionCreator} from "../../reducer";
 
 class Catalog extends PureComponent {
   constructor(props) {
@@ -11,12 +12,12 @@ class Catalog extends PureComponent {
   }
 
   render() {
-    const {films, genre} = this.props;
+    const {films, genre, onChangeFilter} = this.props;
 
     return <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <GenresList films={films} activeFilter={genre}/>
+      <GenresList films={films} activeFilter={genre} onChangeFilter={onChangeFilter}/>
 
       <MovieCardsList films={films}/>
 
@@ -34,7 +35,8 @@ Catalog.defaultProps = {
 
 Catalog.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  genre: PropTypes.string.isRequired
+  genre: PropTypes.string.isRequired,
+  onChangeFilter: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -44,4 +46,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Catalog);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChangeFilter: (genre) => {
+      dispatch(ActionCreator.setGenreFilter(genre));
+      dispatch(ActionCreator.getMoviesList(genre));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

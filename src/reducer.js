@@ -12,8 +12,13 @@ const ActionType = {
   GET_MOVIES_LIST: `GET_MOVIES_LIST`
 };
 
-const getFilterMovies = (movies, genre) => {
-  return movies.filter((movie) => movie.genre === genre);
+const getFilterMovies = (moviesGenre) => {
+  switch (moviesGenre) {
+    case DEFAULT_FILTER:
+      return filmsMock;
+  }
+
+  return filmsMock.slice().filter((movie) => movie.genre === moviesGenre);
 };
 
 const ActionCreator = {
@@ -22,9 +27,9 @@ const ActionCreator = {
     payload: genre
   }),
 
-  getMoviesList: (movies, genre) => ({
+  getMoviesList: (genre) => ({
     type: ActionType.GET_MOVIES_LIST,
-    payload: genre === `All genres` ? movies.slice() : getFilterMovies(movies, genre)
+    payload: getFilterMovies(genre)
   })
 };
 
@@ -36,7 +41,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.GET_MOVIES_LIST:
       return Object.assign({}, state, {
-        movies: action.payload
+        films: action.payload
       });
   }
 
@@ -45,5 +50,6 @@ const reducer = (state = initialState, action) => {
 
 export {
   reducer,
-  ActionCreator
+  ActionCreator,
+  ActionType
 };
