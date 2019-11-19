@@ -1,5 +1,5 @@
 import React from 'react';
-import GenresList from './genres-list.jsx';
+import {GenresList} from './genres-list.jsx';
 import renderer from 'react-test-renderer';
 import {DEFAULT_FILTER} from "../../utils";
 import filmsMock from "../../mocks/films";

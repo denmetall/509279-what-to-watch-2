@@ -5,7 +5,7 @@ import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer";
-import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP} from "../../utils";
+import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP, DEFAULT_FILTER} from "../../utils";
 
 class Catalog extends PureComponent {
   constructor(props) {
@@ -19,14 +19,14 @@ class Catalog extends PureComponent {
   }
 
   render() {
-    const {films, filmsSort, genre, onChangeFilter, onShowMoreClick} = this.props;
+    const {films, genre, onChangeFilter, onShowMoreClick} = this.props;
 
     return <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <GenresList films={films} activeFilter={genre} onChangeFilter={onChangeFilter}/>
+      <GenresList activeFilter={genre} onChangeFilter={onChangeFilter}/>
 
-      <MovieCardsList films={filmsSort.slice(0, this.state.moviesCounter)}/>
+      <MovieCardsList films={films.slice(0, this.state.moviesCounter)}/>
 
       <div className="catalog__more">
         <ShowMore onClick={this._onShowMoreClick}/>
@@ -43,22 +43,25 @@ class Catalog extends PureComponent {
 
 Catalog.defaultProps = {
   films: [],
-  filmsSort: [],
   genre: ``
 };
 
 Catalog.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  filmsSort: PropTypes.arrayOf(PropTypes.object).isRequired,
   genre: PropTypes.string.isRequired,
   onChangeFilter: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
-    films: state.films,
     genre: state.genre,
-    filmsSort: state.filmsSort
+    films: state.films.filter((movie) =>  {
+      if (state.genre === DEFAULT_FILTER) {
+        return true;
+      } else {
+        return movie.genre === state.genre;
+      }
+    })
   };
 };
 
@@ -66,7 +69,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onChangeFilter: (genre) => {
       dispatch(ActionCreator.setGenreFilter(genre));
-      dispatch(ActionCreator.getMoviesList(genre));
     }
   };
 };

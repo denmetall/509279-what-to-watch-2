@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {DEFAULT_FILTER} from "../../utils";
+import {connect} from 'react-redux';
 
 const GenresList = (props) => {
   const {films, activeFilter, onChangeFilter} = props;
@@ -34,4 +35,12 @@ GenresList.propTypes = {
   onChangeFilter: PropTypes.func.isRequired
 };
 
-export default GenresList;
+const mapStateToProps = (state) => {
+  return {
+    films: state.films
+  };
+};
+
+export {GenresList};
+
+export default connect(mapStateToProps)(GenresList);
