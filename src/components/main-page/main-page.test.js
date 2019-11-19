@@ -1,20 +1,20 @@
 import React from 'react';
-import App from './app.jsx';
 import renderer from 'react-test-renderer';
-import {HashRouter as Router} from 'react-router-dom';
-import createNodeMock from '../../mocks/create-node-mock';
+import MainPage from "./main-page.jsx";
 import {createStore} from 'redux';
 import {reducer} from '../../reducer';
 import {Provider} from 'react-redux';
+import {HashRouter as Router} from "react-router-dom";
+import createNodeMock from '../../mocks/create-node-mock';
 
-it(`Components App renders correctly`, () => {
-  const options = {createNodeMock};
+it(`Components MainPage renders correctly`, () => {
   const store = createStore(reducer);
+  const options = {createNodeMock};
 
   const tree = renderer
     .create(<Provider store={store}>
       <Router>
-        <App/>
+        <MainPage/>
       </Router>
     </Provider>, options)
     .toJSON();

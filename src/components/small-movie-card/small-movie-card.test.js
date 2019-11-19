@@ -11,7 +11,6 @@ it(`Components SmallMovieCard renders correctly`, () => {
     .create(<Router>
       <SmallMovieCard
         film={filmsMock[0]}
-        onClickTitleHandler={jest.fn()}
         onMouseOverCard={jest.fn()}
         onMouseOutCard={jest.fn()}
         isPlaying={false}

@@ -1,28 +1,63 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
 import GenresList from "../genres-list/genres-list.jsx";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
+import {ActionCreator} from "../../reducer";
 
-const Catalog = (props) => {
-  const {films, onClickTitleHandler} = props;
+class Catalog extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return <section className="catalog">
-    <h2 className="catalog__title visually-hidden">Catalog</h2>
+  render() {
+    const {films, filmsSort, genre, onChangeFilter} = this.props;
 
-    <GenresList/>
+    return <section className="catalog">
+      <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-    <MovieCardsList films={films} onClickTitleHandler={onClickTitleHandler}/>
+      <GenresList films={films} activeFilter={genre} onChangeFilter={onChangeFilter}/>
 
-    <div className="catalog__more">
-      <ShowMore/>
-    </div>
-  </section>;
+      <MovieCardsList films={filmsSort}/>
+
+      <div className="catalog__more">
+        <ShowMore/>
+      </div>
+    </section>;
+  }
+}
+
+Catalog.defaultProps = {
+  films: [],
+  filmsSort: [],
+  genre: ``
 };
 
 Catalog.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClickTitleHandler: PropTypes.func.isRequired
+  filmsSort: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genre: PropTypes.string.isRequired,
+  onChangeFilter: PropTypes.func.isRequired
 };
 
-export default Catalog;
+const mapStateToProps = (state) => {
+  return {
+    films: state.films,
+    genre: state.genre,
+    filmsSort: state.filmsSort
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChangeFilter: (genre) => {
+      dispatch(ActionCreator.setGenreFilter(genre));
+      dispatch(ActionCreator.getMoviesList(genre));
+    }
+  };
+};
+
+export {Catalog};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

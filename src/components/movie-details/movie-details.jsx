@@ -3,27 +3,37 @@ import PropTypes from 'prop-types';
 import MovieCardFull from "../movie-card-full/movie-card-full.jsx";
 import Footer from "../footer/footer.jsx";
 import CatalogLikeThis from "../catalog-like-this/catalog-like-this.jsx";
+import {connect} from 'react-redux';
 
 const MovieDetails = (props) => {
-  const {film, films, onClickTitleHandler} = props;
+  const {films, filmId} = props;
+  const currentFilm = films.findIndex((film) => film.id === filmId);
 
   return <Fragment>
-    <MovieCardFull film={film}/>
+    <MovieCardFull film={films[currentFilm]}/>
 
     <div className="page-content">
       <CatalogLikeThis
         films={films}
-        onClickTitleHandler={onClickTitleHandler}
       />
       <Footer/>
     </div>
   </Fragment>;
 };
 
-MovieDetails.propTypes = {
-  film: PropTypes.object,
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClickTitleHandler: PropTypes.func.isRequired
+MovieDetails.defaultProps = {
+  films: []
 };
 
-export default MovieDetails;
+const mapStateToProps = (state) => {
+  return {films: state.films};
+};
+
+MovieDetails.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filmId: PropTypes.number.isRequired
+};
+
+export {MovieDetails};
+
+export default connect(mapStateToProps)(MovieDetails);

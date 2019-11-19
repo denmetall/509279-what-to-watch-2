@@ -16,14 +16,13 @@ class MovieCardsList extends Component {
   }
 
   render() {
-    const {films, onClickTitleHandler} = this.props;
+    const {films} = this.props;
 
     return <div className="catalog__movies-list">
       {films.map((film) => {
         return <SmallMovieCard
           key={film.id}
           film={film}
-          onClickTitleHandler={onClickTitleHandler}
           onMouseOverCard={this._handlerMouseOverCard}
           onMouseOutCard={this._handlerMouseOutCard}
           isPlaying={film.id === this.state.activeMovieId && this.state.isPlaying}
@@ -48,8 +47,7 @@ class MovieCardsList extends Component {
 }
 
 MovieCardsList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClickTitleHandler: PropTypes.func.isRequired
+  films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default MovieCardsList;

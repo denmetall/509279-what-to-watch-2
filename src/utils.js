@@ -4,6 +4,9 @@ const Tabs = {
   REVIEWS: `Reviews`
 };
 
+const DEFAULT_FILTER = `All genres`;
+
 export {
-  Tabs
+  Tabs,
+  DEFAULT_FILTER
 };

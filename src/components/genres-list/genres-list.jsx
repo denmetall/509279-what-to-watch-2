@@ -1,38 +1,37 @@
 import React from 'react';
+import PropTypes from "prop-types";
+import {DEFAULT_FILTER} from "../../utils";
 
-const GenresList = () => {
+const GenresList = (props) => {
+  const {films, activeFilter, onChangeFilter} = props;
+
+  const set = new Set();
+  films.forEach((film) => {
+    set.add(film.genre);
+  });
+  const genres = [DEFAULT_FILTER, ...Array.from(set)];
+  const handleChangeClick = (evt) => {
+    evt.preventDefault();
+    onChangeFilter(evt.target.text);
+  };
+
   return <ul className="catalog__genres-list">
-    <li className="catalog__genres-item catalog__genres-item--active">
-      <a href="#" className="catalog__genres-link">All genres</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Comedies</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Crime</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Documentary</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Dramas</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Horror</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Kids & Family</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Romance</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Sci-Fi</a>
-    </li>
-    <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">Thrillers</a>
-    </li>
+    {genres.map((genre, index) => {
+      return <li key={`genre-${index}`} className={`catalog__genres-item ${activeFilter === genre ? `catalog__genres-item--active` : ``}`}>
+        <a onClick={handleChangeClick} href="#" className="catalog__genres-link">{genre}</a>
+      </li>;
+    })}
   </ul>;
+};
+
+GenresList.defaultProps = {
+  films: []
+};
+
+GenresList.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activeFilter: PropTypes.string.isRequired,
+  onChangeFilter: PropTypes.func.isRequired
 };
 
 export default GenresList;

@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MovieCard from "./movie-card.jsx";
+import {MovieCard} from "./movie-card.jsx";
 import filmsMock from '../../mocks/films';
 
 it(`Components MovieCard renders correctly`, () => {
   const tree = renderer
-    .create(<MovieCard film={filmsMock[0]}/>)
+    .create(<MovieCard promoFilm={filmsMock[0]}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
