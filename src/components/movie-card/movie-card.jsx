@@ -35,4 +35,6 @@ MovieCard.propTypes = {
   promoFilm: PropTypes.object
 };
 
+export {MovieCard};
+
 export default connect(mapStateToProps)(MovieCard);

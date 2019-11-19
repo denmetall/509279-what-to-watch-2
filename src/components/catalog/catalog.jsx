@@ -58,4 +58,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+export {Catalog};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

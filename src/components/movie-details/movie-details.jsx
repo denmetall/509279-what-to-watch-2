@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MovieCardFull from "../movie-card-full/movie-card-full.jsx";
 import Footer from "../footer/footer.jsx";
 import CatalogLikeThis from "../catalog-like-this/catalog-like-this.jsx";
-import connect from "react-redux/es/connect/connect";
+import {connect} from 'react-redux';
 
 const MovieDetails = (props) => {
   const {films, filmId} = props;
@@ -33,5 +33,7 @@ MovieDetails.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
   filmId: PropTypes.number.isRequired
 };
+
+export {MovieDetails};
 
 export default connect(mapStateToProps)(MovieDetails);
