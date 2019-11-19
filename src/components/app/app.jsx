@@ -8,8 +8,8 @@ const App = () => {
     <Route path="/" exact>
       <MainPage/>
     </Route>
-    <Route path="/film/:id" render={(props) => {
-      return <MovieDetails filmId={+props.match.params.id}/>;
+    <Route path="/film/:id" render={({match}) => {
+      return <MovieDetails filmId={+match.params.id}/>;
     }}
     />
   </Switch>;
