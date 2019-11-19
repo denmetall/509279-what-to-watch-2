@@ -12,14 +12,14 @@ class Catalog extends PureComponent {
   }
 
   render() {
-    const {films, genre, onChangeFilter} = this.props;
+    const {films, filmsSort, genre, onChangeFilter} = this.props;
 
     return <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
       <GenresList films={films} activeFilter={genre} onChangeFilter={onChangeFilter}/>
 
-      <MovieCardsList films={films}/>
+      <MovieCardsList films={filmsSort}/>
 
       <div className="catalog__more">
         <ShowMore/>
@@ -30,11 +30,13 @@ class Catalog extends PureComponent {
 
 Catalog.defaultProps = {
   films: [],
+  filmsSort: [],
   genre: ``
 };
 
 Catalog.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filmsSort: PropTypes.arrayOf(PropTypes.object).isRequired,
   genre: PropTypes.string.isRequired,
   onChangeFilter: PropTypes.func.isRequired
 };
@@ -42,7 +44,8 @@ Catalog.propTypes = {
 const mapStateToProps = (state) => {
   return {
     films: state.films,
-    genre: state.genre
+    genre: state.genre,
+    filmsSort: state.filmsSort
   };
 };
 

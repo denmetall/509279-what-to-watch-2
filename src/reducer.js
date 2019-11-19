@@ -4,6 +4,7 @@ import {DEFAULT_FILTER} from "./utils";
 const initialState = {
   genre: DEFAULT_FILTER,
   films: filmsMock,
+  filmsSort: filmsMock,
   promoFilm: filmsMock[0]
 };
 
@@ -41,7 +42,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.GET_MOVIES_LIST:
       return Object.assign({}, state, {
-        films: action.payload
+        filmsSort: action.payload
       });
   }
 
