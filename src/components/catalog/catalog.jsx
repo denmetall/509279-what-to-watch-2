@@ -15,11 +15,11 @@ class Catalog extends PureComponent {
       moviesCounter: MOVIES_COUNT_DEFAULT
     };
 
-    this._onShowMoreClick = this._onShowMoreClick.bind(this)
+    this._onShowMoreClick = this._onShowMoreClick.bind(this);
   }
 
   render() {
-    const {films, genre, onChangeFilter, onShowMoreClick} = this.props;
+    const {films, genre, onChangeFilter} = this.props;
 
     return <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -55,7 +55,7 @@ Catalog.propTypes = {
 const mapStateToProps = (state) => {
   return {
     genre: state.genre,
-    films: state.films.filter((movie) =>  {
+    films: state.films.filter((movie) => {
       if (state.genre === DEFAULT_FILTER) {
         return true;
       } else {

@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 it(`Components ShowMore renders correctly`, () => {
   const tree = renderer
-    .create(<ShowMore/>)
+    .create(<ShowMore onClick={jest.fn()}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
