@@ -29,7 +29,7 @@ class Catalog extends PureComponent {
       <MovieCardsList films={films.slice(0, this.state.moviesCounter)}/>
 
       <div className="catalog__more">
-        <ShowMore onClick={this._onShowMoreClick}/>
+        <ShowMore onClickBtn={this._onShowMoreClick}/>
       </div>
     </section>;
   }
