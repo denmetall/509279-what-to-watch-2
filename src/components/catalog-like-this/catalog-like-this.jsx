@@ -1,6 +1,9 @@
 import React from 'react';
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import PropTypes from "prop-types";
+import withActiveItem from "../../hocs/with-active-item";
+
+const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
 const CatalogLikeThis = (props) => {
   const {films} = props;
@@ -8,7 +11,7 @@ const CatalogLikeThis = (props) => {
   return <section className="catalog catalog--like-this">
     <h2 className="catalog__title">More like this</h2>
 
-    <MovieCardsList films={films}/>
+    <MovieCardsListWrapped films={films}/>
   </section>;
 };
 
