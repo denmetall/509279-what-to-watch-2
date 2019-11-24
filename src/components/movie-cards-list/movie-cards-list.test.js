@@ -10,7 +10,12 @@ it(`Components MovieCardsList renders correctly`, () => {
 
   const tree = renderer
     .create(<Router>
-      <MovieCardsList films={filmsMock}/>
+      <MovieCardsList
+        films={filmsMock}
+        onMouseOverCard={jest.fn()}
+        onMouseOutCard={jest.fn()}
+        activeMovieId={filmsMock[0].id}
+      />
     </Router>, options)
     .toJSON();
   expect(tree).toMatchSnapshot();

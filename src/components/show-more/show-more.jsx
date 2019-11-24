@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from "prop-types";
 
 const ShowMore = (props) => {
-  const {onClick} = props;
+  const {onClickBtn} = props;
   return <button
     className="catalog__button"
     type="button"
-    onClick={onClick}
+    onClick={onClickBtn}
   >Show more</button>;
 };
 
-ShowMore.defaultProps = {
-  onClick: () => {}
-};
+// ShowMore.defaultProps = {
+//   onClick: () => {}
+// };
 
 ShowMore.propTypes = {
-  onClick: PropTypes.func,
+  onClickBtn: PropTypes.func,
 };
 
 export default ShowMore;

@@ -6,6 +6,9 @@ import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer";
 import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP, DEFAULT_FILTER} from "../../utils";
+import withActiveItem from "../../hocs/with-active-item";
+
+const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
 class Catalog extends PureComponent {
   constructor(props) {
@@ -26,10 +29,10 @@ class Catalog extends PureComponent {
 
       <GenresList activeFilter={genre} onChangeFilter={onChangeFilter}/>
 
-      <MovieCardsList films={films.slice(0, this.state.moviesCounter)}/>
+      <MovieCardsListWrapped films={films.slice(0, this.state.moviesCounter)}/>
 
       <div className="catalog__more">
-        <ShowMore onClick={this._onShowMoreClick}/>
+        <ShowMore onClickBtn={this._onShowMoreClick}/>
       </div>
     </section>;
   }
