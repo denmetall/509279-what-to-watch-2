@@ -24,4 +24,4 @@ const createAPI = () => {
   return api;
 };
 
-export default createAPI();
+export default createAPI;

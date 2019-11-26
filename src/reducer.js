@@ -1,5 +1,6 @@
 import filmsMock from './mocks/films';
 import {DEFAULT_FILTER} from "./utils";
+import {getAdaptedMovies} from "./api/adapter";
 
 const initialState = {
   genre: DEFAULT_FILTER,
@@ -40,7 +41,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.GET_FILMS:
       return Object.assign({}, state, {
-        films: action.payload,
+        films: getAdaptedMovies(action.payload),
       });
   }
 
