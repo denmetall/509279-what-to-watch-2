@@ -6,7 +6,7 @@ import {HashRouter as Router} from 'react-router-dom';
 import createNodeMock from '../../mocks/create-node-mock';
 import {DEFAULT_FILTER} from "../../utils";
 import {createStore} from 'redux';
-import {reducer} from '../../reducer';
+import {reducer} from '../../reducer/index';
 import {Provider} from 'react-redux';
 
 it(`Components BtnPlay renders correctly`, () => {

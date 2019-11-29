@@ -8,7 +8,8 @@ import {compose} from "recompose";
 import createAPI from './api/api';
 
 import App from "./components/app/app.jsx";
-import {reducer, Operation} from './reducer';
+import reducer from './reducer/index';
+import {Operation} from './reducer/films/films';
 import {HashRouter as Router} from 'react-router-dom';
 
 const init = () => {

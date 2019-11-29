@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import {HashRouter as Router} from 'react-router-dom';
 import createNodeMock from '../../mocks/create-node-mock';
 import {createStore} from 'redux';
-import {reducer} from '../../reducer';
+import {reducer} from '../../reducer/index';
 import {Provider} from 'react-redux';
 
 it(`Components App renders correctly`, () => {

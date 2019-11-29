@@ -4,7 +4,7 @@ import GenresList from "../genres-list/genres-list.jsx";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer/genre/genre";
 import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP, DEFAULT_FILTER} from "../../utils";
 import withActiveItem from "../../hocs/with-active-item";
 
@@ -56,6 +56,9 @@ Catalog.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+  // На первом останове нормальный стейт
+  // После получения списка фильмов след. структура films: {films: Array(25)}
+  debugger;
   return {
     genre: state.genre,
     films: state.films.filter((movie) => {
