@@ -25,9 +25,7 @@ const Operation = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.GET_FILMS:
-      return Object.assign({}, state, {
-        films: getAdaptedMovies(action.payload),
-      });
+      return getAdaptedMovies(action.payload);
   }
 
   return state;

@@ -56,9 +56,6 @@ Catalog.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  // На первом останове нормальный стейт
-  // После получения списка фильмов след. структура films: {films: Array(25)}
-  debugger;
   return {
     genre: state.genre,
     films: state.films.filter((movie) => {

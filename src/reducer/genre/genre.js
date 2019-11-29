@@ -16,9 +16,7 @@ const ActionCreator = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SET_FILTER_GENRE:
-      return Object.assign({}, state, {
-        genre: action.payload
-      });
+      return action.payload;
   }
 
   return state;
