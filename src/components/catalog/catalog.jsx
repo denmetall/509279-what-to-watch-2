@@ -4,9 +4,10 @@ import GenresList from "../genres-list/genres-list.jsx";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
-import {ActionCreator} from "../../reducer";
-import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP, DEFAULT_FILTER} from "../../utils";
+import {ActionCreator} from "../../reducer/genre/genre";
+import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP} from "../../utils";
 import withActiveItem from "../../hocs/with-active-item";
+import {getFilteredFilms, getGenre} from "../../selectors";
 
 const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
@@ -57,14 +58,8 @@ Catalog.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    genre: state.genre,
-    films: state.films.filter((movie) => {
-      if (state.genre === DEFAULT_FILTER) {
-        return true;
-      } else {
-        return movie.genre === state.genre;
-      }
-    })
+    genre: getGenre(state),
+    films: getFilteredFilms(state)
   };
 };
 

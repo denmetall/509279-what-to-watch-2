@@ -1,11 +1,6 @@
-import filmsMock from './mocks/films';
-import {DEFAULT_FILTER} from "./utils";
+import {DEFAULT_FILTER} from "../../utils";
 
-const initialState = {
-  genre: DEFAULT_FILTER,
-  films: filmsMock,
-  promoFilm: filmsMock[0]
-};
+const initialState = DEFAULT_FILTER;
 
 const ActionType = {
   SET_FILTER_GENRE: `SET_FILTER_GENRE`
@@ -21,9 +16,7 @@ const ActionCreator = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SET_FILTER_GENRE:
-      return Object.assign({}, state, {
-        genre: action.payload
-      });
+      return action.payload;
   }
 
   return state;
