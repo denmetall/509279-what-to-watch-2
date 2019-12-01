@@ -5,7 +5,7 @@ import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer/genre/genre";
-import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP, DEFAULT_FILTER} from "../../utils";
+import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP} from "../../utils";
 import withActiveItem from "../../hocs/with-active-item";
 import {getFilteredFilms, getGenre} from "../../selectors";
 
