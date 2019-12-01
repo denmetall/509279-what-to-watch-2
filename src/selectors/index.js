@@ -20,3 +20,16 @@ export const getGenresList = createSelector(
       return genres;
     }
 );
+
+export const getFilteredFilms = createSelector(
+    [getFilms, getGenre],
+    (films, genre) => {
+      return films.filter((movie) => {
+        if (genre === DEFAULT_FILTER) {
+          return true;
+        } else {
+          return movie.genre === genre;
+        }
+      });
+    }
+);

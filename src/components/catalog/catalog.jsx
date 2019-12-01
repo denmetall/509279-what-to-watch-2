@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer/genre/genre";
 import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP, DEFAULT_FILTER} from "../../utils";
 import withActiveItem from "../../hocs/with-active-item";
-import {getGenre} from "../../selectors";
+import {getFilteredFilms, getGenre} from "../../selectors";
 
 const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
@@ -59,13 +59,7 @@ Catalog.propTypes = {
 const mapStateToProps = (state) => {
   return {
     genre: getGenre(state),
-    films: state.films.filter((movie) => {
-      if (state.genre === DEFAULT_FILTER) {
-        return true;
-      } else {
-        return movie.genre === state.genre;
-      }
-    })
+    films: getFilteredFilms(state)
   };
 };
 
