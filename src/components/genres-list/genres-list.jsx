@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {DEFAULT_FILTER} from "../../utils";
 import {connect} from 'react-redux';
+import {getGenresList} from "../../selectors";
 
 const GenresList = (props) => {
-  const {films, activeFilter, onChangeFilter} = props;
+  const {genres, activeFilter, onChangeFilter} = props;
 
-  const set = new Set();
-  films.forEach((film) => {
-    set.add(film.genre);
-  });
-  const genres = [DEFAULT_FILTER, ...Array.from(set)];
   const handleChangeClick = (evt) => {
     evt.preventDefault();
     onChangeFilter(evt.target.text);
@@ -26,18 +21,18 @@ const GenresList = (props) => {
 };
 
 GenresList.defaultProps = {
-  films: []
+  genres: []
 };
 
 GenresList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.array.isRequired,
   activeFilter: PropTypes.string.isRequired,
   onChangeFilter: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
-    films: state.films
+    genres: getGenresList(state)
   };
 };
 
