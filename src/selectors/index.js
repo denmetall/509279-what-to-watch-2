@@ -33,3 +33,7 @@ export const getFilteredFilms = createSelector(
       });
     }
 );
+
+export const getAuthorizationRequired = (state) => {
+  return state.isAuthorizationRequired;
+};
