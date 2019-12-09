@@ -10,6 +10,7 @@ import createAPI from './api/api';
 import App from "./components/app/app.jsx";
 import reducer from './reducer/index';
 import {Operation} from './reducer/films/films';
+import {Operation as OperationAuth} from './reducer/authorization/authorization';
 import {HashRouter as Router} from 'react-router-dom';
 
 const init = () => {
@@ -23,6 +24,7 @@ const init = () => {
       )
   );
 
+  store.dispatch(OperationAuth.checkAuth());
   store.dispatch(Operation.getFilms());
 
   ReactDOM.render(<Provider store={store}>
