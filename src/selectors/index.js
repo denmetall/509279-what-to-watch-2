@@ -33,3 +33,13 @@ export const getFilteredFilms = createSelector(
       });
     }
 );
+
+export const getAuthorizationRequired = (state) => {
+  return state.authorization.isAuthorizationRequired;
+};
+
+export const getAvatar = (state) => {
+  return state.authorization.userData.avatar_url;
+};
+
+
