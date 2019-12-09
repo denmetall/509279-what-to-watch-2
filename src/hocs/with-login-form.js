@@ -11,8 +11,7 @@ const withLoginForm = (Component) => {
 
       this.state = {
         email: ``,
-        password: ``,
-        isValid: false
+        password: ``
       };
 
       this.handleEmailInput = this.handleEmailInput.bind(this);
@@ -60,17 +59,13 @@ const withLoginForm = (Component) => {
     onAuthorize: () => {}
   };
 
-  const mapStateToProps = () => ({
-    isAuthorizationRequired: false
-  });
-
   const mapDispatchToProps = (dispatch) => ({
     onAuthorize: (data) => {
       dispatch(AuthOperation.login(data));
     }
   });
 
-  return connect(mapStateToProps, mapDispatchToProps)(WithLoginForm);
+  return connect(null, mapDispatchToProps)(WithLoginForm);
 };
 
 export default withLoginForm;
