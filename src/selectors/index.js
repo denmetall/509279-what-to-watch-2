@@ -42,4 +42,10 @@ export const getAvatar = (state) => {
   return state.authorization.userData.avatar_url;
 };
 
+const getMovieId = (state, id) => id;
+
+export const getMovieById = createSelector([getFilms, getMovieId], (movies, id) => {
+  return movies.find((it) => it.id === parseInt(id, 10));
+});
+
 
