@@ -1,18 +1,19 @@
 import React from 'react';
 
-const Review = () => {
+const Review = (props) => {
+  const {id, comment, user, date, rating} = props;
+
   return <div className="review">
     <blockquote className="review__quote">
-      <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in the glorious
-        Mittel-European kitsch of one of the directors funniest and most exquisitely designed movies in years.</p>
+      <p className="review__text">{comment}</p>
 
       <footer className="review__details">
-        <cite className="review__author">Kate Muir</cite>
-        <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
+        <cite className="review__author">{user.name}</cite>
+        <time className="review__date" dateTime="2016-12-24">{date}</time>
       </footer>
     </blockquote>
 
-    <div className="review__rating">8,9</div>
+    <div className="review__rating">{rating}</div>
   </div>;
 };
 
