@@ -38,7 +38,7 @@ class MovieCardTop extends Component {
               case Tabs.DETAILS:
                 return <MovieCardDetails film={film}/>;
               case Tabs.REVIEWS:
-                return <MovieCardReviews/>;
+                return <MovieCardReviews filmId={film.id}/>;
               default:
                 return null;
             }

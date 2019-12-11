@@ -3,6 +3,8 @@ import BtnPlay from "../btn-play/btn-play.jsx";
 import BtnList from "../btn-list/btn-list.jsx";
 import Btn from "../btn/btn.jsx";
 import PropTypes from "prop-types";
+import {getAuthorizationRequired} from "../../selectors";
+import connect from "react-redux/es/connect/connect";
 
 class MovieCardButtons extends PureComponent {
   constructor(props) {
@@ -10,18 +12,26 @@ class MovieCardButtons extends PureComponent {
   }
 
   render() {
-    const {movieCardFool} = this.props;
+    const {movieCardFool, isAuthorizationRequired, movieId} = this.props;
 
     return <div className="movie-card__buttons">
       <BtnPlay/>
       <BtnList/>
-      {movieCardFool && <Btn/>}
+      {movieCardFool && isAuthorizationRequired && <Btn movieId={movieId}/>}
     </div>;
   }
 }
 
 MovieCardButtons.propTypes = {
-  movieCardFool: PropTypes.bool
+  movieCardFool: PropTypes.bool,
+  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
-export default MovieCardButtons;
+const mapStateToProps = (state) => {
+  return {
+    isAuthorizationRequired: getAuthorizationRequired(state)
+  };
+};
+
+export {MovieCardButtons};
+export default connect(mapStateToProps)(MovieCardButtons);
