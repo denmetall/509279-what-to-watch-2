@@ -30,9 +30,7 @@ const convertObjectKeys = (obj) => {
   return obj;
 };
 
-const initialState = {
-  comments: []
-};
+const initialState = [];
 
 const ActionType = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,

@@ -1,44 +1,19 @@
 import React from 'react';
-import {connect} from "react-redux";
-import {getDividedComments} from "../../selectors";
+import Review from "../review/review.jsx";
 
-const MovieCardReviews = ({dividedComments}) => {
-  debugger;
-  return (
-    <div className="movie-card__reviews movie-card__row">
-      {Object.entries(dividedComments).map(([key, comments]) => (
-        <div
-          className="movie-card__reviews-col"
-          key={key}
-        >
-          {comments.map(({id, comment, user, date, rating}) => {
-            return (
-              <div
-                className="review"
-                key={id}
-              >
-                <blockquote className="review__quote">
-                  <p className="review__text">{comment}</p>
-
-                  <footer className="review__details">
-                    <cite className="review__author">{user.name}</cite>
-
-                  </footer>
-                </blockquote>
-
-                <div className="review__rating">{rating}</div>
-              </div>
-            );
-          })}
-        </div>
-      ))}
+const MovieCardReviews = () => {
+  return <div className="movie-card__reviews movie-card__row">
+    <div className="movie-card__reviews-col">
+      <Review/>
+      <Review/>
+      <Review/>
     </div>
-  );
+    <div className="movie-card__reviews-col">
+      <Review/>
+      <Review/>
+      <Review/>
+    </div>
+  </div>;
 };
 
-const mapStateToProps = (state) => ({
-  dividedComments: getDividedComments(state),
-});
-
-export {MovieCardReviews};
-export default connect(mapStateToProps)(MovieCardReviews);
+export default MovieCardReviews;
