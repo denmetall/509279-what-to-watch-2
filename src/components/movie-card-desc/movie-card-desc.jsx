@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const MovieCardDesc = (props) => {
   const {film} = props;
-  const {name = `The Grand Budapest Hotel`, genre = `Drama`, released = 2014} = film;
+  const {id, name = `The Grand Budapest Hotel`, genre = `Drama`, released = 2014} = film;
 
   return <div className="movie-card__desc">
     <h2 className="movie-card__title">{name}</h2>
@@ -13,7 +13,7 @@ const MovieCardDesc = (props) => {
       <span className="movie-card__year">{released}</span>
     </p>
 
-    <MovieCardButtons movieCardFool={true}/>
+    <MovieCardButtons movieCardFool={true} movieId={id}/>
   </div>;
 };
 

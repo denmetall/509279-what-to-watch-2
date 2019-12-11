@@ -34,7 +34,6 @@ const AddReview = (props) => {
 
   const onSubmitHandler = (evt) => {
     evt.preventDefault();
-    debugger;
     onShowError(true);
 
     if (!isFormValid) {

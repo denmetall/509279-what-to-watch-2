@@ -44,6 +44,8 @@ export const getAvatar = (state) => {
 
 const getMovieId = (state, id) => id;
 
+export const getReviews = (state) => state.reviews;
+
 export const getMovieById = createSelector([getFilms, getMovieId], (movies, id) => {
   return movies.find((it) => it.id === parseInt(id, 10));
 });
