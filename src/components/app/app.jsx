@@ -5,10 +5,17 @@ import MainPage from "../main-page/main-page.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 import AddReview from "../add-review/add-review.jsx";
 import withFormReview from '../../hocs/with-form-review';
+import withVideo from '../../hocs/with-video/with-video.jsx';
+import MoviePlayer from '../movie-player/movie-player.jsx';
+import {getFilms} from "../../selectors";
+import connect from "react-redux/es/connect/connect";
 
+const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withFormReview(AddReview);
 
-const App = () => {
+const App = (props) => {
+  const {films} = props;
+
   return <Switch>
     <Route path="/" exact>
       <MainPage/>
@@ -19,10 +26,31 @@ const App = () => {
       return <MovieDetails filmId={+match.params.id}/>;
     }}
     />
+
+    <Route path="/film/:id/show" exact render={({match}) => {
+      const currentFilm = films.find((film) => film.id === +match.params.id);
+
+      return <MoviePlayerWrapped
+        src={currentFilm.videoLink}
+        movie={currentFilm}
+      />;
+    }}
+    />
+
     <Route path="/film/:id/review" exact render={(props) => {
       return <AddReviewWrapped {...props}/>;
     }}
     />
   </Switch>;
 };
-export default App;
+
+const mapStateToProps = (state) => {
+  return {
+    films: getFilms(state)
+  };
+};
+
+export {App};
+
+export default connect(mapStateToProps)(App);
+

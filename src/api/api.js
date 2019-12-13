@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {API} from '../utils';
+import history from "../history";
 
 const createAPI = () => {
 
@@ -11,8 +12,8 @@ const createAPI = () => {
 
   const onSuccess = (response) => response;
   const onFail = (err) => {
-    if (err.status === 403) {
-      //console.log(err);
+    if (err.status === 401) {
+      history.push(`/login`);
       return;
     }
 

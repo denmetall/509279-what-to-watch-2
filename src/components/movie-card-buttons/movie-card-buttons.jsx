@@ -15,7 +15,7 @@ class MovieCardButtons extends PureComponent {
     const {movieCardFool, isAuthorizationRequired, movieId} = this.props;
 
     return <div className="movie-card__buttons">
-      <BtnPlay/>
+      <BtnPlay filmId={movieId}/>
       <BtnList/>
       {movieCardFool && isAuthorizationRequired && <Btn movieId={movieId}/>}
     </div>;
