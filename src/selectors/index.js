@@ -6,7 +6,7 @@ export const getGenre = (state) => {
 };
 
 export const getFilms = (state) => {
-  return state.films;
+  return state.films.films;
 };
 
 export const getGenresList = createSelector(
@@ -50,4 +50,5 @@ export const getMovieById = createSelector([getFilms, getMovieId], (movies, id) 
   return movies.find((it) => it.id === parseInt(id, 10));
 });
 
+export const getPromoMovie = (state) => state.films.promoMovie;
 

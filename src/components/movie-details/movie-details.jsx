@@ -4,9 +4,11 @@ import MovieCardFull from "../movie-card-full/movie-card-full.jsx";
 import Footer from "../footer/footer.jsx";
 import CatalogLikeThis from "../catalog-like-this/catalog-like-this.jsx";
 import {connect} from 'react-redux';
+import {getFilms} from "../../selectors";
 
 const MovieDetails = (props) => {
   const {films, filmId} = props;
+
   const currentFilm = films.findIndex((film) => film.id === filmId);
 
   return <Fragment>
@@ -26,7 +28,9 @@ MovieDetails.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-  return {films: state.films};
+  return {
+    films: getFilms(state)
+  };
 };
 
 MovieDetails.propTypes = {

@@ -7,10 +7,11 @@ import PropTypes from "prop-types";
 
 const MovieCardFull = (props) => {
   const {film} = props;
+  const {backgroundImage} = film;
 
   return <section className="movie-card movie-card--full">
     <div className="movie-card__hero">
-      <MovieCardBg/>
+      <MovieCardBg bg={backgroundImage}/>
 
       <h1 className="visually-hidden">WTW</h1>
 
@@ -23,6 +24,10 @@ const MovieCardFull = (props) => {
 
     <MovieCardTop film={film}/>
   </section>;
+};
+
+MovieCardFull.defaultProps = {
+  film: {}
 };
 
 MovieCardFull.propTypes = {

@@ -26,6 +26,7 @@ const init = () => {
 
   store.dispatch(OperationAuth.checkAuth());
   store.dispatch(Operation.getFilms());
+  store.dispatch(Operation.getPromoMovie());
 
   ReactDOM.render(<Provider store={store}>
     <Router>

@@ -1,8 +1,9 @@
 import React from 'react';
 
-const MovieCardBg = () => {
+const MovieCardBg = (props) => {
+  const {bg} = props;
   return <div className="movie-card__bg">
-    <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+    <img src={bg} alt="The Grand Budapest Hotel"/>
   </div>;
 };
 
