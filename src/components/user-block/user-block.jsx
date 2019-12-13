@@ -7,12 +7,13 @@ import {BASE_URL_SERVER} from "../../utils";
 
 const UserBlock = (props) => {
   const {isAuthorizationRequired, userData} = props;
-  const {avatarUrl} = userData;
+
+  console.log(isAuthorizationRequired);
 
   return <div className="user-block">
     {isAuthorizationRequired ?
       (<div className="user-block__avatar">
-        <img src={`${BASE_URL_SERVER}/${avatarUrl}`} alt="User avatar" width="63" height="63"/>
+        <img src={`${BASE_URL_SERVER}/${userData.avatarUrl}`} alt="User avatar" width="63" height="63"/>
       </div>) :
       (<Link to="/login" className="user-block__link">Sign in</Link>)
     }
@@ -26,9 +27,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-UserBlock.propTypes = {
-  avatar: PropTypes.string
-};
+// UserBlock.propTypes = {
+//   avatar: PropTypes.string
+// };
 
 export {UserBlock};
 

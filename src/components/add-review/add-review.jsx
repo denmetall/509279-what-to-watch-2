@@ -2,12 +2,16 @@ import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {SignIn} from "../sign-in/sign-in.jsx";
+import {withRouter} from 'react-router-dom';
 
 import {Operations as ReviewOperations} from '../../reducer/reviews/reviews';
-import {getMovieById} from "../../selectors";
+import {getMovieById, getAuthorizationRequired} from "../../selectors";
+import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
+import Logo from "../logo/logo.jsx";
+import {UserBlock} from "../user-block/user-block.jsx";
 
 const AddReview = (props) => {
-  if (props.isAuthorizationRequired) {
+  if (!props.isAuthorizationRequired) {
     return <SignIn/>;
   }
 
@@ -27,7 +31,8 @@ const AddReview = (props) => {
     isShowError,
     onShowError,
     onUserInput,
-    onAddReview
+    onAddReview,
+    history
   } = props;
 
   const ratings = [1, 2, 3, 4, 5];
@@ -41,24 +46,17 @@ const AddReview = (props) => {
     }
 
     onAddReview(rating, comment, movie.id);
+    history.goBack();
   };
 
   return <section className="movie-card movie-card--full">
     <div className="movie-card__header">
-      <div className="movie-card__bg">
-        <img src={movie.backgroundImage} alt={movie.name}/>
-      </div>
+      <MovieCardBg bg={movie.backgroundImage}/>
 
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header">
-        <div className="logo">
-          <a href="main.html" className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo />
 
         <nav className="breadcrumbs">
           <ul className="breadcrumbs__list">
@@ -70,12 +68,7 @@ const AddReview = (props) => {
             </li>
           </ul>
         </nav>
-
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-          </div>
-        </div>
+        <UserBlock />
       </header>
 
       <div className="movie-card__poster movie-card__poster--small">
@@ -129,7 +122,16 @@ const AddReview = (props) => {
           </div>
         </div>
 
-
+        {isShowError && (
+          <Fragment>
+            {!isRatingValid && (
+              <p><strong>{ratingErrorMessage}</strong></p>
+            )}
+            {!isCommentValid && (
+              <p><strong>{commentErrorMessage}</strong></p>
+            )}
+          </Fragment>
+        )}
       </form>
     </div>
 
@@ -155,7 +157,7 @@ AddReview.propTypes = {
 
 const mapStateToProps = (state, props) => Object.assign({}, props, {
   movie: getMovieById(state, props.match.params.id),
-  isAuthorizationRequired: state.isAuthorizationRequired
+  isAuthorizationRequired: getAuthorizationRequired(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -166,4 +168,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export {AddReview};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddReview);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddReview));
