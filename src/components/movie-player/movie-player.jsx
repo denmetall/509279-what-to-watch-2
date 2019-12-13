@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {Redirect} from "react-router-dom";
 import history from "../../history";
 
 const MoviePlayer = (props) => {
@@ -22,7 +21,7 @@ const MoviePlayer = (props) => {
         className="player__exit"
         type="button"
         onClick={() => {
-            history.push(`/login`);
+            history.push(`/`);
           }
         }
       >

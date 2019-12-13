@@ -11,7 +11,7 @@ import App from "./components/app/app.jsx";
 import reducer from './reducer/index';
 import {Operation} from './reducer/films/films';
 import {Operation as OperationAuth} from './reducer/authorization/authorization';
-import {HashRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 const init = () => {
   const api = createAPI((...args) => store.dispatch(...args));

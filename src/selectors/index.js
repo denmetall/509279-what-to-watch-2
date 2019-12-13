@@ -38,10 +38,9 @@ export const getAuthorizationRequired = (state) => {
   return state.authorization.isAuthorizationRequired;
 };
 
-export const getAvatar = (state) => {
-  return state.authorization.userData.avatar_url;
+export const getUserData = (state) => {
+  return state.authorization.userData;
 };
-
 
 export const getReviews = (state) => state.reviews;
 

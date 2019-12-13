@@ -1,3 +1,5 @@
+import {getAdaptedUser} from "../../api/user-adapter";
+
 const initialState = {
   isAuthorizationRequired: false,
   userData: {}
@@ -22,17 +24,16 @@ const ActionCreator = {
 const Operation = {
   checkAuth: () => (dispatch, _getState, api) => {
     return api.get(`/login`)
-      .then(() => {
+      .then(({data}) => {
         dispatch(ActionCreator.requireAuthorization(true));
+        dispatch(ActionCreator.auth(getAdaptedUser(data)));
       });
   },
   login: (dataForm) => (dispatch, _getState, api) => {
     return api.post(`/login`, dataForm)
       .then(({data}) => {
-
         dispatch(ActionCreator.requireAuthorization(true));
-
-        dispatch(ActionCreator.auth(data));
+        dispatch(ActionCreator.auth(getAdaptedUser(data)));
       });
   },
 };
