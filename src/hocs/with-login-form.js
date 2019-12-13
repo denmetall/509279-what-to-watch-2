@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from "prop-types";
+import {withRouter} from 'react-router-dom';
 
 import {Operation as AuthOperation} from './../reducer/authorization/authorization';
 import {connect} from 'react-redux';
@@ -32,12 +33,15 @@ const withLoginForm = (Component) => {
     }
 
     handleSubmit(evt) {
+      const {history} = this.props;
       evt.preventDefault();
 
       this.props.onAuthorize({
         email: this.state.email,
         password: this.state.password
       });
+
+      history.push(`/`);
     }
 
     render() {
@@ -65,7 +69,7 @@ const withLoginForm = (Component) => {
     }
   });
 
-  return connect(null, mapDispatchToProps)(WithLoginForm);
+  return connect(null, mapDispatchToProps)(withRouter(WithLoginForm));
 };
 
 export default withLoginForm;

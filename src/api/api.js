@@ -11,13 +11,13 @@ const createAPI = () => {
   });
 
   const onSuccess = (response) => response;
-  const onFail = (err) => {
-    if (err.status === 401) {
+  const onFail = (error) => {
+    if (error.response.status === 401 || error.response.status === 403) {
       history.push(`/login`);
       return;
     }
 
-    throw err;
+    throw error;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

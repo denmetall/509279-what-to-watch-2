@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import history from "../../history";
+import {withRouter} from 'react-router-dom';
 
 const MoviePlayer = (props) => {
   const {
@@ -10,7 +10,8 @@ const MoviePlayer = (props) => {
     endTime,
     onPlayButtonClick,
     onEnableFullScreen,
-    renderVideo
+    renderVideo,
+    history
   } = props;
 
   return (
@@ -20,10 +21,7 @@ const MoviePlayer = (props) => {
       <button
         className="player__exit"
         type="button"
-        onClick={() => {
-            history.push(`/`);
-          }
-        }
+        onClick={() => history.goBack()}
       >
         Exit
       </button>
@@ -46,18 +44,18 @@ const MoviePlayer = (props) => {
             onClick={onPlayButtonClick}
           >
             {!isPlaying && (<Fragment>
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </Fragment>
+              <svg viewBox="0 0 19 19" width="19" height="19">
+                <use xlinkHref="#play-s"></use>
+              </svg>
+              <span>Play</span>
+            </Fragment>
             )}
             {isPlaying && (<Fragment>
-                <svg viewBox="0 0 14 21" width="14" height="21">
-                  <use xlinkHref="#pause"></use>
-                </svg>
-                <span>Pause</span>
-              </Fragment>
+              <svg viewBox="0 0 14 21" width="14" height="21">
+                <use xlinkHref="#pause"></use>
+              </svg>
+              <span>Pause</span>
+            </Fragment>
             )}
           </button>
 
@@ -87,7 +85,7 @@ MoviePlayer.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
   renderVideo: PropTypes.func.isRequired,
   onExit: PropTypes.func,
-  onEnableFullScreen: PropTypes.func,
+  onEnableFullScreen: PropTypes.func
 };
 
-export default MoviePlayer;
+export default withRouter(MoviePlayer);

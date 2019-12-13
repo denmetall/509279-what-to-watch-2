@@ -16,6 +16,10 @@ const AddReviewWrapped = withFormReview(AddReview);
 const App = (props) => {
   const {films} = props;
 
+  if (!films.length) {
+    return null;
+  }
+
   return <Switch>
     <Route path="/" exact>
       <MainPage/>
