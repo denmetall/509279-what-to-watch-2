@@ -8,8 +8,6 @@ import {BASE_URL_SERVER} from "../../utils";
 const UserBlock = (props) => {
   const {isAuthorizationRequired, userData} = props;
 
-  console.log(isAuthorizationRequired);
-
   return <div className="user-block">
     {isAuthorizationRequired ?
       (<div className="user-block__avatar">

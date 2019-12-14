@@ -9,6 +9,11 @@ export const getFilms = (state) => {
   return state.films.films;
 };
 
+export const getFavoritesFilms = (state) => {
+  debugger;
+  return state.favorites;
+};
+
 export const getGenresList = createSelector(
     getFilms,
     (films) => {

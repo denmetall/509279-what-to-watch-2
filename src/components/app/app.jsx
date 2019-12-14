@@ -8,7 +8,8 @@ import withFormReview from '../../hocs/with-form-review';
 import withVideo from '../../hocs/with-video/with-video.jsx';
 import MoviePlayer from '../movie-player/movie-player.jsx';
 import {getFilms} from "../../selectors";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
+import {MyList} from "../my-list/my-list.jsx";
 
 const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withFormReview(AddReview);
@@ -43,6 +44,11 @@ const App = (props) => {
 
     <Route path="/film/:id/review" exact render={(props) => {
       return <AddReviewWrapped {...props}/>;
+    }}
+    />
+
+    <Route path="/my-list" exact render={(props) => {
+      return <MyList {...props}/>;
     }}
     />
   </Switch>;
