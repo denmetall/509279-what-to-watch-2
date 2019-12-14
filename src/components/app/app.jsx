@@ -13,7 +13,7 @@ import MyList from "../my-list/my-list.jsx";
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route.jsx';
 
 const MoviePlayerWrapped = withVideo(MoviePlayer);
-const AddReviewWrapped = withFormReview(AddReview);
+const AddReviewWrapped = withPrivateRoute(withFormReview(AddReview));
 const MyListWrapped = withPrivateRoute(MyList);
 
 
