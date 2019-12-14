@@ -20,7 +20,7 @@ class MovieCardButtons extends PureComponent {
 
     return <div className="movie-card__buttons">
       <BtnPlay filmId={id}/>
-      <BtnListWrapped film={movie}/>
+      {isAuthorizationRequired && <BtnListWrapped film={movie}/>}
       {movieCardFool && isAuthorizationRequired && <Btn movieId={id}/>}
     </div>;
   }

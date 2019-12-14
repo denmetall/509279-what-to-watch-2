@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
 import Footer from '../footer/footer.jsx';
 import {getFavoritesFilms} from "../../selectors";
 import withActiveItem from "../../hocs/with-active-item";
@@ -12,7 +11,6 @@ const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
 const MyList = (props) => {
   const {films} = props;
-  console.log(films);
 
   return (
     <div className="user-page">
