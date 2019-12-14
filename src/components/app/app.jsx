@@ -10,9 +10,12 @@ import MoviePlayer from '../movie-player/movie-player.jsx';
 import {getFilms} from "../../selectors";
 import {connect} from "react-redux";
 import MyList from "../my-list/my-list.jsx";
+import withPrivateRoute from '../../hocs/with-private-route/with-private-route.jsx';
 
 const MoviePlayerWrapped = withVideo(MoviePlayer);
-const AddReviewWrapped = withFormReview(AddReview);
+const AddReviewWrapped = withPrivateRoute(withFormReview(AddReview));
+const MyListWrapped = withPrivateRoute(MyList);
+
 
 const App = (props) => {
   const {films} = props;
@@ -48,7 +51,7 @@ const App = (props) => {
     />
 
     <Route path="/my-list" exact render={(props) => {
-      return <MyList {...props}/>;
+      return <MyListWrapped {...props}/>;
     }}
     />
   </Switch>;

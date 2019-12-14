@@ -55,3 +55,10 @@ export const getMovieById = createSelector([getFilms, getMovieId], (movies, id) 
 });
 
 export const getPromoMovie = (state) => state.films.promoMovie;
+
+export const getAuthStatus = createSelector(
+  [getUserData],
+  (user) => {
+    return Object.keys(user).length > 0;
+  }
+);
