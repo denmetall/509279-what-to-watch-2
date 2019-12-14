@@ -6,6 +6,7 @@ import MovieCardTop from "../movie-card-top/movie-card-top.jsx";
 import PropTypes from "prop-types";
 
 const MovieCardFull = (props) => {
+
   const {film} = props;
   const {backgroundImage} = film;
 

@@ -42,6 +42,9 @@ export const getFilteredFilms = createSelector(
     }
 );
 
+export const getLikeFilms = (state, currentMovie) =>
+  state.films.films.filter(({id, genre}) => id !== currentMovie.id && genre === currentMovie.genre);
+
 export const getAuthorizationRequired = (state) => {
   return state.authorization.isAuthorizationRequired;
 };

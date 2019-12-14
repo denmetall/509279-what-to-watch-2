@@ -4,10 +4,10 @@ import MovieCardFull from "../movie-card-full/movie-card-full.jsx";
 import Footer from "../footer/footer.jsx";
 import CatalogLikeThis from "../catalog-like-this/catalog-like-this.jsx";
 import {connect} from 'react-redux';
-import {getFilms} from "../../selectors";
+import {getFilms, getLikeFilms, getMovieById} from "../../selectors";
 
 const MovieDetails = (props) => {
-  const {films, filmId} = props;
+  const {filmsLike, films, filmId} = props;
 
   const currentFilm = films.findIndex((film) => film.id === filmId);
 
@@ -16,7 +16,7 @@ const MovieDetails = (props) => {
 
     <div className="page-content">
       <CatalogLikeThis
-        films={films}
+        films={filmsLike}
       />
       <Footer/>
     </div>
@@ -27,9 +27,11 @@ MovieDetails.defaultProps = {
   films: []
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, {filmId}) => {
+  const currentMovie = getMovieById(state, filmId);
   return {
-    films: getFilms(state)
+    films: getFilms(state),
+    filmsLike: getLikeFilms(state, currentMovie)
   };
 };
 
