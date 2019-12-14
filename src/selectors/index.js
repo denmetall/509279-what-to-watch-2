@@ -10,7 +10,6 @@ export const getFilms = (state) => {
 };
 
 export const getFavoritesFilms = (state) => {
-  debugger;
   return state.favorites;
 };
 

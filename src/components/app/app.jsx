@@ -9,7 +9,7 @@ import withVideo from '../../hocs/with-video/with-video.jsx';
 import MoviePlayer from '../movie-player/movie-player.jsx';
 import {getFilms} from "../../selectors";
 import {connect} from "react-redux";
-import {MyList} from "../my-list/my-list.jsx";
+import MyList from "../my-list/my-list.jsx";
 
 const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withFormReview(AddReview);

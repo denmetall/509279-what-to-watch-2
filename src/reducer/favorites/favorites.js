@@ -13,8 +13,10 @@ const ActionCreator = {
 
 const Operation = {
   loadFavorites: () => (dispatch, _, api) => {
+
     return api.get(`/favorite`)
       .then((response) => {
+        debugger;
         dispatch(ActionCreator.loadFavorites(response.data));
       });
   }
