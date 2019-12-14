@@ -1,3 +1,5 @@
+import {getAdaptedMovies} from "../../api/adapter";
+
 const initialState = [];
 
 const ActionType = {
@@ -16,7 +18,6 @@ const Operation = {
 
     return api.get(`/favorite`)
       .then((response) => {
-        debugger;
         dispatch(ActionCreator.loadFavorites(response.data));
       });
   }
@@ -25,7 +26,7 @@ const Operation = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_FAVORITES:
-      return action.payload;
+      return getAdaptedMovies(action.payload);
   }
 
   return state;

@@ -1,8 +1,7 @@
 import axios from 'axios';
 import {API} from '../utils';
-import history from "../history";
 
-const createAPI = () => {
+const createAPI = (onForbidden) => {
 
   const api = axios.create({
     baseURL: API.BASE_URL,
@@ -13,7 +12,8 @@ const createAPI = () => {
   const onSuccess = (response) => response;
   const onFail = (error) => {
     if (error.response.status === 401 || error.response.status === 403) {
-      history.push(`/login`);
+      onForbidden();
+
       return;
     }
 

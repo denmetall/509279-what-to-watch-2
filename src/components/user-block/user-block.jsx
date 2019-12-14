@@ -10,9 +10,9 @@ const UserBlock = (props) => {
 
   return <div className="user-block">
     {isAuthorizationRequired ?
-      (<div className="user-block__avatar">
+      (<Link to="/my-list" className="user-block__avatar">
         <img src={`${BASE_URL_SERVER}/${userData.avatarUrl}`} alt="User avatar" width="63" height="63"/>
-      </div>) :
+      </Link>) :
       (<Link to="/login" className="user-block__link">Sign in</Link>)
     }
   </div>;
