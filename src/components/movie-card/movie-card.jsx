@@ -2,11 +2,16 @@ import React from 'react';
 import Header from "../header/header.jsx";
 import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import MovieCardDesc from "../movie-card-desc/movie-card-desc.jsx";
-import filmsMock from '../../mocks/films';
 
-const MovieCard = () => {
+import {connect} from 'react-redux';
+import {getPromoMovie} from "../../selectors";
+
+const MovieCard = (props) => {
+  const {getPromoMovie} = props;
+  const {backgroundImage, name, posterImage} = getPromoMovie;
+
   return <section className="movie-card">
-    <MovieCardBg/>
+    <MovieCardBg bg={backgroundImage}/>
 
     <h1 className="visually-hidden">WTW</h1>
 
@@ -15,13 +20,20 @@ const MovieCard = () => {
     <div className="movie-card__wrap">
       <div className="movie-card__info">
         <div className="movie-card__poster">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327"/>
+          <img src={posterImage} alt={name} width="218" height="327"/>
         </div>
 
-        <MovieCardDesc film={filmsMock[0]}/>
+        <MovieCardDesc film={getPromoMovie}/>
       </div>
     </div>
   </section>;
 };
 
-export default MovieCard;
+const mapStateToProps = (state) => {
+  return {
+    getPromoMovie: getPromoMovie(state)
+  };
+};
+
+export {MovieCard};
+export default connect(mapStateToProps)(MovieCard);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {API} from '../utils';
 
-const createAPI = () => {
+const createAPI = (onForbidden) => {
 
   const api = axios.create({
     baseURL: API.BASE_URL,
@@ -10,13 +10,14 @@ const createAPI = () => {
   });
 
   const onSuccess = (response) => response;
-  const onFail = (err) => {
-    if (err.status === 403) {
-      //console.log(err);
+  const onFail = (error) => {
+    if (error.response.status === 401 || error.response.status === 403) {
+      onForbidden();
+
       return;
     }
 
-    throw err;
+    throw error;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

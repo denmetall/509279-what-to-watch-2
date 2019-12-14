@@ -2,31 +2,53 @@ import React from 'react';
 import {Switch, Route} from "react-router-dom";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MainPage from "../main-page/main-page.jsx";
-import connect from "react-redux/es/connect/connect";
 import SignIn from "../sign-in/sign-in.jsx";
-import PropTypes from "prop-types";
-import {getAuthorizationRequired} from "../../selectors";
 import AddReview from "../add-review/add-review.jsx";
 import withFormReview from '../../hocs/with-form-review';
+import withVideo from '../../hocs/with-video/with-video.jsx';
+import MoviePlayer from '../movie-player/movie-player.jsx';
+import {getFilms} from "../../selectors";
+import {connect} from "react-redux";
+import MyList from "../my-list/my-list.jsx";
 
+const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withFormReview(AddReview);
 
 const App = (props) => {
-  const {isAuthorizationRequired} = props;
+  const {films} = props;
 
-  if (!isAuthorizationRequired) {
-    return <SignIn />;
+  if (!films.length) {
+    return null;
   }
+
   return <Switch>
     <Route path="/" exact>
       <MainPage/>
     </Route>
+    <Route path="/login" exact component={SignIn}/>
+
     <Route path="/film/:id" exact render={({match}) => {
       return <MovieDetails filmId={+match.params.id}/>;
     }}
     />
+
+    <Route path="/film/:id/show" exact render={({match}) => {
+      const currentFilm = films.find((film) => film.id === +match.params.id);
+
+      return <MoviePlayerWrapped
+        src={currentFilm.videoLink}
+        movie={currentFilm}
+      />;
+    }}
+    />
+
     <Route path="/film/:id/review" exact render={(props) => {
       return <AddReviewWrapped {...props}/>;
+    }}
+    />
+
+    <Route path="/my-list" exact render={(props) => {
+      return <MyList {...props}/>;
     }}
     />
   </Switch>;
@@ -34,14 +56,11 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthorizationRequired: getAuthorizationRequired(state)
+    films: getFilms(state)
   };
-};
-
-App.propTypes = {
-  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
 export {App};
 
 export default connect(mapStateToProps)(App);
+

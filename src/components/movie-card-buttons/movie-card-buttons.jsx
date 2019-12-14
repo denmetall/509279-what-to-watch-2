@@ -5,6 +5,9 @@ import Btn from "../btn/btn.jsx";
 import PropTypes from "prop-types";
 import {getAuthorizationRequired} from "../../selectors";
 import connect from "react-redux/es/connect/connect";
+import withApi from "../../hocs/with-api/with-api.jsx";
+
+const BtnListWrapped = withApi(BtnList);
 
 class MovieCardButtons extends PureComponent {
   constructor(props) {
@@ -12,12 +15,13 @@ class MovieCardButtons extends PureComponent {
   }
 
   render() {
-    const {movieCardFool, isAuthorizationRequired, movieId} = this.props;
+    const {movieCardFool, isAuthorizationRequired, movie} = this.props;
+    const {id} = movie;
 
     return <div className="movie-card__buttons">
-      <BtnPlay/>
-      <BtnList/>
-      {movieCardFool && isAuthorizationRequired && <Btn movieId={movieId}/>}
+      <BtnPlay filmId={id}/>
+      <BtnListWrapped film={movie}/>
+      {movieCardFool && isAuthorizationRequired && <Btn movieId={id}/>}
     </div>;
   }
 }

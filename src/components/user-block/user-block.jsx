@@ -1,29 +1,33 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getAvatar} from "../../selectors";
+import {getAuthorizationRequired, getUserData} from "../../selectors";
 import PropTypes from "prop-types";
+import {BASE_URL_SERVER} from "../../utils";
 
 const UserBlock = (props) => {
-  const {avatar} = props;
+  const {isAuthorizationRequired, userData} = props;
+
   return <div className="user-block">
-    {avatar ?
-      (<div className="user-block__avatar">
-        <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-      </div>) :
-      (<a href="sign-in.html" className="user-block__link">Sign in</a>)
+    {isAuthorizationRequired ?
+      (<Link to="/my-list" className="user-block__avatar">
+        <img src={`${BASE_URL_SERVER}/${userData.avatarUrl}`} alt="User avatar" width="63" height="63"/>
+      </Link>) :
+      (<Link to="/login" className="user-block__link">Sign in</Link>)
     }
   </div>;
 };
 
 const mapStateToProps = (state) => {
   return {
-    avatar: getAvatar(state)
+    userData: getUserData(state),
+    isAuthorizationRequired: getAuthorizationRequired(state)
   };
 };
 
-UserBlock.propTypes = {
-  avatar: PropTypes.string
-};
+// UserBlock.propTypes = {
+//   avatar: PropTypes.string
+// };
 
 export {UserBlock};
 

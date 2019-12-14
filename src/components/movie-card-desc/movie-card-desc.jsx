@@ -13,7 +13,7 @@ const MovieCardDesc = (props) => {
       <span className="movie-card__year">{released}</span>
     </p>
 
-    <MovieCardButtons movieCardFool={true} movieId={id}/>
+    <MovieCardButtons movieCardFool={true} movie={film}/>
   </div>;
 };
 

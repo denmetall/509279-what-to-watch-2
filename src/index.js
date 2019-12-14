@@ -11,10 +11,13 @@ import App from "./components/app/app.jsx";
 import reducer from './reducer/index';
 import {Operation} from './reducer/films/films';
 import {Operation as OperationAuth} from './reducer/authorization/authorization';
-import {HashRouter as Router} from 'react-router-dom';
+import {Operation as OperationFavorites} from './reducer/favorites/favorites';
+import {BrowserRouter as Router} from 'react-router-dom';
+
+import history from './history';
 
 const init = () => {
-  const api = createAPI((...args) => store.dispatch(...args));
+  const api = createAPI(() => history.push(`/login`));
 
   const store = createStore(
       reducer,
@@ -26,6 +29,8 @@ const init = () => {
 
   store.dispatch(OperationAuth.checkAuth());
   store.dispatch(Operation.getFilms());
+  store.dispatch(OperationFavorites.loadFavorites());
+  store.dispatch(Operation.getPromoMovie());
 
   ReactDOM.render(<Provider store={store}>
     <Router>

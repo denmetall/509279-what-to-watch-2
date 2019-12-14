@@ -6,7 +6,11 @@ export const getGenre = (state) => {
 };
 
 export const getFilms = (state) => {
-  return state.films;
+  return state.films.films;
+};
+
+export const getFavoritesFilms = (state) => {
+  return state.favorites;
 };
 
 export const getGenresList = createSelector(
@@ -38,16 +42,16 @@ export const getAuthorizationRequired = (state) => {
   return state.authorization.isAuthorizationRequired;
 };
 
-export const getAvatar = (state) => {
-  return state.authorization.userData.avatar_url;
+export const getUserData = (state) => {
+  return state.authorization.userData;
 };
 
-const getMovieId = (state, id) => id;
-
 export const getReviews = (state) => state.reviews;
+
+const getMovieId = (state, id) => id;
 
 export const getMovieById = createSelector([getFilms, getMovieId], (movies, id) => {
   return movies.find((it) => it.id === parseInt(id, 10));
 });
 
-
+export const getPromoMovie = (state) => state.films.promoMovie;
