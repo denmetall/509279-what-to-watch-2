@@ -9,6 +9,10 @@ export const getFilms = (state) => {
   return state.films.films;
 };
 
+export const getMoviesCounter = (state) => {
+  return state.films.moviesCounter;
+};
+
 export const getFavoritesFilms = (state) => {
   return state.favorites;
 };

@@ -1,13 +1,16 @@
 import {getAdaptedMovies, getAdaptedMovie} from "../../api/adapter";
+import {MOVIES_COUNT_DEFAULT} from "../../utils";
 
 const initialState = {
   films: [],
-  promoMovie: {}
+  promoMovie: {},
+  moviesCounter: MOVIES_COUNT_DEFAULT
 };
 
 const ActionType = {
   GET_FILMS: `GET_FILMS`,
-  GET_PROMO_MOVIE: `GET_PROMO_MOVIE`
+  GET_PROMO_MOVIE: `GET_PROMO_MOVIE`,
+  INCREASE_MOVIES_COUNTER: `INCREASE_MOVIES_COUNTER`
 };
 
 const ActionCreator = {
@@ -18,6 +21,10 @@ const ActionCreator = {
   getPromoMovie: (movie) => ({
     type: ActionType.GET_PROMO_MOVIE,
     payload: movie
+  }),
+  increaseMoviesCounter: (count) => ({
+    type: ActionType.INCREASE_MOVIES_COUNTER,
+    payload: count
   })
 };
 
@@ -41,10 +48,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_FILMS: return Object.assign({}, state, {
       films: getAdaptedMovies(action.payload)
     });
-  }
-  switch (action.type) {
     case ActionType.GET_PROMO_MOVIE: return Object.assign({}, state, {
       promoMovie: getAdaptedMovie(action.payload)
+    });
+    case ActionType.INCREASE_MOVIES_COUNTER: return Object.assign({}, state, {
+      moviesCounter: state.moviesCounter + action.payload
     });
   }
 

@@ -5,43 +5,34 @@ import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer/genre/genre";
-import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP} from "../../utils";
+import {ActionCreator as ActionCreatorFilms} from "../../reducer/films/films";
+import {MOVIES_COUNT_STEP} from "../../utils";
 import withActiveItem from "../../hocs/with-active-item";
-import {getFilteredFilms, getGenre} from "../../selectors";
+import {getFilteredFilms, getGenre, getMoviesCounter} from "../../selectors";
 
 const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
 class Catalog extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      moviesCounter: MOVIES_COUNT_DEFAULT
-    };
-
-    this._onShowMoreClick = this._onShowMoreClick.bind(this);
   }
 
   render() {
-    const {films, genre, onChangeFilter} = this.props;
+    const {films, genre, onChangeFilter, moviesCounter, onShowMoreClick} = this.props;
+    const isShowBtn = moviesCounter < films.length;
 
     return <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
       <GenresList activeFilter={genre} onChangeFilter={onChangeFilter}/>
 
-      <MovieCardsListWrapped films={films.slice(0, this.state.moviesCounter)}/>
+      <MovieCardsListWrapped films={films.slice(0, moviesCounter)}/>
 
-      <div className="catalog__more">
-        <ShowMore onClickBtn={this._onShowMoreClick}/>
-      </div>
+      {isShowBtn && <div className="catalog__more">
+        <ShowMore onClickBtn={() => onShowMoreClick(MOVIES_COUNT_STEP)}/>
+      </div>}
+
     </section>;
-  }
-
-  _onShowMoreClick() {
-    this.setState((prevState) => ({
-      moviesCounter: prevState.moviesCounter + MOVIES_COUNT_STEP
-    }));
   }
 }
 
@@ -59,7 +50,8 @@ Catalog.propTypes = {
 const mapStateToProps = (state) => {
   return {
     genre: getGenre(state),
-    films: getFilteredFilms(state)
+    films: getFilteredFilms(state),
+    moviesCounter: getMoviesCounter(state)
   };
 };
 
@@ -67,6 +59,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onChangeFilter: (genre) => {
       dispatch(ActionCreator.setGenreFilter(genre));
+    },
+    onShowMoreClick: (count) => {
+      dispatch(ActionCreatorFilms.increaseMoviesCounter(count));
     }
   };
 };
