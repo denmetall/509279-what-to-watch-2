@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const BtnList = (props) => {
   const {film, onClick, isLoading, onPost} = props;
@@ -31,24 +32,13 @@ const BtnList = (props) => {
       <span>My list</span>
     </button>
   );
+};
 
-
-  // const {history} = props;
-  //
-  // const onClickHandler = () => {
-  //   history.push(`/my-list`);
-  // };
-  //
-  // return <button
-  //   className="btn btn--list movie-card__button"
-  //   type="button"
-  //   onClick={onClickHandler}
-  // >
-  //   <svg viewBox="0 0 19 20" width="19" height="20">
-  //     <use xlinkHref="#add"></use>
-  //   </svg>
-  //   <span>My list</span>
-  // </button>;
+BtnList.propTypes = {
+  film: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isLoading: PropTypes.func.isRequired,
+  onPost: PropTypes.func.isRequired,
 };
 
 export default BtnList;

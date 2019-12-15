@@ -153,6 +153,7 @@ AddReview.propTypes = {
   onAddReview: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool,
   match: PropTypes.object,
+  history: PropTypes.object
 };
 
 const mapStateToProps = (state, props) => Object.assign({}, props, {

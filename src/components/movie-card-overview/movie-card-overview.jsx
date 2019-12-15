@@ -20,7 +20,7 @@ const MovieCardOverview = (props) => {
 
       <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
-      <p className="movie-card__starring"><strong>Starring: {starring.map((item) => `${starring}, `)}</strong></p>
+      <p className="movie-card__starring"><strong>Starring: {starring.map((item) => `${item}, `)}</strong></p>
     </div>
   </Fragment>;
 };

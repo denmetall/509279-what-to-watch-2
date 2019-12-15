@@ -11,6 +11,7 @@ import {getFilms} from "../../selectors";
 import {connect} from "react-redux";
 import MyList from "../my-list/my-list.jsx";
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route.jsx';
+import PropTypes from 'prop-types';
 
 const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withPrivateRoute(withFormReview(AddReview));
@@ -61,6 +62,10 @@ const mapStateToProps = (state) => {
   return {
     films: getFilms(state)
   };
+};
+
+App.propTypes = {
+  films: PropTypes.object.isRequired
 };
 
 export {App};

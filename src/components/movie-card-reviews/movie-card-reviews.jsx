@@ -3,13 +3,14 @@ import {connect} from 'react-redux';
 import Review from "../review/review.jsx";
 import {Operations as ReviewOperations} from "../../reducer/reviews/reviews";
 import {getReviews} from "../../selectors";
+import PropTypes from 'prop-types';
 
 class MovieCardReviews extends PureComponent {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const {onLoadReviews, filmId} = this.props;
     onLoadReviews(filmId);
   }
@@ -25,7 +26,7 @@ class MovieCardReviews extends PureComponent {
       </div>
     </div>;
   }
-};
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -38,6 +39,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ReviewOperations.loadReviews(movieId));
   }
 });
+
+MovieCardReviews.propTypes = {
+  onLoadReviews: PropTypes.func.isRequired,
+  filmId: PropTypes.number.isRequired,
+  reviews: PropTypes.array.isRequired
+};
 
 export {MovieCardReviews};
 

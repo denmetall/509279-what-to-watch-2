@@ -56,7 +56,8 @@ const withLoginForm = (Component) => {
   }
 
   WithLoginForm.propTypes = {
-    onAuthorize: PropTypes.func
+    onAuthorize: PropTypes.func,
+    history: PropTypes.object.isRequired
   };
 
   WithLoginForm.defaultProps = {

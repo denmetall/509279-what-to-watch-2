@@ -37,7 +37,8 @@ const mapStateToProps = (state, {filmId}) => {
 
 MovieDetails.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  filmId: PropTypes.number.isRequired
+  filmId: PropTypes.number.isRequired,
+  filmsLike: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export {MovieDetails};

@@ -85,7 +85,8 @@ MoviePlayer.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
   renderVideo: PropTypes.func.isRequired,
   onExit: PropTypes.func,
-  onEnableFullScreen: PropTypes.func
+  onEnableFullScreen: PropTypes.func,
+  history: PropTypes.object.isRequired
 };
 
 export default withRouter(MoviePlayer);

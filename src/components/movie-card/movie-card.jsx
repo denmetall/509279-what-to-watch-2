@@ -2,13 +2,14 @@ import React from 'react';
 import Header from "../header/header.jsx";
 import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import MovieCardDesc from "../movie-card-desc/movie-card-desc.jsx";
+import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 import {getPromoMovie} from "../../selectors";
 
 const MovieCard = (props) => {
-  const {getPromoMovie} = props;
-  const {backgroundImage, name, posterImage} = getPromoMovie;
+  const {promoMovie} = props;
+  const {backgroundImage, name, posterImage} = promoMovie;
 
   return <section className="movie-card">
     <MovieCardBg bg={backgroundImage}/>
@@ -23,7 +24,7 @@ const MovieCard = (props) => {
           <img src={posterImage} alt={name} width="218" height="327"/>
         </div>
 
-        <MovieCardDesc film={getPromoMovie}/>
+        <MovieCardDesc film={promoMovie}/>
       </div>
     </div>
   </section>;
@@ -31,8 +32,12 @@ const MovieCard = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    getPromoMovie: getPromoMovie(state)
+    promoMovie: getPromoMovie(state)
   };
+};
+
+MovieCard.propTypes = {
+  promoMovie: PropTypes.object.isRequired
 };
 
 export {MovieCard};

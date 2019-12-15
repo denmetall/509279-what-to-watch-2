@@ -28,7 +28,8 @@ class MovieCardButtons extends PureComponent {
 
 MovieCardButtons.propTypes = {
   movieCardFool: PropTypes.bool,
-  isAuthorizationRequired: PropTypes.bool.isRequired
+  isAuthorizationRequired: PropTypes.bool.isRequired,
+  movie: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {

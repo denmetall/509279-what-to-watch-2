@@ -44,7 +44,9 @@ Catalog.defaultProps = {
 Catalog.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
   genre: PropTypes.string.isRequired,
-  onChangeFilter: PropTypes.func.isRequired
+  onChangeFilter: PropTypes.func.isRequired,
+  moviesCounter: PropTypes.number.isRequired,
+  onShowMoreClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

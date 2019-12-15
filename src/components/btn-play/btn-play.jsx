@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const BtnPlay = (props) => {
   const {filmId, history} = props;
@@ -14,6 +15,11 @@ const BtnPlay = (props) => {
     </svg>
     <span>Play</span>
   </button>;
+};
+
+BtnPlay.propTypes = {
+  filmId: PropTypes.number.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withRouter(BtnPlay);
