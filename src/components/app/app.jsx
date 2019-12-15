@@ -64,6 +64,10 @@ const mapStateToProps = (state) => {
   };
 };
 
+App.defaultProps = {
+  movie: {}
+};
+
 App.propTypes = {
   films: PropTypes.array.isRequired
 };

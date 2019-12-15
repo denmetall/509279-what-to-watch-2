@@ -38,7 +38,10 @@ class Catalog extends PureComponent {
 
 Catalog.defaultProps = {
   films: [],
-  genre: ``
+  genre: ``,
+  moviesCounter: 0,
+  onChangeFilter: () => {},
+  onShowMoreClick: () => {}
 };
 
 Catalog.propTypes = {

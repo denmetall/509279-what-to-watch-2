@@ -48,7 +48,8 @@ MovieCardReviews.defaultProps = {
     user: {
       name: ``
     }
-  }]
+  }],
+  onLoadReviews: () => {}
 };
 
 MovieCardReviews.propTypes = {

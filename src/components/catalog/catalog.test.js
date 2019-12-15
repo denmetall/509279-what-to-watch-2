@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import {BrowserRouter as Router} from 'react-router-dom';
 import createNodeMock from '../../mocks/create-node-mock';
 import {createStore} from 'redux';
-import {reducer} from '../../reducer/index';
+import {reducer} from '../../reducer/films/films';
 import {Provider} from 'react-redux';
 
 it(`Components BtnPlay renders correctly`, () => {

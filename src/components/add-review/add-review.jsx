@@ -138,6 +138,12 @@ const AddReview = (props) => {
   </section>;
 };
 
+AddReview.defaultProps = {
+  movie: {},
+  isAuthorizationRequired: false,
+  onAddReview: () => {}
+};
+
 AddReview.propTypes = {
   movie: PropTypes.object,
   comment: PropTypes.string,

@@ -24,7 +24,8 @@ const MovieDetails = (props) => {
 };
 
 MovieDetails.defaultProps = {
-  films: []
+  films: [],
+  filmsLike: []
 };
 
 const mapStateToProps = (state, {filmId}) => {

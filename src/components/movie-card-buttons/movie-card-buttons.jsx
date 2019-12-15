@@ -32,6 +32,10 @@ MovieCardButtons.propTypes = {
   movie: PropTypes.object.isRequired
 };
 
+MovieCardButtons.defaultProps = {
+  isAuthorizationRequired: false
+};
+
 const mapStateToProps = (state) => {
   return {
     isAuthorizationRequired: getAuthorizationRequired(state)
