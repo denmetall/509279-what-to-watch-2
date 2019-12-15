@@ -6,6 +6,7 @@ import withActiveItem from "../../hocs/with-active-item";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.jsx";
+import PropTypes from 'prop-types';
 
 const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
@@ -38,6 +39,10 @@ const mapStateToProps = (state) => {
 
 MyList.defaultProps = {
   films: []
+};
+
+MyList.propTypes = {
+  films: PropTypes.array.isRequired
 };
 
 export {MyList};

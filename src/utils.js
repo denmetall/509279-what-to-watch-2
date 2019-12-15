@@ -12,8 +12,8 @@ const API = {
   WITH_CREDENTIALS: true
 };
 
-const MOVIES_COUNT_DEFAULT = 2;
-const MOVIES_COUNT_STEP = 1;
+const MOVIES_COUNT_DEFAULT = 8;
+const MOVIES_COUNT_STEP = 20;
 
 const DEFAULT_FILTER = `All genres`;
 

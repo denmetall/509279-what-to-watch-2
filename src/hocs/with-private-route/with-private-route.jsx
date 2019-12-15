@@ -39,6 +39,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps),
-  withPrivateRoute
+    connect(mapStateToProps),
+    withPrivateRoute
 );

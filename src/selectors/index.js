@@ -9,6 +9,10 @@ export const getFilms = (state) => {
   return state.films.films;
 };
 
+export const getMoviesCounter = (state) => {
+  return state.films.moviesCounter;
+};
+
 export const getFavoritesFilms = (state) => {
   return state.favorites;
 };
@@ -38,6 +42,9 @@ export const getFilteredFilms = createSelector(
     }
 );
 
+export const getLikeFilms = (state, currentMovie) =>
+  state.films.films.filter(({id, genre}) => id !== currentMovie.id && genre === currentMovie.genre);
+
 export const getAuthorizationRequired = (state) => {
   return state.authorization.isAuthorizationRequired;
 };
@@ -57,8 +64,8 @@ export const getMovieById = createSelector([getFilms, getMovieId], (movies, id) 
 export const getPromoMovie = (state) => state.films.promoMovie;
 
 export const getAuthStatus = createSelector(
-  [getUserData],
-  (user) => {
-    return Object.keys(user).length > 0;
-  }
+    [getUserData],
+    (user) => {
+      return Object.keys(user).length > 0;
+    }
 );

@@ -138,6 +138,12 @@ const AddReview = (props) => {
   </section>;
 };
 
+AddReview.defaultProps = {
+  movie: {},
+  isAuthorizationRequired: false,
+  onAddReview: () => {}
+};
+
 AddReview.propTypes = {
   movie: PropTypes.object,
   comment: PropTypes.string,
@@ -153,6 +159,7 @@ AddReview.propTypes = {
   onAddReview: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool,
   match: PropTypes.object,
+  history: PropTypes.object
 };
 
 const mapStateToProps = (state, props) => Object.assign({}, props, {

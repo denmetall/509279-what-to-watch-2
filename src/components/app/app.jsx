@@ -11,6 +11,7 @@ import {getFilms} from "../../selectors";
 import {connect} from "react-redux";
 import MyList from "../my-list/my-list.jsx";
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route.jsx';
+import PropTypes from 'prop-types';
 
 const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withPrivateRoute(withFormReview(AddReview));
@@ -45,13 +46,13 @@ const App = (props) => {
     }}
     />
 
-    <Route path="/film/:id/review" exact render={(props) => {
-      return <AddReviewWrapped {...props}/>;
+    <Route path="/film/:id/review" exact render={(prop) => {
+      return <AddReviewWrapped {...prop}/>;
     }}
     />
 
-    <Route path="/my-list" exact render={(props) => {
-      return <MyListWrapped {...props}/>;
+    <Route path="/my-list" exact render={(prop) => {
+      return <MyListWrapped {...prop}/>;
     }}
     />
   </Switch>;
@@ -61,6 +62,14 @@ const mapStateToProps = (state) => {
   return {
     films: getFilms(state)
   };
+};
+
+App.defaultProps = {
+  films: {}
+};
+
+App.propTypes = {
+  films: PropTypes.array.isRequired
 };
 
 export {App};

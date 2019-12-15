@@ -31,7 +31,8 @@ SmallMovieCard.propTypes = {
   film: PropTypes.object.isRequired,
   onMouseOverCard: PropTypes.func.isRequired,
   onMouseOutCard: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired
+  isPlaying: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withRouter(SmallMovieCard);

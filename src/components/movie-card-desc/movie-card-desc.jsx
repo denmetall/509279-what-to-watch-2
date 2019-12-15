@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const MovieCardDesc = (props) => {
   const {film} = props;
-  const {id, name = `The Grand Budapest Hotel`, genre = `Drama`, released = 2014} = film;
+  const {name, genre, released} = film;
 
   return <div className="movie-card__desc">
     <h2 className="movie-card__title">{name}</h2>

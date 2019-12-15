@@ -32,29 +32,21 @@ exports[`Components MovieCardDetails renders correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        Bill Murray, 
+        Bill Murray
+        , 
         <br />
-        Edward Norton, 
+        Edward Norton
+        , 
         <br />
-        Jude Law, 
+        Jude Law
+        , 
         <br />
-        Willem Dafoe, 
+        Willem Dafoe
+        , 
         <br />
-        Saoirse Ronan, 
+        Saoirse Ronan
+        , 
         <br />
-        Tony Revoloru, 
-        <br />
-        Tilda Swinton, 
-        <br />
-        Tom Wilkinson, 
-        <br />
-        Owen Wilkinson, 
-        <br />
-        Adrien Brody, 
-        <br />
-        Ralph Fiennes, 
-        <br />
-        Jeff Goldblum
       </span>
     </p>
   </div>
@@ -72,7 +64,7 @@ exports[`Components MovieCardDetails renders correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        100
+        1h 40m
       </span>
     </p>
     <p

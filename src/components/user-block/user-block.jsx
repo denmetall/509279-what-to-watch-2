@@ -25,9 +25,17 @@ const mapStateToProps = (state) => {
   };
 };
 
-// UserBlock.propTypes = {
-//   avatar: PropTypes.string
-// };
+UserBlock.defaultProps = {
+  isAuthorizationRequired: false,
+  userData: {
+    avatarUrl: ``
+  }
+};
+
+UserBlock.propTypes = {
+  isAuthorizationRequired: PropTypes.bool,
+  userData: PropTypes.object
+};
 
 export {UserBlock};
 

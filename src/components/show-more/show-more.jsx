@@ -10,10 +10,6 @@ const ShowMore = (props) => {
   >Show more</button>;
 };
 
-// ShowMore.defaultProps = {
-//   onClick: () => {}
-// };
-
 ShowMore.propTypes = {
   onClickBtn: PropTypes.func,
 };

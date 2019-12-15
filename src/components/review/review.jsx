@@ -1,4 +1,7 @@
 import React from 'react';
+import moment from "moment/moment";
+import 'moment-duration-format';
+import PropTypes from 'prop-types';
 
 const Review = (props) => {
   const {review} = props;
@@ -11,7 +14,9 @@ const Review = (props) => {
 
       <footer className="review__details">
         <cite className="review__author">{name}</cite>
-        <time className="review__date" dateTime="2016-12-24">{date}</time>
+        <time className="review__date" dateTime="2016-12-24">{
+          moment(date).format(`MMMM Do, YYYY`)
+        }</time>
       </footer>
     </blockquote>
 
@@ -26,6 +31,10 @@ Review.defaultProps = {
   user: {
     name: ``
   }
+};
+
+Review.propTypes = {
+  review: PropTypes.object.isRequired
 };
 
 export default Review;
