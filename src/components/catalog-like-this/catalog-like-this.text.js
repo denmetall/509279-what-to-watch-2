@@ -7,9 +7,12 @@ import createNodeMock from '../../mocks/create-node-mock';
 
 it(`Components CatalogLikeThis renders correctly`, () => {
   const options = {createNodeMock};
+  const props = {
+    films: filmsMock
+  };
   const tree = renderer
     .create(<Router>
-      <CatalogLikeThis films={filmsMock}/>
+      <CatalogLikeThis {...props}/>
     </Router>, options)
     .toJSON();
   expect(tree).toMatchSnapshot();

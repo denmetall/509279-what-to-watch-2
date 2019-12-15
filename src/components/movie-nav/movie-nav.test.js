@@ -4,11 +4,13 @@ import renderer from 'react-test-renderer';
 import {Tabs} from '../../utils';
 
 it(`Components MovieNav renders correctly`, () => {
+  const props = {
+    activeTab: Tabs.OVERVIEW,
+    onChangeTab: () => {}
+  };
+
   const tree = renderer
-    .create(<MovieNav
-      activeTab={Tabs.OVERVIEW}
-      onChangeTab={jest.fn()}
-    />)
+    .create(<MovieNav {...props}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

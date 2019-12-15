@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
 };
 
 App.defaultProps = {
-  movie: {}
+  films: {}
 };
 
 App.propTypes = {

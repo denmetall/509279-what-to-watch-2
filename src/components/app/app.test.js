@@ -3,20 +3,16 @@ import {App} from './app.jsx';
 import renderer from 'react-test-renderer';
 import {BrowserRouter as Router} from 'react-router-dom';
 import createNodeMock from '../../mocks/create-node-mock';
-import {createStore} from 'redux';
-import {reducer} from '../../reducer/index';
-import {Provider} from 'react-redux';
+import filmsMock from '../../mocks/films';
 
 it(`Components App renders correctly`, () => {
   const options = {createNodeMock};
-  const store = createStore(reducer);
+  const props = {
+    films: filmsMock
+  };
 
   const tree = renderer
-    .create(<Provider store={store}>
-      <Router>
-        <App/>
-      </Router>
-    </Provider>, options)
+    .create(<Router><App {...props}/></Router>, options)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

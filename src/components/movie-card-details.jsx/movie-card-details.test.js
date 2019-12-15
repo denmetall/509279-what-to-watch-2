@@ -4,8 +4,12 @@ import renderer from 'react-test-renderer';
 import filmsMock from '../../mocks/films';
 
 it(`Components MovieCardDetails renders correctly`, () => {
+  const props = {
+    film: filmsMock[0]
+  };
+
   const tree = renderer
-    .create(<MovieCardDetails film={filmsMock[0]}/>)
+    .create(<MovieCardDetails {...props}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
