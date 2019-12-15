@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 it(`Components GenresList renders correctly`, () => {
   const props = {
-    genres: ``,
+    genres: [``, ``, ``],
     activeFilter: ``,
     onChangeFilter: () => {}
   };

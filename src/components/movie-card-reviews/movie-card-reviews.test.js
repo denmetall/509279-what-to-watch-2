@@ -5,7 +5,18 @@ import filmsMock from "../../mocks/films";
 
 it(`Components MovieCardReviews renders correctly`, () => {
   const props = {
-    filmId: filmsMock[0].id
+    filmId: filmsMock[0].id,
+    reviews: [
+      {
+        comment: ``,
+        date: ``,
+        rating: null,
+        user: {
+          name: ``
+        },
+        id: 1
+      }
+    ]
   };
   const tree = renderer
     .create(<MovieCardReviews {...props}/>)

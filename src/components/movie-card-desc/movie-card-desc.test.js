@@ -5,7 +5,7 @@ import filmsMock from '../../mocks/films';
 
 it(`Components MovieCardDesc renders correctly`, () => {
   const props = {
-    films: filmsMock
+    film: filmsMock[0]
   };
   const tree = renderer
     .create(<MovieCardDesc {...props}/>)
