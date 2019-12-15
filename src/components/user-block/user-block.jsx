@@ -26,8 +26,8 @@ const mapStateToProps = (state) => {
 };
 
 UserBlock.propTypes = {
-  isAuthorizationRequired: PropTypes.bool.isRequired,
-  userData: PropTypes.object.isRequired
+  isAuthorizationRequired: PropTypes.bool,
+  userData: PropTypes.object
 };
 
 export {UserBlock};

@@ -6,7 +6,8 @@ exports[`Components Logo renders correctly 1`] = `
 >
   <a
     className="logo__link undefined"
-    href="main.html"
+    href="/"
+    onClick={[Function]}
   >
     <span
       className="logo__letter logo__letter--1"

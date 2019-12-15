@@ -4,7 +4,7 @@ import MainPage from "./main-page.jsx";
 import {createStore} from 'redux';
 import {reducer} from '../../reducer/index';
 import {Provider} from 'react-redux';
-import {HashRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import createNodeMock from '../../mocks/create-node-mock';
 
 it(`Components MainPage renders correctly`, () => {

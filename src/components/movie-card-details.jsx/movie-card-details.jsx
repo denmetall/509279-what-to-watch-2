@@ -41,7 +41,7 @@ const MovieCardDetails = (props) => {
 };
 
 MovieCardDetails.propTypes = {
-  film: PropTypes.object.isRequired
+  film: PropTypes.object
 };
 
 export default MovieCardDetails;

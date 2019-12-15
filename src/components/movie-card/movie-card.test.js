@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {MovieCard} from "./movie-card.jsx";
-import filmsMock from '../../mocks/films';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 it(`Components MovieCard renders correctly`, () => {
   const tree = renderer
-    .create(<MovieCard promoFilm={filmsMock[0]}/>)
+    .create(<Router><MovieCard/></Router>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

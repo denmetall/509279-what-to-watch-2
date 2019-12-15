@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import SmallMovieCard from "./small-movie-card.jsx";
 import filmsMock from '../../mocks/films';
-import {HashRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import createNodeMock from '../../mocks/create-node-mock';
 
 it(`Components SmallMovieCard renders correctly`, () => {
@@ -14,6 +14,7 @@ it(`Components SmallMovieCard renders correctly`, () => {
         onMouseOverCard={jest.fn()}
         onMouseOutCard={jest.fn()}
         isPlaying={false}
+        history={{}}
       />
     </Router>, options)
     .toJSON();

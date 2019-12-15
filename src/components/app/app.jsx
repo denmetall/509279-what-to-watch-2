@@ -46,13 +46,13 @@ const App = (props) => {
     }}
     />
 
-    <Route path="/film/:id/review" exact render={(props) => {
-      return <AddReviewWrapped {...props}/>;
+    <Route path="/film/:id/review" exact render={(prop) => {
+      return <AddReviewWrapped {...prop}/>;
     }}
     />
 
-    <Route path="/my-list" exact render={(props) => {
-      return <MyListWrapped {...props}/>;
+    <Route path="/my-list" exact render={(prop) => {
+      return <MyListWrapped {...prop}/>;
     }}
     />
   </Switch>;
@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
 };
 
 App.propTypes = {
-  films: PropTypes.object.isRequired
+  films: PropTypes.array.isRequired
 };
 
 export {App};

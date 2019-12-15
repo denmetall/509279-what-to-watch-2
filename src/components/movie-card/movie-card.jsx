@@ -36,6 +36,14 @@ const mapStateToProps = (state) => {
   };
 };
 
+MovieCard.defaultProps = {
+  promoMovie: {
+    backgroundImage: ``,
+    name: ``,
+    posterImage: ``
+  }
+};
+
 MovieCard.propTypes = {
   promoMovie: PropTypes.object.isRequired
 };

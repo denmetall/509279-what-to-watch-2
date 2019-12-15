@@ -4,7 +4,7 @@ import BtnList from "../btn-list/btn-list.jsx";
 import Btn from "../btn/btn.jsx";
 import PropTypes from "prop-types";
 import {getAuthorizationRequired} from "../../selectors";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import withApi from "../../hocs/with-api/with-api.jsx";
 
 const BtnListWrapped = withApi(BtnList);

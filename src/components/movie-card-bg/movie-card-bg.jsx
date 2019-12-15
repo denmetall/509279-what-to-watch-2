@@ -9,7 +9,7 @@ const MovieCardBg = (props) => {
 };
 
 MovieCardBg.propTypes = {
-  bg: PropTypes.string.isRequired
+  bg: PropTypes.string
 };
 
 export default MovieCardBg;

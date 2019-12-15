@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 it(`Components MovieCardBg renders correctly`, () => {
   const tree = renderer
-    .create(<MovieCardBg/>)
+    .create(<MovieCardBg bg={``}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

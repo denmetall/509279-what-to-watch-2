@@ -8,7 +8,7 @@ const Btn = (props) => {
 };
 
 Btn.propTypes = {
-  movieId: PropTypes.number.isRequired
+  movieId: PropTypes.number
 };
 
 export default Btn;

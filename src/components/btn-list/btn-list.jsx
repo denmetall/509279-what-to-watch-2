@@ -36,8 +36,8 @@ const BtnList = (props) => {
 
 BtnList.propTypes = {
   film: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isLoading: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+  isLoading: PropTypes.func,
   onPost: PropTypes.func.isRequired,
 };
 

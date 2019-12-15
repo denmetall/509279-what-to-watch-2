@@ -40,6 +40,17 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+MovieCardReviews.defaultProps = {
+  reviews: [{
+    comment: ``,
+    date: ``,
+    rating: null,
+    user: {
+      name: ``
+    }
+  }]
+};
+
 MovieCardReviews.propTypes = {
   onLoadReviews: PropTypes.func.isRequired,
   filmId: PropTypes.number.isRequired,

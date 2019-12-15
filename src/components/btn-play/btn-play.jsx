@@ -18,7 +18,7 @@ const BtnPlay = (props) => {
 };
 
 BtnPlay.propTypes = {
-  filmId: PropTypes.number.isRequired,
+  filmId: PropTypes.number,
   history: PropTypes.object.isRequired
 };
 

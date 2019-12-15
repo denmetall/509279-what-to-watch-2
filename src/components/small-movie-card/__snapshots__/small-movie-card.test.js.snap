@@ -3,6 +3,7 @@
 exports[`Components SmallMovieCard renders correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
   onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
@@ -25,7 +26,7 @@ exports[`Components SmallMovieCard renders correctly 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="#/film/1"
+      href="/film/1"
       onClick={[Function]}
     >
       Drive
