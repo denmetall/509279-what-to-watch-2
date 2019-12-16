@@ -3,8 +3,7 @@ import MovieNav from "../movie-nav/movie-nav.jsx";
 import MovieCardDetails from "../movie-card-details.jsx/movie-card-details.jsx";
 import MovieCardOverview from "../movie-card-overview/movie-card-overview.jsx";
 import MovieCardReviews from "../movie-card-reviews/movie-card-reviews.jsx";
-import PropTypes from "prop-types";
-import {Tabs} from "../../utils";
+import {MovieType, Tabs} from "../../utils";
 
 class MovieCardTop extends PureComponent {
   constructor(props) {
@@ -57,7 +56,7 @@ class MovieCardTop extends PureComponent {
 }
 
 MovieCardTop.propTypes = {
-  film: PropTypes.object.isRequired
+  film: MovieType
 };
 
 export default MovieCardTop;

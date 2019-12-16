@@ -3,7 +3,7 @@ import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import Header from "../header/header.jsx";
 import MovieCardDesc from "../movie-card-desc/movie-card-desc.jsx";
 import MovieCardTop from "../movie-card-top/movie-card-top.jsx";
-import PropTypes from "prop-types";
+import {MovieType} from "../../utils";
 
 const MovieCardFull = (props) => {
 
@@ -32,7 +32,7 @@ MovieCardFull.defaultProps = {
 };
 
 MovieCardFull.propTypes = {
-  film: PropTypes.object.isRequired
+  film: MovieType
 };
 
 export default MovieCardFull;

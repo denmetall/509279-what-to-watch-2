@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import PropTypes from "prop-types";
+import {MovieType} from "../../utils";
 
 const MovieCardOverview = (props) => {
   const {film} = props;
@@ -26,7 +26,7 @@ const MovieCardOverview = (props) => {
 };
 
 MovieCardOverview.propTypes = {
-  film: PropTypes.object.isRequired
+  film: MovieType
 };
 
 export default MovieCardOverview;

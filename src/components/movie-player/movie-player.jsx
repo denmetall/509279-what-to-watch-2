@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
+import {MovieType} from "../../utils";
 
 const MoviePlayer = (props) => {
   const {
@@ -78,7 +79,7 @@ const MoviePlayer = (props) => {
 };
 
 MoviePlayer.propTypes = {
-  movie: PropTypes.object,
+  movie: MovieType,
   progress: PropTypes.number,
   isPlaying: PropTypes.bool.isRequired,
   endTime: PropTypes.string,

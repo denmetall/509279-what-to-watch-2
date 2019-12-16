@@ -4,6 +4,7 @@ import Review from "../review/review.jsx";
 import {Operations as ReviewOperations} from "../../reducer/reviews/reviews";
 import {getReviews} from "../../selectors";
 import PropTypes from 'prop-types';
+import {ReviewType} from "../../utils";
 
 class MovieCardReviews extends PureComponent {
   constructor(props) {
@@ -55,7 +56,7 @@ MovieCardReviews.defaultProps = {
 MovieCardReviews.propTypes = {
   onLoadReviews: PropTypes.func.isRequired,
   filmId: PropTypes.number.isRequired,
-  reviews: PropTypes.array.isRequired
+  reviews: PropTypes.arrayOf(ReviewType)
 };
 
 export {MovieCardReviews};
