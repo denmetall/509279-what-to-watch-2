@@ -78,7 +78,7 @@ const MoviePlayer = (props) => {
 };
 
 MoviePlayer.propTypes = {
-  movie: {},
+  movie: PropTypes.object,
   progress: PropTypes.number,
   isPlaying: PropTypes.bool.isRequired,
   endTime: PropTypes.string,
