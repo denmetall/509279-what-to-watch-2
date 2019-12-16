@@ -2,6 +2,7 @@ import React from 'react';
 import MoviePlayer from './movie-player.jsx';
 import renderer from 'react-test-renderer';
 import filmsMock from '../../mocks/films';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 it(`Components MoviePlayer renders correctly`, () => {
   const props = {
@@ -17,7 +18,7 @@ it(`Components MoviePlayer renders correctly`, () => {
   };
 
   const tree = renderer
-    .create(<MoviePlayer {...props}/>)
+    .create(<Router><MoviePlayer {...props}/></Router>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
