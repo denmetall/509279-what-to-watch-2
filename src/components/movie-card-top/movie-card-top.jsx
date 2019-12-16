@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import MovieNav from "../movie-nav/movie-nav.jsx";
 import MovieCardDetails from "../movie-card-details.jsx/movie-card-details.jsx";
 import MovieCardOverview from "../movie-card-overview/movie-card-overview.jsx";
@@ -6,7 +6,7 @@ import MovieCardReviews from "../movie-card-reviews/movie-card-reviews.jsx";
 import PropTypes from "prop-types";
 import {Tabs} from "../../utils";
 
-class MovieCardTop extends Component {
+class MovieCardTop extends PureComponent {
   constructor(props) {
     super(props);
 

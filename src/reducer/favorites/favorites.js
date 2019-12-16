@@ -32,10 +32,20 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
+const reducerForTest = (state = initialState, action) => {
+  switch (action.type) {
+    case ActionType.LOAD_FAVORITES:
+      return action.payload;
+  }
+
+  return state;
+};
+
 export {
   initialState,
   ActionType,
   ActionCreator,
   Operation,
-  reducer
+  reducer,
+  reducerForTest
 };
