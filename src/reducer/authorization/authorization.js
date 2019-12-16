@@ -16,9 +16,9 @@ const ActionCreator = {
     type: ActionType.REQUIRE_AUTHORIZATION,
     payload: status
   }),
-  setUser: (status) => ({
+  setUser: (user) => ({
     type: ActionType.SET_USER,
-    payload: status
+    payload: user
   }),
   resetUser: () => ({
     type: ActionType.RESET_USER
@@ -63,5 +63,6 @@ const reducer = (state = initialState, action) => {
 export {
   reducer,
   ActionCreator,
-  Operation
+  Operation,
+  ActionType
 };
