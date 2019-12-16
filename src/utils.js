@@ -6,6 +6,13 @@ const Tabs = {
   REVIEWS: `Reviews`
 };
 
+const CommentLength = {
+  MIN: 50,
+  MAX: 400
+};
+
+const MAX_RATING = 5;
+
 const BASE_URL_SERVER = `https://htmlacademy-react-2.appspot.com`;
 
 const API = {
@@ -14,8 +21,10 @@ const API = {
   WITH_CREDENTIALS: true
 };
 
-const MOVIES_COUNT_DEFAULT = 8;
-const MOVIES_COUNT_STEP = 20;
+const MoviesCount = {
+  DEFAULT: 8,
+  STEP: 20
+};
 
 const DEFAULT_FILTER = `All genres`;
 
@@ -60,11 +69,12 @@ const ReviewType = shape({
 export {
   Tabs,
   DEFAULT_FILTER,
-  MOVIES_COUNT_DEFAULT,
-  MOVIES_COUNT_STEP,
   API,
   BASE_URL_SERVER,
   MovieType,
   UserType,
-  ReviewType
+  ReviewType,
+  CommentLength,
+  MAX_RATING,
+  MoviesCount
 };

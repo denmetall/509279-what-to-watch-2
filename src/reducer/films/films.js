@@ -1,10 +1,10 @@
 import {getAdaptedMovies, getAdaptedMovie} from "../../api/adapter";
-import {MOVIES_COUNT_DEFAULT} from "../../utils";
+import {MoviesCount} from "../../utils";
 
 const initialState = {
   films: [],
   promoMovie: {},
-  moviesCounter: MOVIES_COUNT_DEFAULT
+  moviesCounter: MoviesCount.DEFAULT
 };
 
 const ActionType = {
