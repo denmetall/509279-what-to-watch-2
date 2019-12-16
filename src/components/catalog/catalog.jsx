@@ -6,7 +6,7 @@ import ShowMore from "../show-more/show-more.jsx";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer/genre/genre";
 import {ActionCreator as ActionCreatorFilms} from "../../reducer/films/films";
-import {MOVIES_COUNT_STEP} from "../../utils";
+import {MOVIES_COUNT_STEP, MovieType} from "../../utils";
 import withActiveItem from "../../hocs/with-active-item";
 import {getFilteredFilms, getGenre, getMoviesCounter} from "../../selectors";
 
@@ -45,7 +45,7 @@ Catalog.defaultProps = {
 };
 
 Catalog.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  films: PropTypes.arrayOf(MovieType),
   genre: PropTypes.string.isRequired,
   onChangeFilter: PropTypes.func.isRequired,
   moviesCounter: PropTypes.number.isRequired,

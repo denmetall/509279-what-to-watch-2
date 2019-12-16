@@ -9,6 +9,7 @@ import {getMovieById, getAuthorizationRequired} from "../../selectors";
 import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import Logo from "../logo/logo.jsx";
 import {UserBlock} from "../user-block/user-block.jsx";
+import {MovieType} from "../../utils";
 
 const AddReview = (props) => {
   if (!props.isAuthorizationRequired) {
@@ -145,7 +146,7 @@ AddReview.defaultProps = {
 };
 
 AddReview.propTypes = {
-  movie: PropTypes.object,
+  movie: MovieType,
   comment: PropTypes.string,
   isCommentValid: PropTypes.bool,
   commentErrorMessage: PropTypes.string,
