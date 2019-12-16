@@ -66,6 +66,14 @@ const ReviewType = shape({
   date: string
 });
 
+const Ratings = {
+  ONE: 1,
+  TWO: 2,
+  THREE: 3,
+  FOUR: 4,
+  FIVE: 5
+};
+
 export {
   Tabs,
   DEFAULT_FILTER,
@@ -76,5 +84,6 @@ export {
   ReviewType,
   CommentLength,
   MAX_RATING,
-  MoviesCount
+  MoviesCount,
+  Ratings
 };
