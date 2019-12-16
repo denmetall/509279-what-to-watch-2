@@ -5,7 +5,7 @@ import filmsMock from '../../mocks/films';
 
 import {Provider} from "react-redux";
 import {createStore} from "redux";
-import reducer from "../../reducer";
+import reducer from "../../reducer/reducer";
 import {BrowserRouter as Router} from 'react-router-dom';
 
 it(`Components MovieCardDesc renders correctly`, () => {

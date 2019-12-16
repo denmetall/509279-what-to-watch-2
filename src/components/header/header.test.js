@@ -6,7 +6,7 @@ import createNodeMock from "../../mocks/create-node-mock";
 
 import {Provider} from "react-redux";
 import {createStore} from "redux";
-import reducer from "../../reducer";
+import reducer from "../../reducer/reducer";
 
 it(`Components Header renders correctly`, () => {
   const store = createStore(
