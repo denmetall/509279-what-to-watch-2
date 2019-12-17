@@ -47,10 +47,7 @@ class VideoPlayer extends PureComponent {
       if (playPromise !== undefined) {
         playPromise.then(() => {
           video.play();
-        })
-          .catch(() => {
-            video.load();
-          });
+        });
       }
 
     } else {
