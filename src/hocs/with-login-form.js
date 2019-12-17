@@ -1,76 +1,145 @@
-import React, {PureComponent} from 'react';
+import React from "react";
+import {compose} from "recompose";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {withRouter} from 'react-router-dom';
 
+import {getAuthStatus} from "../selectors/index";
 import {Operation as AuthOperation} from './../reducer/authorization/authorization';
-import {connect} from 'react-redux';
 
-const withLoginForm = (Component) => {
-  class WithLoginForm extends PureComponent {
+const EMAIL_REGEX = RegExp(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+const ErrorText = {
+  EMAIL: `Please enter a valid email address.`,
+  PASSWORD: `Please enter a valid password.`
+};
+
+const InputName = {
+  EMAIl: `email`,
+  PASSWORD: `password`
+};
+
+const validateForm = (form, errors) => {
+  const nonNullFields = Object.values(form).every((val) => val.length);
+  const nonErrors = !Object.values(errors).some((val) => val.length);
+  return nonErrors && nonNullFields;
+};
+
+const withAuthSubmit = (Component) => {
+  class WithAuthSubmit extends React.PureComponent {
     constructor(props) {
       super(props);
 
+      this._handleSubmit = this._handleSubmit.bind(this);
+      this._handleChange = this._handleChange.bind(this);
+
       this.state = {
-        email: ``,
-        password: ``
+        formData: {
+          email: ``,
+          password: ``,
+        },
+        errors: {
+          email: ``,
+          password: ``,
+        },
+        isValid: false,
       };
-
-      this.handleEmailInput = this.handleEmailInput.bind(this);
-      this.handlePasswordInput = this.handlePasswordInput.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleEmailInput(evt) {
-      this.setState({
-        email: evt.currentTarget.value
+    _handleChange(evt) {
+      const {name, value} = evt.target;
+      const errors = Object.assign({}, this.state.errors);
+
+      switch (name) {
+        case InputName.EMAIl:
+          errors.email = EMAIL_REGEX.test(value) ? `` : ErrorText.EMAIL;
+          break;
+        case InputName.PASSWORD:
+          errors.password = value.length <= 3 ? ErrorText.PASSWORD : ``;
+          break;
+        default:
+          break;
+      }
+
+      this.setState((prevState) => {
+        const formData = Object.assign({}, prevState.formData);
+        formData[name] = value;
+
+        return {
+          formData,
+          errors,
+          isValid: validateForm(formData, errors)
+        };
       });
     }
 
-    handlePasswordInput(evt) {
-      this.setState({
-        password: evt.currentTarget.value
-      });
-    }
-
-    handleSubmit(evt) {
-      const {history} = this.props;
+    _handleSubmit(evt) {
       evt.preventDefault();
+      const {onAuthorizeUser, history} = this.props;
+      const {formData, isValid} = this.state;
+      if (!isValid) {
+        return;
+      }
 
-      this.props.onAuthorize({
-        email: this.state.email,
-        password: this.state.password
-      });
-
-      history.push(`/`);
+      onAuthorizeUser({
+        email: formData.email,
+        password: formData.password
+      })
+        .then((data) => {
+          if (data) {
+            history.goBack();
+          }
+        })
+        .catch(() => {
+          return null;
+        });
     }
 
     render() {
-      return (
-        <Component
-          onEmailInput={this.handleEmailInput}
-          onPasswordInput={this.handlePasswordInput}
-          onSubmit={this.handleSubmit}
-        />
-      );
+      const {errors, isValid, formData} = this.state;
+
+      return <Component
+        {...this.props}
+        formData={formData}
+        errors={errors}
+        isValid={isValid}
+        onChange={this._handleChange}
+        onSubmit={this._handleSubmit}
+      />;
     }
   }
 
-  WithLoginForm.propTypes = {
-    onAuthorize: PropTypes.func,
-    history: PropTypes.object.isRequired
+  WithAuthSubmit.defaultProps = {
+    onAuthorizeUser: () => {},
+    authorized: false,
+    history: {}
   };
 
-  WithLoginForm.defaultProps = {
-    onAuthorize: () => {}
+  WithAuthSubmit.propTypes = {
+    onAuthorizeUser: PropTypes.func.isRequired,
+    authorized: PropTypes.bool.isRequired,
+    history: PropTypes.shape({
+      goBack: PropTypes.func
+    }),
   };
 
-  const mapDispatchToProps = (dispatch) => ({
-    onAuthorize: (data) => {
-      dispatch(AuthOperation.login(data));
-    }
-  });
+  const displayName = Component.displayName || Component.name;
+  WithAuthSubmit.displayName = `WithAuthSubmit(${displayName})`;
 
-  return connect(null, mapDispatchToProps)(withRouter(WithLoginForm));
+  return WithAuthSubmit;
 };
 
-export default withLoginForm;
+const mapStateToProps = (state) => ({
+  authorized: getAuthStatus(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onAuthorizeUser: (data) => {
+    dispatch(AuthOperation.login(data));
+  }
+});
+
+export {withAuthSubmit};
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthSubmit
+);

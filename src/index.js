@@ -12,7 +12,7 @@ import reducer from './reducer/reducer';
 import {Operation} from './reducer/films/films';
 import {Operation as OperationAuth, ActionCreator as ActionCreatorAuth} from './reducer/authorization/authorization';
 import {Operation as OperationFavorites} from './reducer/favorites/favorites';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import history from './history';
 
 const init = () => {

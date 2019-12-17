@@ -18,7 +18,6 @@ const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withPrivateRoute(withFormReview(AddReview));
 const MyListWrapped = withPrivateRoute(MyList);
 
-
 const App = (props) => {
   const {films} = props;
 
