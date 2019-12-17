@@ -2,6 +2,7 @@ import React from 'react';
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import PropTypes from "prop-types";
 import withActiveItem from "../../hocs/with-active-item";
+import {MovieType} from "../../utils";
 
 const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
@@ -16,7 +17,7 @@ const CatalogLikeThis = (props) => {
 };
 
 CatalogLikeThis.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired
+  films: PropTypes.arrayOf(MovieType)
 };
 
 export default CatalogLikeThis;

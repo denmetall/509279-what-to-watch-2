@@ -1,4 +1,6 @@
 import {getAdaptedMovies} from "../../api/adapter";
+import {startLoading, stopLoading} from "react-redux-hoc-loader";
+import {LoaderName} from "../../utils";
 
 const initialState = [];
 
@@ -15,10 +17,15 @@ const ActionCreator = {
 
 const Operation = {
   loadFavorites: () => (dispatch, _, api) => {
+    dispatch(startLoading(LoaderName.FAVORITE));
 
     return api.get(`/favorite`)
       .then((response) => {
         dispatch(ActionCreator.loadFavorites(response.data));
+        dispatch(stopLoading(LoaderName.FAVORITE));
+      })
+      .catch(() => {
+        dispatch(stopLoading(LoaderName.FAVORITE));
       });
   }
 };

@@ -7,6 +7,7 @@ import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 import PropTypes from 'prop-types';
+import {MovieType} from "../../utils";
 
 const MovieCardsListWrapped = withActiveItem(MovieCardsList);
 
@@ -42,7 +43,7 @@ MyList.defaultProps = {
 };
 
 MyList.propTypes = {
-  films: PropTypes.array.isRequired
+  films: PropTypes.arrayOf(MovieType)
 };
 
 export {MyList};

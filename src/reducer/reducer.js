@@ -5,6 +5,7 @@ import {reducer as films} from './films/films';
 import {reducer as authorization} from './authorization/authorization';
 import {reducer as reviews} from './reviews/reviews';
 import {reducer as favorites} from './favorites/favorites';
+import {reducer as loadersReducer} from "react-redux-hoc-loader";
 
 export default combineReducers(
     {
@@ -12,6 +13,7 @@ export default combineReducers(
       films,
       authorization,
       reviews,
-      favorites
+      favorites,
+      loaders: loadersReducer,
     }
 );

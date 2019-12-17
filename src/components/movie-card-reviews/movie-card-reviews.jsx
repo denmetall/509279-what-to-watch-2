@@ -4,6 +4,7 @@ import Review from "../review/review.jsx";
 import {Operations as ReviewOperations} from "../../reducer/reviews/reviews";
 import {getReviews} from "../../selectors";
 import PropTypes from 'prop-types';
+import {ReviewType} from "../../utils";
 
 class MovieCardReviews extends PureComponent {
   constructor(props) {
@@ -20,7 +21,9 @@ class MovieCardReviews extends PureComponent {
 
     return <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {reviews.map((review) => {
+        {reviews.sort((a, b) => {
+          return new Date(b.date) - new Date(a.date);
+        }).map((review) => {
           return <Review key={review.id} review={review}/>;
         })}
       </div>
@@ -55,7 +58,7 @@ MovieCardReviews.defaultProps = {
 MovieCardReviews.propTypes = {
   onLoadReviews: PropTypes.func.isRequired,
   filmId: PropTypes.number.isRequired,
-  reviews: PropTypes.array.isRequired
+  reviews: PropTypes.arrayOf(ReviewType)
 };
 
 export {MovieCardReviews};

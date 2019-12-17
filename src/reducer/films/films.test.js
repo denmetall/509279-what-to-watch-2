@@ -1,10 +1,10 @@
 import {reducer, ActionType} from "./films";
-import {MOVIES_COUNT_DEFAULT, MOVIES_COUNT_STEP} from "../../utils";
+import {MoviesCount} from "../../utils";
 
 const initialState = {
   films: [],
   promoMovie: {},
-  moviesCounter: MOVIES_COUNT_DEFAULT
+  moviesCounter: MoviesCount.DEFAULT
 };
 
 const films = [{
@@ -79,12 +79,12 @@ describe(`films reducer works correctly`, () => {
   it(`INCREASE_MOVIES_COUNTER`, () => {
     const action = {
       type: ActionType.INCREASE_MOVIES_COUNTER,
-      payload: MOVIES_COUNT_STEP,
+      payload: MoviesCount.STEP,
     };
 
     expect(reducer(initialState, action)).toEqual(
         Object.assign({}, initialState, {
-          moviesCounter: MOVIES_COUNT_DEFAULT + MOVIES_COUNT_STEP,
+          moviesCounter: MoviesCount.DEFAULT + MoviesCount.STEP,
         }));
   });
 });

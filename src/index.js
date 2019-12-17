@@ -8,17 +8,15 @@ import {compose} from "recompose";
 import createAPI from './api/api';
 
 import App from "./components/app/app.jsx";
-import reducer from './reducer/index';
+import reducer from './reducer/reducer';
 import {Operation} from './reducer/films/films';
-import {Operation as OperationAuth} from './reducer/authorization/authorization';
+import {Operation as OperationAuth, ActionCreator as ActionCreatorAuth} from './reducer/authorization/authorization';
 import {Operation as OperationFavorites} from './reducer/favorites/favorites';
-import {BrowserRouter as Router} from 'react-router-dom';
-
+import {Router} from 'react-router-dom';
 import history from './history';
 
 const init = () => {
-  const api = createAPI(() => history.push(`/login`));
-
+  const api = createAPI(() => store.dispatch(ActionCreatorAuth.requireAuthorization(false)));
   const store = createStore(
       reducer,
       compose(
@@ -33,7 +31,7 @@ const init = () => {
   store.dispatch(Operation.getPromoMovie());
 
   ReactDOM.render(<Provider store={store}>
-    <Router>
+    <Router history={history}>
       <App />
     </Router>
   </Provider>,

@@ -3,11 +3,10 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getAuthorizationRequired, getUserData} from "../../selectors";
 import PropTypes from "prop-types";
-import {BASE_URL_SERVER} from "../../utils";
+import {BASE_URL_SERVER, UserType} from "../../utils";
 
 const UserBlock = (props) => {
   const {isAuthorizationRequired, userData} = props;
-
   return <div className="user-block">
     {isAuthorizationRequired ?
       (<Link to="/my-list" className="user-block__avatar">
@@ -34,7 +33,7 @@ UserBlock.defaultProps = {
 
 UserBlock.propTypes = {
   isAuthorizationRequired: PropTypes.bool,
-  userData: PropTypes.object
+  userData: UserType
 };
 
 export {UserBlock};

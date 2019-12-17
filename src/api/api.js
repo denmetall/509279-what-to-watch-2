@@ -1,6 +1,11 @@
 import axios from 'axios';
 import {API} from '../utils';
 
+const HTTP_STATUS = {
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403
+};
+
 const createAPI = (onForbidden) => {
 
   const api = axios.create({
@@ -11,13 +16,19 @@ const createAPI = (onForbidden) => {
 
   const onSuccess = (response) => response;
   const onFail = (error) => {
-    if (error.response.status === 401 || error.response.status === 403) {
-      onForbidden();
+    switch (error.response.status) {
+      case HTTP_STATUS.UNAUTHORIZED:
+        if (typeof onForbidden === `function`) {
+          onForbidden();
+        }
+        break;
 
-      return;
+      case HTTP_STATUS.FORBIDDEN:
+        history.push(`/login`);
+        break;
     }
 
-    throw error;
+    return error;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

@@ -12,11 +12,11 @@ import {connect} from "react-redux";
 import MyList from "../my-list/my-list.jsx";
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route.jsx';
 import PropTypes from 'prop-types';
+import {MovieType} from "../../utils";
 
 const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withPrivateRoute(withFormReview(AddReview));
 const MyListWrapped = withPrivateRoute(MyList);
-
 
 const App = (props) => {
   const {films} = props;
@@ -65,11 +65,11 @@ const mapStateToProps = (state) => {
 };
 
 App.defaultProps = {
-  films: {}
+  films: []
 };
 
 App.propTypes = {
-  films: PropTypes.array.isRequired
+  films: PropTypes.arrayOf(MovieType)
 };
 
 export {App};

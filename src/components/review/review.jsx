@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from "moment/moment";
 import 'moment-duration-format';
-import PropTypes from 'prop-types';
+import {ReviewType} from "../../utils";
 
 const Review = (props) => {
   const {review} = props;
@@ -34,7 +34,7 @@ Review.defaultProps = {
 };
 
 Review.propTypes = {
-  review: PropTypes.object.isRequired
+  review: ReviewType
 };
 
 export default Review;
