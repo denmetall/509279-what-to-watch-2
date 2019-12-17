@@ -2,6 +2,7 @@ import React from "react";
 import {compose} from "recompose";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import {bindActionCreators} from "redux";
 
 import {getAuthStatus} from "../selectors/index";
 import {Operation as AuthOperation} from './../reducer/authorization/authorization';
@@ -132,9 +133,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onAuthorizeUser: (data) => {
-    dispatch(AuthOperation.login(data));
-  }
+  onAuthorizeUser: bindActionCreators(AuthOperation.login, dispatch)
 });
 
 export {withAuthSubmit};
