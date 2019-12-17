@@ -1,3 +1,6 @@
+import {startLoading, stopLoading} from "react-redux-hoc-loader";
+import {LoaderName} from "../../utils";
+
 const initialState = [];
 
 const ActionType = {
@@ -18,17 +21,28 @@ const ActionCreator = {
 
 const Operations = {
   loadReviews: (movieId) => (dispatch, _, api) => {
+    dispatch(startLoading(LoaderName.COMMENTS));
     return api.get(`/comments/${movieId}`)
       .then((response) => {
         const reviews = response.data;
         dispatch(ActionCreator.loadReviews(reviews));
+        dispatch(stopLoading(LoaderName.COMMENTS));
+      })
+      .catch(() => {
+        dispatch(stopLoading(LoaderName.COMMENTS));
       });
   },
   addReview: (rating, comment, movieId) => (dispatch, _, api) => {
+    dispatch(startLoading(LoaderName.REVIEW));
     return api.post(`/comments/${movieId}`, {rating, comment})
       .then((response) => {
         const reviews = response.data;
         dispatch(ActionCreator.loadReviews(reviews));
+        dispatch(stopLoading(LoaderName.REVIEW));
+      })
+      .catch((error) => {
+        dispatch(stopLoading(LoaderName.REVIEW));
+        throw new Error(`${error} on add review`);
       });
   }
 };

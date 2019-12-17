@@ -1,5 +1,6 @@
 import {getAdaptedMovies, getAdaptedMovie} from "../../api/adapter";
-import {MOVIES_COUNT_DEFAULT} from "../../utils";
+import {startLoading, stopLoading} from "react-redux-hoc-loader";
+import {MOVIES_COUNT_DEFAULT, LoaderName} from "../../utils";
 
 const initialState = {
   films: [],
@@ -30,15 +31,25 @@ const ActionCreator = {
 
 const Operation = {
   getFilms: () => (dispatch, _getState, api) => {
+    dispatch(startLoading(LoaderName.MOVIES));
     return api.get(`/films`)
       .then((response) => {
         dispatch(ActionCreator.getFilms(response.data));
+        dispatch(stopLoading(LoaderName.MOVIES));
+      })
+      .catch(() => {
+        dispatch(stopLoading(LoaderName.MOVIES));
       });
   },
   getPromoMovie: () => (dispatch, _getState, api) => {
+    dispatch(startLoading(LoaderName.PROMO));
     return api.get(`/films/promo`)
       .then((response) => {
         dispatch(ActionCreator.getPromoMovie(response.data));
+        dispatch(stopLoading(LoaderName.PROMO));
+      })
+      .catch(() => {
+        dispatch(stopLoading(LoaderName.PROMO));
       });
   }
 };

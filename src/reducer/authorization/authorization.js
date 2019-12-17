@@ -1,4 +1,6 @@
 import {getAdaptedUser} from "../../api/user-adapter";
+import {startLoading, stopLoading} from "react-redux-hoc-loader";
+import {LoaderName} from "../../utils";
 
 const initialState = {
   isAuthorizationRequired: false,
@@ -27,19 +29,27 @@ const ActionCreator = {
 
 const Operation = {
   checkAuth: () => (dispatch, _getState, api) => {
+    dispatch(startLoading(LoaderName.AUTH));
     return api.get(`/login`)
-      .then(({status, data}) => {
-        if (status === 200) {
-          dispatch(ActionCreator.requireAuthorization(true));
-          dispatch(ActionCreator.setUser(getAdaptedUser(data)));
-        }
+      .then(({data}) => {
+        dispatch(ActionCreator.requireAuthorization(true));
+        dispatch(ActionCreator.setUser(getAdaptedUser(data)));
+        dispatch(stopLoading(LoaderName.AUTH));
+      })
+      .catch(() => {
+        dispatch(stopLoading(LoaderName.AUTH));
       });
   },
   login: (dataForm) => (dispatch, _getState, api) => {
+    dispatch(startLoading(LoaderName.LOGIN));
     return api.post(`/login`, dataForm)
       .then(({data}) => {
         dispatch(ActionCreator.requireAuthorization(true));
         dispatch(ActionCreator.setUser(getAdaptedUser(data)));
+        dispatch(stopLoading(LoaderName.LOGIN));
+      })
+      .catch(() => {
+        dispatch(stopLoading(LoaderName.LOGIN));
       });
   },
 };

@@ -17,11 +17,22 @@ const MOVIES_COUNT_STEP = 20;
 
 const DEFAULT_FILTER = `All genres`;
 
+const LoaderName = {
+  MOVIES: `movies`,
+  PROMO: `promo`,
+  COMMENTS: `comments`,
+  REVIEW: `review`,
+  FAVORITE: `favorite`,
+  AUTH: `auth`,
+  LOGIN: `login`
+};
+
 export {
   Tabs,
   DEFAULT_FILTER,
   MOVIES_COUNT_DEFAULT,
   MOVIES_COUNT_STEP,
   API,
-  BASE_URL_SERVER
+  BASE_URL_SERVER,
+  LoaderName
 };
