@@ -1,6 +1,6 @@
 import React from 'react';
 import MovieCardButtons from "../movie-card-buttons/movie-card-buttons.jsx";
-import PropTypes from "prop-types";
+import {MovieType} from "../../utils";
 
 const MovieCardDesc = (props) => {
   const {film} = props;
@@ -18,7 +18,7 @@ const MovieCardDesc = (props) => {
 };
 
 MovieCardDesc.propTypes = {
-  film: PropTypes.object
+  film: MovieType
 };
 
 export default MovieCardDesc;

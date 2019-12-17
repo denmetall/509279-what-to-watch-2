@@ -9,6 +9,7 @@ import {getMovieById, getAuthorizationRequired} from "../../selectors";
 import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import Logo from "../logo/logo.jsx";
 import {UserBlock} from "../user-block/user-block.jsx";
+import {MovieType, Ratings} from "../../utils";
 
 const AddReview = (props) => {
   if (!props.isAuthorizationRequired) {
@@ -35,7 +36,13 @@ const AddReview = (props) => {
     history
   } = props;
 
-  const ratings = [1, 2, 3, 4, 5];
+  const ratings = [
+    Ratings.ONE,
+    Ratings.TWO,
+    Ratings.THREE,
+    Ratings.FOUR,
+    Ratings.FIVE
+  ];
 
   const onSubmitHandler = (evt) => {
     evt.preventDefault();
@@ -145,7 +152,7 @@ AddReview.defaultProps = {
 };
 
 AddReview.propTypes = {
-  movie: PropTypes.object,
+  movie: MovieType,
   comment: PropTypes.string,
   isCommentValid: PropTypes.bool,
   commentErrorMessage: PropTypes.string,

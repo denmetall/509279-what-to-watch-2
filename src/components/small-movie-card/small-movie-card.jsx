@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import VideoPlayer from "../video-player/video-player.jsx";
 import {withRouter} from 'react-router-dom';
+import {MovieType} from "../../utils";
 
 const SmallMovieCard = (props) => {
   const {film, onMouseOverCard, onMouseOutCard, isPlaying, history} = props;
@@ -28,7 +29,7 @@ const SmallMovieCard = (props) => {
 };
 
 SmallMovieCard.propTypes = {
-  film: PropTypes.object.isRequired,
+  film: MovieType,
   onMouseOverCard: PropTypes.func.isRequired,
   onMouseOutCard: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,

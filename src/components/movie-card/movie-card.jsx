@@ -2,10 +2,10 @@ import React from 'react';
 import Header from "../header/header.jsx";
 import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import MovieCardDesc from "../movie-card-desc/movie-card-desc.jsx";
-import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 import {getPromoMovie} from "../../selectors";
+import {MovieType} from "../../utils";
 
 const MovieCard = (props) => {
   const {promoMovie} = props;
@@ -45,7 +45,7 @@ MovieCard.defaultProps = {
 };
 
 MovieCard.propTypes = {
-  promoMovie: PropTypes.object.isRequired
+  promoMovie: MovieType
 };
 
 export {MovieCard};

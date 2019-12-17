@@ -5,6 +5,7 @@ import Footer from "../footer/footer.jsx";
 import CatalogLikeThis from "../catalog-like-this/catalog-like-this.jsx";
 import {connect} from 'react-redux';
 import {getFilms, getLikeFilms, getMovieById} from "../../selectors";
+import {MovieType} from "../../utils";
 
 const MovieDetails = (props) => {
   const {filmsLike, films, filmId} = props;
@@ -37,9 +38,9 @@ const mapStateToProps = (state, {filmId}) => {
 };
 
 MovieDetails.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  films: PropTypes.arrayOf(MovieType),
   filmId: PropTypes.number.isRequired,
-  filmsLike: PropTypes.arrayOf(PropTypes.object).isRequired
+  filmsLike: PropTypes.arrayOf(MovieType)
 };
 
 export {MovieDetails};

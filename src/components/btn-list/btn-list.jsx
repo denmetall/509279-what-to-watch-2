@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {MovieType} from "../../utils";
 
 const BtnList = (props) => {
   const {film, onClick, isLoading, onPost} = props;
@@ -35,7 +36,7 @@ const BtnList = (props) => {
 };
 
 BtnList.propTypes = {
-  film: PropTypes.object.isRequired,
+  film: MovieType,
   onClick: PropTypes.func,
   isLoading: PropTypes.func,
   onPost: PropTypes.func.isRequired,

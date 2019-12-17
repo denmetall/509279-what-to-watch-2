@@ -1,12 +1,9 @@
 import React, {PureComponent} from 'react';
-
-const MIN_COMMENT_LENGTH = 50;
-const MAX_COMMENT_LENGTH = 400;
-const MAX_RATING = 5;
+import {CommentLength, MAX_RATING} from "../utils";
 
 const ratingErrorMessage = `You should chose the rating of the movie.`;
 const commentErrorMessage = `
-  The text field may be greater than ${MIN_COMMENT_LENGTH} characters and not be greater than ${MAX_COMMENT_LENGTH} characters.
+  The text field may be greater than ${CommentLength.MIN} characters and not be greater than ${CommentLength.MAX} characters.
 `;
 
 const withFormReview = (Component) => {
@@ -55,7 +52,7 @@ const withFormReview = (Component) => {
 
       switch (name) {
         case `comment`:
-          isCommentValid = value.length >= MIN_COMMENT_LENGTH && value.length <= MAX_COMMENT_LENGTH;
+          isCommentValid = value.length >= CommentLength.MIN && value.length <= CommentLength.MAX;
           break;
         case `rating`:
           isRatingValid = value > 0 && value <= MAX_RATING;

@@ -1,6 +1,7 @@
 import React from 'react';
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import PropTypes from 'prop-types';
+import {MovieType} from "../../utils";
 
 const MovieCardsList = (props) => {
   const {films, onMouseOverCard, onMouseOutCard, activeMovieId} = props;
@@ -19,7 +20,7 @@ const MovieCardsList = (props) => {
 };
 
 MovieCardsList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  films: PropTypes.arrayOf(MovieType),
   onMouseOverCard: PropTypes.func.isRequired,
   onMouseOutCard: PropTypes.func.isRequired,
   activeMovieId: PropTypes.number

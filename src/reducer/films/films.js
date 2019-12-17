@@ -1,11 +1,11 @@
 import {getAdaptedMovies, getAdaptedMovie} from "../../api/adapter";
 import {startLoading, stopLoading} from "react-redux-hoc-loader";
-import {MOVIES_COUNT_DEFAULT, LoaderName} from "../../utils";
+import {MoviesCount, LoaderName} from "../../utils";
 
 const initialState = {
   films: [],
   promoMovie: {},
-  moviesCounter: MOVIES_COUNT_DEFAULT
+  moviesCounter: MoviesCount.DEFAULT
 };
 
 const ActionType = {

@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import {getAuthorizationRequired} from "../../selectors";
 import {connect} from "react-redux";
 import withApi from "../../hocs/with-api/with-api.jsx";
+import {MovieType} from "../../utils";
 
 const BtnListWrapped = withApi(BtnList);
 
@@ -29,7 +30,7 @@ class MovieCardButtons extends PureComponent {
 MovieCardButtons.propTypes = {
   movieCardFool: PropTypes.bool,
   isAuthorizationRequired: PropTypes.bool.isRequired,
-  movie: PropTypes.object.isRequired
+  movie: MovieType
 };
 
 MovieCardButtons.defaultProps = {

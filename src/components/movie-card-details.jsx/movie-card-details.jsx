@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
-import PropTypes from "prop-types";
 import moment from "moment/moment";
 import 'moment-duration-format';
+import {MovieType} from "../../utils";
 
 const MovieCardDetails = (props) => {
   const {film} = props;
@@ -41,7 +41,7 @@ const MovieCardDetails = (props) => {
 };
 
 MovieCardDetails.propTypes = {
-  film: PropTypes.object
+  film: MovieType
 };
 
 export default MovieCardDetails;

@@ -8,7 +8,7 @@ import {compose} from "recompose";
 import createAPI from './api/api';
 
 import App from "./components/app/app.jsx";
-import reducer from './reducer/index';
+import reducer from './reducer/reducer';
 import {Operation} from './reducer/films/films';
 import {Operation as OperationAuth} from './reducer/authorization/authorization';
 import {Operation as OperationFavorites} from './reducer/favorites/favorites';

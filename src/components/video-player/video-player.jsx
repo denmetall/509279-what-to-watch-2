@@ -42,10 +42,18 @@ class VideoPlayer extends PureComponent {
     const video = this._videoRef.current;
 
     if (isPlaying) {
-      video.play();
+      const playPromise = video.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          video.play();
+        })
+          .catch(() => {
+            video.load();
+          });
+      }
+
     } else {
-      video.pause();
-      video.currentTime = 0;
       video.load();
     }
   }
