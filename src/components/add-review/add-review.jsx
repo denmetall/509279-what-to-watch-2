@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {SignIn} from "../sign-in/sign-in.jsx";
 import {withRouter} from 'react-router-dom';
 
 import {Operations as ReviewOperations} from '../../reducer/reviews/reviews';
@@ -12,10 +11,6 @@ import {UserBlock} from "../user-block/user-block.jsx";
 import {MovieType, Ratings} from "../../utils";
 
 const AddReview = (props) => {
-  if (!props.isAuthorizationRequired) {
-    return <SignIn/>;
-  }
-
   if (!props.movie) {
     return null;
   }

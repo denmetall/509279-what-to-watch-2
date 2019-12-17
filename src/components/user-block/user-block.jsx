@@ -7,7 +7,6 @@ import {BASE_URL_SERVER, UserType} from "../../utils";
 
 const UserBlock = (props) => {
   const {isAuthorizationRequired, userData} = props;
-
   return <div className="user-block">
     {isAuthorizationRequired ?
       (<Link to="/my-list" className="user-block__avatar">
