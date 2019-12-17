@@ -84,6 +84,21 @@ const Ratings = {
   FIVE: 5
 };
 
+const RatingText = {
+  AWESOME: `Awesome`,
+  VERY_GOOD: `Very Good`,
+  GOOD: `Good`,
+  NORMAL: `Normal`,
+  BAD: `Bad`
+};
+
+const BreakpointForTextRating = {
+  AWESOME: 10,
+  VERY_GOOD: 8,
+  GOOD: 5,
+  NORMAL: 3
+};
+
 export {
   Tabs,
   DEFAULT_FILTER,
@@ -96,5 +111,7 @@ export {
   CommentLength,
   MAX_RATING,
   MoviesCount,
-  Ratings
+  Ratings,
+  RatingText,
+  BreakpointForTextRating
 };

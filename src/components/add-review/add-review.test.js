@@ -2,6 +2,7 @@ import React from 'react';
 import {AddReview} from './add-review.jsx';
 import renderer from 'react-test-renderer';
 import filmsMock from '../../mocks/films';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 it(`Components AddReview renders correctly`, () => {
   const props = {
@@ -23,7 +24,7 @@ it(`Components AddReview renders correctly`, () => {
   };
 
   const tree = renderer
-    .create(<AddReview {...props}/>)
+    .create(<Router><AddReview {...props}/></Router>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -86,7 +86,7 @@ describe(`Operation works correctly`, () => {
 
     return loadFavorites(dispatch, {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.LOAD_FAVORITES,
           payload: [{fake: true}]
         });

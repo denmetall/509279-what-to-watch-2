@@ -52,7 +52,7 @@ describe(`Operations works correctly`, () => {
 
     return loadReviews(dispatch, {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.LOAD_REVIEWS,
           payload: [{fake: true}]
         });
