@@ -21,7 +21,9 @@ class MovieCardReviews extends PureComponent {
 
     return <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {reviews.map((review) => {
+        {reviews.sort((a, b) => {
+          return new Date(b.date) - new Date(a.date);
+        }).map((review) => {
           return <Review key={review.id} review={review}/>;
         })}
       </div>
