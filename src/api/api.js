@@ -1,10 +1,12 @@
 import axios from 'axios';
 import {API} from '../utils';
 import {ActionCreator} from "../reducer/authorization/authorization";
+import {ActionCreator as ActionCreatorNetworkFailed} from "../reducer/network-failed/network-failed";
 
 const HTTP_STATUS = {
   UNAUTHORIZED: 401,
-  FORBIDDEN: 403
+  FORBIDDEN: 403,
+  NETWORK_FAILED: 404
 };
 
 const createAPI = (dispatch) => {
@@ -18,11 +20,12 @@ const createAPI = (dispatch) => {
   const onSuccess = (response) => response;
   const onFail = (error) => {
     if (error && error.response && error.response.status) {
-      switch (error.response.status) {
-        case HTTP_STATUS.UNAUTHORIZED || HTTP_STATUS.FORBIDDEN:
-          dispatch(ActionCreator.resetUser());
-          dispatch(ActionCreator.requireAuthorization(false));
-          break;
+      if (error.response.status === HTTP_STATUS.UNAUTHORIZED || error.response.status === HTTP_STATUS.FORBIDDEN) {
+        dispatch(ActionCreator.resetUser());
+        dispatch(ActionCreator.requireAuthorization(false));
+      }
+      if (error.response.status >= HTTP_STATUS.NETWORK_FAILED) {
+        dispatch(ActionCreatorNetworkFailed.showError(error.response.status));
       }
     }
 

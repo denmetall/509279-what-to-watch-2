@@ -69,3 +69,5 @@ export const getAuthStatus = createSelector(
       return Object.keys(user).length > 0;
     }
 );
+
+export const getNetworkFailed = (state) => state.networkFailed;

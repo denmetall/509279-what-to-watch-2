@@ -7,7 +7,7 @@ import AddReview from "../add-review/add-review.jsx";
 import withFormReview from '../../hocs/with-form-review';
 import withVideo from '../../hocs/with-video/with-video.jsx';
 import MoviePlayer from '../movie-player/movie-player.jsx';
-import {getFilms} from "../../selectors";
+import {getFilms, getNetworkFailed} from "../../selectors";
 import {connect} from "react-redux";
 import MyList from "../my-list/my-list.jsx";
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route.jsx';
@@ -21,7 +21,10 @@ const MyListWrapped = withPrivateRoute(MyList);
 const SignInWrapped = withLoginForm(SignIn);
 
 const App = (props) => {
-  const {films} = props;
+  const {films, networkFailed} = props;
+  if (networkFailed) {
+    return <h1>Ошибка: {networkFailed}</h1>;
+  }
 
   if (!films.length) {
     return null;
@@ -62,16 +65,19 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    films: getFilms(state)
+    films: getFilms(state),
+    networkFailed: getNetworkFailed(state)
   };
 };
 
 App.defaultProps = {
-  films: []
+  films: [],
+  networkFailed: false
 };
 
 App.propTypes = {
-  films: PropTypes.arrayOf(MovieType)
+  films: PropTypes.arrayOf(MovieType),
+  networkFailed: PropTypes.any
 };
 
 export {App};

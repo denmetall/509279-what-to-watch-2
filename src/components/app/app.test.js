@@ -16,7 +16,8 @@ it(`Components App renders correctly`, () => {
   );
   const options = {createNodeMock};
   const props = {
-    films: filmsMock
+    films: filmsMock,
+    networkFailed: false
   };
 
   const tree = renderer
