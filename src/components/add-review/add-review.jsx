@@ -7,7 +7,7 @@ import {Operations as ReviewOperations} from '../../reducer/reviews/reviews';
 import {getMovieById, getAuthorizationRequired} from "../../selectors";
 import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
 import Logo from "../logo/logo.jsx";
-import {UserBlock} from "../user-block/user-block.jsx";
+import UserBlock from "../user-block/user-block.jsx";
 import {MovieType, Ratings} from "../../utils";
 
 const AddReview = (props) => {
