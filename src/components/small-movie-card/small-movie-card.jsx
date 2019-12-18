@@ -13,7 +13,7 @@ const SmallMovieCard = (props) => {
     className="small-movie-card catalog__movies-card"
     onMouseOver={() => onMouseOverCard(film)}
     onMouseOut={() => onMouseOutCard()}
-    onClick={() => history.push(`/film/${id}`)}
+    onClick={() => history.push(`/films/${id}`)}
   >
     <div className="small-movie-card__image">
       <VideoPlayer
@@ -23,7 +23,7 @@ const SmallMovieCard = (props) => {
       />
     </div>
     <h3 className="small-movie-card__title">
-      <Link to={`/film/${id}`} className="small-movie-card__link">{name}</Link>
+      <Link to={`/films/${id}`} className="small-movie-card__link">{name}</Link>
     </h3>
   </article>;
 };

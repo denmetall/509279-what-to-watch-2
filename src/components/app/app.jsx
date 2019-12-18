@@ -33,12 +33,12 @@ const App = (props) => {
     </Route>
     <Route path="/login" exact component={SignInWrapped}/>
 
-    <Route path="/film/:id" exact render={({match}) => {
+    <Route path="/films/:id" exact render={({match}) => {
       return <MovieDetails filmId={+match.params.id}/>;
     }}
     />
 
-    <Route path="/film/:id/show" exact render={({match}) => {
+    <Route path="/films/:id/show" exact render={({match}) => {
       const currentFilm = films.find((film) => film.id === +match.params.id);
 
       return <MoviePlayerWrapped
@@ -48,7 +48,7 @@ const App = (props) => {
     }}
     />
 
-    <Route path="/film/:id/review" exact render={(prop) => {
+    <Route path="/films/:id/review" exact render={(prop) => {
       return <AddReviewWrapped {...prop}/>;
     }}
     />
