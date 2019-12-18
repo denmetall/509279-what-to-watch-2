@@ -7,8 +7,8 @@ exports[`Components MovieCardsList renders correctly 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -39,8 +39,8 @@ exports[`Components MovieCardsList renders correctly 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -71,8 +71,8 @@ exports[`Components MovieCardsList renders correctly 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -103,8 +103,8 @@ exports[`Components MovieCardsList renders correctly 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -135,8 +135,8 @@ exports[`Components MovieCardsList renders correctly 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"

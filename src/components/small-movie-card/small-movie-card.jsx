@@ -11,8 +11,8 @@ const SmallMovieCard = (props) => {
 
   return <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={() => onMouseOverCard(film)}
-    onMouseOut={() => onMouseOutCard()}
+    onMouseEnter={() => onMouseOverCard(film)}
+    onMouseLeave={() => onMouseOutCard()}
     onClick={() => history.push(`/films/${id}`)}
   >
     <div className="small-movie-card__image">
