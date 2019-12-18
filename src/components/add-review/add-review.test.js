@@ -4,7 +4,16 @@ import renderer from 'react-test-renderer';
 import filmsMock from '../../mocks/films';
 import {BrowserRouter as Router} from 'react-router-dom';
 
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+import reducer from "../../reducer/reducer";
+
 it(`Components AddReview renders correctly`, () => {
+  const store = createStore(
+      reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+  );
+
   const props = {
     movie: filmsMock[0],
     comment: ``,
@@ -24,7 +33,7 @@ it(`Components AddReview renders correctly`, () => {
   };
 
   const tree = renderer
-    .create(<Router><AddReview {...props}/></Router>)
+    .create(<Provider store={store}><Router><AddReview {...props}/></Router></Provider>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

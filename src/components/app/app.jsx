@@ -13,10 +13,12 @@ import MyList from "../my-list/my-list.jsx";
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route.jsx';
 import PropTypes from 'prop-types';
 import {MovieType} from "../../utils";
+import withLoginForm from "../../hocs/with-login-form";
 
 const MoviePlayerWrapped = withVideo(MoviePlayer);
 const AddReviewWrapped = withPrivateRoute(withFormReview(AddReview));
 const MyListWrapped = withPrivateRoute(MyList);
+const SignInWrapped = withLoginForm(SignIn);
 
 const App = (props) => {
   const {films} = props;
@@ -29,7 +31,7 @@ const App = (props) => {
     <Route path="/" exact>
       <MainPage/>
     </Route>
-    <Route path="/login" exact component={SignIn}/>
+    <Route path="/login" exact component={SignInWrapped}/>
 
     <Route path="/film/:id" exact render={({match}) => {
       return <MovieDetails filmId={+match.params.id}/>;

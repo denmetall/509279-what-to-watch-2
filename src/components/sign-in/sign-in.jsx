@@ -3,91 +3,74 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import Footer from "../footer/footer.jsx";
-import withLoginForm from "../../hocs/with-login-form";
 import Logo from "../logo/logo.jsx";
+import {Redirect} from "react-router-dom";
+import {connect} from "react-redux";
+import {getAuthStatus} from "../../selectors";
 
+const SignIn = (props) => {
+  const {onChange, onSubmit, errors, isValid, authorized} = props;
+  const emailClasses = classNames(`sign-in__field`, {'sign-in__field--error': errors.email.length});
+  const passwordClasses = classNames(`sign-in__field`, {'sign-in__field--error': errors.password.length});
 
-class SignIn extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  if (authorized) {
+    return <Redirect to="/"/>;
   }
 
-  componentDidMount() {
-    const {authorized, history} = this.props;
-    if (authorized) {
-      history.goBack();
-    }
-  }
+  return <div className="user-page">
 
-  componentDidUpdate() {
-    const {authorized, history} = this.props;
-    if (authorized) {
-      history.goBack();
-    }
-  }
+    <header className="page-header user-page__head">
+      <Logo/>
+      <h1 className="page-title user-page__title">Sign In</h1>
+    </header>
 
-  render() {
-    const {onChange, onSubmit, errors, isValid} = this.props;
-    const emailClasses = classNames(`sign-in__field`, {'sign-in__field--error': errors.email.length});
-    const passwordClasses = classNames(`sign-in__field`, {'sign-in__field--error': errors.password.length});
+    <div className="sign-in user-page__content">
+      <form action="#" className="sign-in__form">
 
-    return (
-      <div className="user-page">
+        {!isValid &&
+        <div className="sign-in__message">
+          <p>{errors.email || errors.password}</p>
+        </div>}
 
-        <header className="page-header user-page__head">
-          <Logo/>
-          <h1 className="page-title user-page__title">Sign In</h1>
-        </header>
-
-        <div className="sign-in user-page__content">
-          <form action="#" className="sign-in__form">
-
-            {!isValid &&
-            <div className="sign-in__message">
-              <p>{errors.email || errors.password}</p>
-            </div>}
-
-            <div className="sign-in__fields">
-              <div className={emailClasses}>
-                <input
-                  className="sign-in__input"
-                  type="email"
-                  placeholder="Email address"
-                  name="email"
-                  id="user-email"
-                  onChange={onChange}
-                />
-                <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
-              </div>
-              <div className={passwordClasses}>
-                <input
-                  className="sign-in__input"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  id="user-password"
-                  onChange={onChange}
-                />
-                <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
-              </div>
-            </div>
-            <div className="sign-in__submit">
-              <button
-                className="sign-in__btn"
-                type="submit"
-                onClick={onSubmit}
-                disabled={!isValid}
-              >
-                Sign in</button>
-            </div>
-          </form>
+        <div className="sign-in__fields">
+          <div className={emailClasses}>
+            <input
+              className="sign-in__input"
+              type="email"
+              placeholder="Email address"
+              name="email"
+              id="user-email"
+              onChange={onChange}
+            />
+            <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
+          </div>
+          <div className={passwordClasses}>
+            <input
+              className="sign-in__input"
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="user-password"
+              onChange={onChange}
+            />
+            <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
+          </div>
         </div>
+        <div className="sign-in__submit">
+          <button
+            className="sign-in__btn"
+            type="submit"
+            onClick={onSubmit}
+            disabled={!isValid}
+          >
+            Sign in</button>
+        </div>
+      </form>
+    </div>
 
-        <Footer/>
-      </div>
-    );
-  }
-}
+    <Footer/>
+  </div>;
+};
 
 SignIn.defaultProps = {
   formData: {},
@@ -95,8 +78,7 @@ SignIn.defaultProps = {
   onSubmit: () => {},
   errors: {},
   isValid: false,
-  authorized: false,
-  history: {}
+  authorized: false
 };
 
 SignIn.propTypes = {
@@ -111,12 +93,14 @@ SignIn.propTypes = {
     password: PropTypes.string,
   }),
   isValid: PropTypes.bool.isRequired,
-  authorized: PropTypes.bool.isRequired,
-  history: PropTypes.shape({
-    goBack: PropTypes.func
-  }),
+  authorized: PropTypes.bool.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  authorized: getAuthStatus(state),
+});
 
 export {SignIn};
 
-export default withLoginForm(SignIn);
+export default connect(mapStateToProps)(SignIn);
+
