@@ -40,9 +40,8 @@ const Operations = {
         dispatch(ActionCreator.loadReviews(reviews));
         dispatch(stopLoading(LoaderName.REVIEW));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(stopLoading(LoaderName.REVIEW));
-        throw new Error(`${error} on add review`);
       });
   }
 };

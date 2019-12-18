@@ -17,11 +17,13 @@ const createAPI = (dispatch) => {
 
   const onSuccess = (response) => response;
   const onFail = (error) => {
-    switch (error.response.status) {
-      case HTTP_STATUS.UNAUTHORIZED || HTTP_STATUS.FORBIDDEN:
-        dispatch(ActionCreator.resetUser());
-        dispatch(ActionCreator.requireAuthorization(false));
-        break;
+    if (error && error.response && error.response.status) {
+      switch (error.response.status) {
+        case HTTP_STATUS.UNAUTHORIZED || HTTP_STATUS.FORBIDDEN:
+          dispatch(ActionCreator.resetUser());
+          dispatch(ActionCreator.requireAuthorization(false));
+          break;
+      }
     }
 
     return error;
