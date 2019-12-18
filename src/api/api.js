@@ -1,12 +1,13 @@
 import axios from 'axios';
 import {API} from '../utils';
+import {ActionCreator} from "../reducer/authorization/authorization";
 
 const HTTP_STATUS = {
   UNAUTHORIZED: 401,
   FORBIDDEN: 403
 };
 
-const createAPI = (onForbidden) => {
+const createAPI = (dispatch) => {
 
   const api = axios.create({
     baseURL: API.BASE_URL,
@@ -18,9 +19,8 @@ const createAPI = (onForbidden) => {
   const onFail = (error) => {
     switch (error.response.status) {
       case HTTP_STATUS.UNAUTHORIZED || HTTP_STATUS.FORBIDDEN:
-        if (typeof onForbidden === `function`) {
-          onForbidden();
-        }
+        dispatch(ActionCreator.resetUser());
+        dispatch(ActionCreator.requireAuthorization(false));
         break;
     }
 

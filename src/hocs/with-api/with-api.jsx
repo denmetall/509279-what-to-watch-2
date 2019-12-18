@@ -1,8 +1,5 @@
 import React, {PureComponent} from 'react';
-import createAPI from "../../api/api";
-import history from "../../history";
-
-const api = createAPI(() => history.push(`/login`));
+import {api} from '../../store';
 
 const withApi = (Component) => {
   class WithApi extends PureComponent {
