@@ -17,14 +17,10 @@ const createAPI = (onForbidden) => {
   const onSuccess = (response) => response;
   const onFail = (error) => {
     switch (error.response.status) {
-      case HTTP_STATUS.UNAUTHORIZED:
+      case HTTP_STATUS.UNAUTHORIZED || HTTP_STATUS.FORBIDDEN:
         if (typeof onForbidden === `function`) {
           onForbidden();
         }
-        break;
-
-      case HTTP_STATUS.FORBIDDEN:
-        history.push(`/login`);
         break;
     }
 
