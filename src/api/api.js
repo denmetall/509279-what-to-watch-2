@@ -6,7 +6,8 @@ import {ActionCreator as ActionCreatorNetworkFailed} from "../reducer/network-fa
 const HTTP_STATUS = {
   UNAUTHORIZED: 401,
   FORBIDDEN: 403,
-  NETWORK_FAILED: 404
+  NOT_FOUND: 404,
+  NETWORK_FAILED: 500
 };
 
 const createAPI = (dispatch) => {
@@ -24,7 +25,7 @@ const createAPI = (dispatch) => {
         dispatch(ActionCreator.resetUser());
         dispatch(ActionCreator.requireAuthorization(false));
       }
-      if (error.response.status >= HTTP_STATUS.NETWORK_FAILED) {
+      if (error.response.status === HTTP_STATUS.NOT_FOUND || error.response.status >= HTTP_STATUS.NETWORK_FAILED) {
         dispatch(ActionCreatorNetworkFailed.showError(error.response.status));
       }
     }
